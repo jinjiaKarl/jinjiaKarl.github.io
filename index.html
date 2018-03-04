@@ -49,7 +49,7 @@
 			<img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/13.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/"></a></h1>
+		  <h1 class="header-author"><a href="/">张晋嘉</a></h1>
 		</hgroup>
 		
 		<p class="header-subtitle">南方知我意，吹梦到西洲</p>
@@ -101,7 +101,7 @@
 				<img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/13.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author"></h1>
+			  <h1 class="header-author js-header-author">张晋嘉</h1>
 			</hgroup>
 			
 			<p class="header-subtitle"><i class="icon icon-quo-left"></i>南方知我意，吹梦到西洲<i class="icon icon-quo-right"></i></p>
@@ -168,10 +168,26 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="建立以太坊私有链"><a href="#建立以太坊私有链" class="headerlink" title="建立以太坊私有链"></a>建立以太坊私有链</h2><hr>
-<p>&emsp;&emsp;搭建私有网络最方便的方法就是通过geth命令中的–networkid选项,设置一个与主网不同的networkid(主网的networkid为1),这也是官方推荐的方法.<br>&emsp;&emsp;系统和环境<br>&emsp;&emsp;&emsp;&emsp;mac os 10.12.6<br>&emsp;&emsp;&emsp;&emsp;geth（安装 brew tap ethereum/ethereum<br>&emsp;&emsp;&emsp;&emsp; brew install ethereum）<br>&emsp;&emsp;&emsp;&emsp;<strong>brew 是 Mac 下的包管理工具，和Ubuntu里的apt-get类似</strong><br>
-        
-          <a class="article-more-a" href="/2018/03/04/搭建以太坊私有链进行挖矿和转账/#more">more >></a>
-        
+<p>&emsp;&emsp;搭建私有网络最方便的方法就是通过geth命令中的–networkid选项,设置一个与主网不同的networkid(主网的networkid为1),这也是官方推荐的方法.<br>&emsp;&emsp;系统和环境<br>&emsp;&emsp;&emsp;&emsp;mac os 10.12.6<br>&emsp;&emsp;&emsp;&emsp;geth（安装 brew tap ethereum/ethereum<br>&emsp;&emsp;&emsp;&emsp; brew install ethereum）<br>&emsp;&emsp;&emsp;&emsp;<strong>brew 是 Mac 下的包管理工具，和Ubuntu里的apt-get类似</strong> </p>
+<pre><code>&lt;!-- more--&gt;
+</code></pre><ol>
+<li>首先创建一个目录<br>mkdir private-geth<br>cd private-geth</li>
+<li>建立创世区块文件，是一个json格式的文件（因为如果使用默认值，difficulty会非常高，不好挖到矿），文件内容如下：<br>{<br> “config”: {<pre><code>&quot;chainId&quot;: 15,
+&quot;homesteadBlock&quot;: 0,
+&quot;eip155Block&quot;: 0,
+&quot;eip158Block&quot;: 0
+</code></pre> },<br> “coinbase” : “0x0000000000000000000000000000000000000000”,<br> “difficulty” : “0x1”,<br> “extraData” : “”,<br> “gasLimit” : “0xffffffff”,<br> “nonce” : “0x0000000000000042”,<br> “mixhash” : “0x0000000000000000000000000000000000000000000000000000000000000000”,<br> “parentHash” : “0x0000000000000000000000000000000000000000000000000000000000000000”,<br> “timestamp” : “0x00”,<br> “alloc”: { }<br>}</li>
+<li>初始化创世纪节点,并设置data目录:<br>geth –datadir ./data/00 init genesis.json<br>4.启动节点, 加上console 表示启动后,启用命令行:<br>geth –datadir ./data/00 init genesis.json console 2&gt;&gt;geth.log<br>参数解释：<strong>–datadir</strong> 后面的参数是区块数据及秘钥存放目录。<br><strong>console</strong> 进入控制台<br><strong>2&gt;&gt; test.log</strong> 表示把控制台日志输出到test.log文件<br>为了更好的理解，建议新开一个命令行终端，实时显示日志：<br>tail -f test.log</li>
+<li>创建账户进行挖矿<br>创建两个账户，括号里为账户的密码（牢记）<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/21.png" alt=""><br>开始挖矿，第一次会比较慢，打开test.log文件，看到如下信息：<br>INFO [03-04|20:23:48] Generating DAG in progress  epoch=0 percentage=0 elapsed=1.867s</li>
+</ol>
+<p>INFO [03-04|20:23:50] Generating DAG in progress  epoch=0 percentage=1 elapsed=3.670s</p>
+<p>INFO [03-04|20:23:52] Generating DAG in progress  epoch=0 percentage=2 elapsed=5.456s</p>
+<p>INFO [03-04|20:23:53] Generating DAG in progress  epoch=0 percentage=3 elapsed=7.218s</p>
+<p>INFO [03-04|20:23:55] Generating DAG in progress  epoch=0 percentage=4 elapsed=9.083s</p>
+<p>&emsp;&emsp;当percentage为100时，第一个区块完成，返回ture区块信息存储在./.ethash文件中，奖励给第一个账户5个以太币。<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/22.png" alt=""><br>&emsp;&emsp;我们拿第一个账户给第二个账户发送2个以太币（在发送以太币之前，我们到对第一个账户进行解锁），然后再进行挖矿，将交易写入区块，查看账户余额。<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/24.png" alt=""><br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/25.png" alt=""><br>&emsp;&emsp;还可以查看区块和交易的具体信息<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/26.png" alt=""></p>
+<p>有任何问题，联系微信：jinjia1479<br><a href="www.jinjiakarl.com">个人网站</a><br><a href="https://github.com/jinjiaKarl" target="_blank" rel="noopener">github地址</a></p>
+<hr>
+
       
 
       
@@ -392,7 +408,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 陌离
+    		&copy; 2018 张晋嘉
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

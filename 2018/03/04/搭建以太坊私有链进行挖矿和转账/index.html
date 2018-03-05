@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/24.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/25.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/26.png">
-<meta property="og:updated_time" content="2018-03-05T08:51:25.000Z">
+<meta property="og:updated_time" content="2018-03-05T11:26:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建以太坊私有链进行挖矿和转账">
 <meta name="twitter:description" content="建立以太坊私有链 &amp;emsp;&amp;emsp;搭建私有网络最方便的方法就是通过geth命令中的–networkid选项,设置一个与主网不同的networkid(主网的networkid为1),这也是官方推荐的方法.&amp;emsp;&amp;emsp;系统和环境&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;mac os 10.12.6&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;geth（安装 brew tap">
@@ -178,12 +178,11 @@
  <a id="more"></a>
 <ol>
 <li>首先创建一个目录<br>mkdir private-geth<br>cd private-geth</li>
-<li>建立创世区块文件，是一个json格式的文件（因为如果使用默认值，difficulty会非常高，不好挖到矿），文件内容如下：<br>{<br> “config”: {<pre><code>&quot;chainId&quot;: 15,
-&quot;homesteadBlock&quot;: 0,
-&quot;eip155Block&quot;: 0,
-&quot;eip158Block&quot;: 0
-</code></pre> },<br> “coinbase” : “0x0000000000000000000000000000000000000000”,<br> “difficulty” : “0x1”,<br> “extraData” : “”,<br> “gasLimit” : “0xffffffff”,<br> “nonce” : “0x0000000000000042”,<br> “mixhash” : “0x0000000000000000000000000000000000000000000000000000000000000000”,<br> “parentHash” : “0x0000000000000000000000000000000000000000000000000000000000000000”,<br> “timestamp” : “0x00”,<br> “alloc”: { }<br>}</li>
-<li>初始化创世纪节点,并设置data目录:<br>geth –datadir ./data/00 init genesis.json<br>4.启动节点, 加上console 表示启动后,启用命令行:<br>geth –datadir ./data/00 –networkid 15 console 2&gt;&gt;geth.log<br>参数解释：<strong>–datadir</strong> 后面的参数是区块数据及秘钥存放目录。<br><strong>console</strong> 进入控制台<br><strong>2&gt;&gt; test.log</strong> 表示把控制台日志输出到test.log文件<br>为了更好的理解，建议新开一个命令行终端，实时显示日志：<br>tail -f test.log</li>
+<li><p>建立创世区块文件，是一个json格式的文件（因为如果使用默认值，difficulty会非常高，不好挖到矿），文件内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;config&quot;: &#123;</span><br><span class="line">        &quot;chainId&quot;: 15,</span><br><span class="line">        &quot;homesteadBlock&quot;: 0,</span><br><span class="line">        &quot;eip155Block&quot;: 0,</span><br><span class="line">        &quot;eip158Block&quot;: 0</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;coinbase&quot; : &quot;0x0000000000000000000000000000000000000000&quot;,</span><br><span class="line">    &quot;difficulty&quot; : &quot;0x1&quot;,</span><br><span class="line">    &quot;extraData&quot; : &quot;&quot;,</span><br><span class="line">    &quot;gasLimit&quot; : &quot;0xffffffff&quot;,</span><br><span class="line">    &quot;nonce&quot; : &quot;0x0000000000000042&quot;,</span><br><span class="line">    &quot;mixhash&quot; : &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;,</span><br><span class="line">    &quot;parentHash&quot; : &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;,</span><br><span class="line">    &quot;timestamp&quot; : &quot;0x00&quot;,</span><br><span class="line">    &quot;alloc&quot;: &#123; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>初始化创世纪节点,并设置data目录:<br>geth –datadir ./data/00 init genesis.json<br>4.启动节点, 加上console 表示启动后,启用命令行:<br>geth –datadir ./data/00 –networkid 15 console 2&gt;&gt;geth.log<br>参数解释：<strong>–datadir</strong> 后面的参数是区块数据及秘钥存放目录。<br><strong>console</strong> 进入控制台<br><strong>2&gt;&gt; test.log</strong> 表示把控制台日志输出到test.log文件<br>为了更好的理解，建议新开一个命令行终端，实时显示日志：<br>tail -f test.log</p>
+</li>
 <li>创建账户进行挖矿<br>创建两个账户，括号里为账户的密码（牢记）<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/21.png" alt=""><br>开始挖矿，第一次会比较慢，打开test.log文件，看到如下信息：<br>INFO [03-04|20:23:48] Generating DAG in progress  epoch=0 percentage=0 elapsed=1.867s</li>
 </ol>
 <p>INFO [03-04|20:23:50] Generating DAG in progress  epoch=0 percentage=1 elapsed=3.670s</p>

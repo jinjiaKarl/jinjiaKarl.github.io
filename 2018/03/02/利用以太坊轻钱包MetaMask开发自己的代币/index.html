@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/9.jpeg">
 <meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/10.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/11.png">
-<meta property="og:updated_time" content="2018-03-04T13:26:22.000Z">
+<meta property="og:updated_time" content="2018-03-05T11:27:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用以太坊轻钱包MetaMask开发自己的代币">
 <meta name="twitter:description" content="一.MetaMask钱包下载及配置  MetaMask钱包插件下载&amp;emsp;&amp;emsp; 此处你可以选择你喜欢的浏览器进行安装(进行下载的时候需要梯子).（图1：MetaMask下载页面）">
@@ -190,131 +190,10 @@
 <hr>
 <ol>
 <li>ERC20 Token<br>也许你经常看到ERC20和代币一同出现， ERC20是以太坊定义的一个<a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20-token-standard.md" target="_blank" rel="noopener">代币标准</a>。<br>要求我们在实现代币的时候必须要遵守的协议，如指定代币名称、总量、实现代币交易函数等，只有支持了协议才能被以太坊钱包支持。</li>
-<li><a href="https://www.ethereum.org/token" target="_blank" rel="noopener">编写代币合约代码</a>(THE CODE中)<br>```<br>pragma solidity ^0.4.16;</li>
+<li><a href="https://www.ethereum.org/token" target="_blank" rel="noopener">编写代币合约代码</a>(THE CODE中)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.16;</span><br><span class="line"></span><br><span class="line">interface tokenRecipient &#123; function receiveApproval(address _from, uint256 _value, address _token, bytes _extraData) public; &#125;</span><br><span class="line"></span><br><span class="line">contract TokenERC20 &#123;</span><br><span class="line"></span><br><span class="line">    string public name;</span><br><span class="line"></span><br><span class="line">    string public symbol;</span><br><span class="line"></span><br><span class="line">    uint8 public decimals = 18;  // 18 是建议的默认值</span><br><span class="line"></span><br><span class="line">    uint256 public totalSupply;</span><br><span class="line"></span><br><span class="line">    mapping (address =&gt; uint256) public balanceOf;  //</span><br><span class="line"></span><br><span class="line">    mapping (address =&gt; mapping (address =&gt; uint256)) public allowance;</span><br><span class="line"></span><br><span class="line">    event Transfer(address indexed from, address indexed to, uint256 value);</span><br><span class="line"></span><br><span class="line">    event Burn(address indexed from, uint256 value);</span><br><span class="line"></span><br><span class="line">    function TokenERC20(uint256 initialSupply, string tokenName, string tokenSymbol) public &#123;</span><br><span class="line"></span><br><span class="line">        totalSupply = initialSupply * 10 ** uint256(decimals);</span><br><span class="line"></span><br><span class="line">        balanceOf[msg.sender] = totalSupply;</span><br><span class="line"></span><br><span class="line">        name = tokenName;</span><br><span class="line"></span><br><span class="line">        symbol = tokenSymbol;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function _transfer(address _from, address _to, uint _value) internal &#123;</span><br><span class="line"></span><br><span class="line">        require(_to != 0x0);</span><br><span class="line"></span><br><span class="line">        require(balanceOf[_from] &gt;= _value);</span><br><span class="line"></span><br><span class="line">        require(balanceOf[_to] + _value &gt; balanceOf[_to]);</span><br><span class="line"></span><br><span class="line">        uint previousBalances = balanceOf[_from] + balanceOf[_to];</span><br><span class="line"></span><br><span class="line">        balanceOf[_from] -= _value;</span><br><span class="line"></span><br><span class="line">        balanceOf[_to] += _value;</span><br><span class="line"></span><br><span class="line">        Transfer(_from, _to, _value);</span><br><span class="line"></span><br><span class="line">        assert(balanceOf[_from] + balanceOf[_to] == previousBalances);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function transfer(address _to, uint256 _value) public &#123;</span><br><span class="line"></span><br><span class="line">        _transfer(msg.sender, _to, _value);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) &#123;</span><br><span class="line"></span><br><span class="line">        require(_value &lt;= allowance[_from][msg.sender]);     // Check allowance</span><br><span class="line"></span><br><span class="line">        allowance[_from][msg.sender] -= _value;</span><br><span class="line"></span><br><span class="line">        _transfer(_from, _to, _value);</span><br><span class="line"></span><br><span class="line">        return true;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function approve(address _spender, uint256 _value) public</span><br><span class="line"></span><br><span class="line">        returns (bool success) &#123;</span><br><span class="line"></span><br><span class="line">        allowance[msg.sender][_spender] = _value;</span><br><span class="line"></span><br><span class="line">        return true;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function approveAndCall(address _spender, uint256 _value, bytes _extraData) public returns (bool success) &#123;</span><br><span class="line"></span><br><span class="line">        tokenRecipient spender = tokenRecipient(_spender);</span><br><span class="line"></span><br><span class="line">        if (approve(_spender, _value)) &#123;</span><br><span class="line"></span><br><span class="line">            spender.receiveApproval(msg.sender, _value, this, _extraData);</span><br><span class="line"></span><br><span class="line">            return true;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function burn(uint256 _value) public returns (bool success) &#123;</span><br><span class="line"></span><br><span class="line">        require(balanceOf[msg.sender] &gt;= _value);</span><br><span class="line"></span><br><span class="line">        balanceOf[msg.sender] -= _value;</span><br><span class="line"></span><br><span class="line">        totalSupply -= _value;</span><br><span class="line"></span><br><span class="line">        Burn(msg.sender, _value);</span><br><span class="line"></span><br><span class="line">        return true;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function burnFrom(address _from, uint256 _value) public returns (bool success) &#123;</span><br><span class="line"></span><br><span class="line">        require(balanceOf[_from] &gt;= _value);</span><br><span class="line"></span><br><span class="line">        require(_value &lt;= allowance[_from][msg.sender]);</span><br><span class="line"></span><br><span class="line">        balanceOf[_from] -= _value;</span><br><span class="line"></span><br><span class="line">        allowance[_from][msg.sender] -= _value;</span><br><span class="line"></span><br><span class="line">        totalSupply -= _value;</span><br><span class="line"></span><br><span class="line">        Burn(_from, _value);</span><br><span class="line"></span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<p>interface tokenRecipient { function receiveApproval(address _from, uint256 _value, address _token, bytes _extraData) public; }</p>
-<p>contract TokenERC20 {</p>
-<pre><code>string public name;
-
-string public symbol;
-
-uint8 public decimals = 18;  // 18 是建议的默认值
-
-uint256 public totalSupply;
-
-mapping (address =&gt; uint256) public balanceOf;  //
-
-mapping (address =&gt; mapping (address =&gt; uint256)) public allowance;
-
-event Transfer(address indexed from, address indexed to, uint256 value);
-
-event Burn(address indexed from, uint256 value);
-
-function TokenERC20(uint256 initialSupply, string tokenName, string tokenSymbol) public {
-
-    totalSupply = initialSupply * 10 ** uint256(decimals);
-
-    balanceOf[msg.sender] = totalSupply;
-
-    name = tokenName;
-
-    symbol = tokenSymbol;
-
-}
-
-function _transfer(address _from, address _to, uint _value) internal {
-
-    require(_to != 0x0);
-
-    require(balanceOf[_from] &gt;= _value);
-
-    require(balanceOf[_to] + _value &gt; balanceOf[_to]);
-
-    uint previousBalances = balanceOf[_from] + balanceOf[_to];
-
-    balanceOf[_from] -= _value;
-
-    balanceOf[_to] += _value;
-
-    Transfer(_from, _to, _value);
-
-    assert(balanceOf[_from] + balanceOf[_to] == previousBalances);
-
-}
-
-function transfer(address _to, uint256 _value) public {
-
-    _transfer(msg.sender, _to, _value);
-
-}
-
-function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {
-
-    require(_value &lt;= allowance[_from][msg.sender]);     // Check allowance
-
-    allowance[_from][msg.sender] -= _value;
-
-    _transfer(_from, _to, _value);
-
-    return true;
-
-}
-
-function approve(address _spender, uint256 _value) public
-
-    returns (bool success) {
-
-    allowance[msg.sender][_spender] = _value;
-
-    return true;
-
-}
-
-function approveAndCall(address _spender, uint256 _value, bytes _extraData) public returns (bool success) {
-
-    tokenRecipient spender = tokenRecipient(_spender);
-
-    if (approve(_spender, _value)) {
-
-        spender.receiveApproval(msg.sender, _value, this, _extraData);
-
-        return true;
-
-    }
-
-}
-
-function burn(uint256 _value) public returns (bool success) {
-
-    require(balanceOf[msg.sender] &gt;= _value);
-
-    balanceOf[msg.sender] -= _value;
-
-    totalSupply -= _value;
-
-    Burn(msg.sender, _value);
-
-    return true;
-
-}
-
-function burnFrom(address _from, uint256 _value) public returns (bool success) {
-
-    require(balanceOf[_from] &gt;= _value);
-
-    require(_value &lt;= allowance[_from][msg.sender]);
-
-    balanceOf[_from] -= _value;
-
-    allowance[_from][msg.sender] -= _value;
-
-    totalSupply -= _value;
-
-    Burn(_from, _value);
-
-    return true;
-}
-</code></pre><p>}<br>```<br>将这个代码复制粘贴到<a href="https://remix.ethereum.org/#optimize=false&amp;version=soljson-v0.4.20+commit.3155dd80.js" target="_blank" rel="noopener">Remix</a>网页编辑器中，然后点击右上角的Run，写上你发行币的总量，名称，代号，然后点击Create，这时MetaMask会弹出一个交易确认框，点SUBMIT，待合约部署交易确认之后，复制合约地址。<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/6.png" alt=""><br>（图6：智能合约代码）</p>
+<p>将这个代码复制粘贴到<a href="https://remix.ethereum.org/#optimize=false&amp;version=soljson-v0.4.20+commit.3155dd80.js" target="_blank" rel="noopener">Remix</a>网页编辑器中，然后点击右上角的Run，写上你发行币的总量，名称，代号，然后点击Create，这时MetaMask会弹出一个交易确认框，点SUBMIT，待合约部署交易确认之后，复制合约地址。<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/6.png" alt=""><br>（图6：智能合约代码）</p>
 <ol>
 <li>打开Metamask界面，切换到TOKENS，点添加合约，出现如下对话框，填入刚才复制的地址，点ADD，这时你就可以看到你创建的代币了。<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/7.png" alt=""><br>（图7：添加代币）<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/8.png" alt=""><br>(图8:：完成添加代币)<br>你已经完成了代币的创建和部署(正式网络和测试网络部署方法一样)，可以<a href="https://ropsten.etherscan.io/token/0x1af30b05a8cf8c3525f742bb8ee599a73d73b8d2" target="_blank" rel="noopener">etherscan</a>查询到我们刚才部署的代币。</li>
 <li>由于MetaMask插件没有提供代币交易功能，同时考虑到很多人并没有以太坊钱包或是被以太坊钱包网络同步问题折磨，今天我用<a href="https://www.myetherwallet.com/" target="_blank" rel="noopener">网页钱包</a>来讲解代币交易。</li>

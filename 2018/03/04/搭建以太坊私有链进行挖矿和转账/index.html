@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/24.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/25.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/26.png">
-<meta property="og:updated_time" content="2018-03-04T13:30:01.000Z">
+<meta property="og:updated_time" content="2018-03-05T08:51:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建以太坊私有链进行挖矿和转账">
 <meta name="twitter:description" content="建立以太坊私有链 &amp;emsp;&amp;emsp;搭建私有网络最方便的方法就是通过geth命令中的–networkid选项,设置一个与主网不同的networkid(主网的networkid为1),这也是官方推荐的方法.&amp;emsp;&amp;emsp;系统和环境&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;mac os 10.12.6&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;geth（安装 brew tap">
@@ -183,7 +183,7 @@
 &quot;eip155Block&quot;: 0,
 &quot;eip158Block&quot;: 0
 </code></pre> },<br> “coinbase” : “0x0000000000000000000000000000000000000000”,<br> “difficulty” : “0x1”,<br> “extraData” : “”,<br> “gasLimit” : “0xffffffff”,<br> “nonce” : “0x0000000000000042”,<br> “mixhash” : “0x0000000000000000000000000000000000000000000000000000000000000000”,<br> “parentHash” : “0x0000000000000000000000000000000000000000000000000000000000000000”,<br> “timestamp” : “0x00”,<br> “alloc”: { }<br>}</li>
-<li>初始化创世纪节点,并设置data目录:<br>geth –datadir ./data/00 init genesis.json<br>4.启动节点, 加上console 表示启动后,启用命令行:<br>geth –datadir ./data/00 init genesis.json console 2&gt;&gt;geth.log<br>参数解释：<strong>–datadir</strong> 后面的参数是区块数据及秘钥存放目录。<br><strong>console</strong> 进入控制台<br><strong>2&gt;&gt; test.log</strong> 表示把控制台日志输出到test.log文件<br>为了更好的理解，建议新开一个命令行终端，实时显示日志：<br>tail -f test.log</li>
+<li>初始化创世纪节点,并设置data目录:<br>geth –datadir ./data/00 init genesis.json<br>4.启动节点, 加上console 表示启动后,启用命令行:<br>geth –datadir ./data/00 –networkid 15 console 2&gt;&gt;geth.log<br>参数解释：<strong>–datadir</strong> 后面的参数是区块数据及秘钥存放目录。<br><strong>console</strong> 进入控制台<br><strong>2&gt;&gt; test.log</strong> 表示把控制台日志输出到test.log文件<br>为了更好的理解，建议新开一个命令行终端，实时显示日志：<br>tail -f test.log</li>
 <li>创建账户进行挖矿<br>创建两个账户，括号里为账户的密码（牢记）<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/21.png" alt=""><br>开始挖矿，第一次会比较慢，打开test.log文件，看到如下信息：<br>INFO [03-04|20:23:48] Generating DAG in progress  epoch=0 percentage=0 elapsed=1.867s</li>
 </ol>
 <p>INFO [03-04|20:23:50] Generating DAG in progress  epoch=0 percentage=1 elapsed=3.670s</p>
@@ -191,7 +191,7 @@
 <p>INFO [03-04|20:23:53] Generating DAG in progress  epoch=0 percentage=3 elapsed=7.218s</p>
 <p>INFO [03-04|20:23:55] Generating DAG in progress  epoch=0 percentage=4 elapsed=9.083s</p>
 <p>&emsp;&emsp;当percentage为100时，第一个区块完成，返回ture区块信息存储在./.ethash文件中，奖励给第一个账户5个以太币。<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/22.png" alt=""><br>&emsp;&emsp;我们拿第一个账户给第二个账户发送2个以太币（在发送以太币之前，我们到对第一个账户进行解锁），然后再进行挖矿，将交易写入区块，查看账户余额。<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/24.png" alt=""><br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/25.png" alt=""><br>&emsp;&emsp;还可以查看区块和交易的具体信息<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/26.png" alt=""></p>
-<p>有任何问题，联系微信：jinjia1479<br><a href="www.jinjiakarl.com">个人网站</a><br><a href="https://github.com/jinjiaKarl" target="_blank" rel="noopener">github地址</a></p>
+<p><a href="www.jinjiakarl.com">个人网站</a><br><a href="https://github.com/jinjiaKarl" target="_blank" rel="noopener">github地址</a></p>
 <hr>
 
       
@@ -224,6 +224,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/03/05/以太坊智能合约入门/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          以太坊智能合约入门
+        
+      </div>
+    </a>
   
   
     <a href="/2018/03/02/利用以太坊轻钱包MetaMask开发自己的代币/" id="article-nav-older" class="article-nav-link-wrap">

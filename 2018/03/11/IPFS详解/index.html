@@ -17,7 +17,7 @@
 <meta property="og:description" content="1.IPFS是什么IPFS（InterPlanetary File System）是一个点对点的分布式超媒体分发协议，它整合了过去几年最好的分布式系统思路，为所有人提供全球统一的可寻址空间，包括Git、自证明文件系统SFS、BitTorrent和DHT，同时也被认为是最有可能取代HTTP的新一代互联网协议。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/40.jpg">
-<meta property="og:updated_time" content="2018-03-11T03:19:34.000Z">
+<meta property="og:updated_time" content="2018-03-12T14:54:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IPFS详解">
 <meta name="twitter:description" content="1.IPFS是什么IPFS（InterPlanetary File System）是一个点对点的分布式超媒体分发协议，它整合了过去几年最好的分布式系统思路，为所有人提供全球统一的可寻址空间，包括Git、自证明文件系统SFS、BitTorrent和DHT，同时也被认为是最有可能取代HTTP的新一代互联网协议。">
@@ -187,7 +187,7 @@
 <p>.torrent文件本质上是文本文件，包含Tracker信息和文件信息两部分。<a href="https://baike.baidu.com/item/Tracker" target="_blank" rel="noopener">Tracker</a>信息主要是<a href="https://baike.baidu.com/item/BT%E4%B8%8B%E8%BD%BD" target="_blank" rel="noopener">BT下载</a>中需要用到的Tracker<a href="https://baike.baidu.com/item/%E6%9C%8D%E5%8A%A1%E5%99%A8" target="_blank" rel="noopener">服务器</a>的地址和针对Tracker服务器的设置，文件信息是根据对<a href="https://baike.baidu.com/item/%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6" target="_blank" rel="noopener">目标文件</a>的计算生成的，计算结果根据BitTorrent协议内的B编码规则进行编码。它的主要原理是需要把提供下载的文件虚拟分成大小相等的块，块大小必须为2k的整数次方（由于是虚拟分块，硬盘上并不产生各个块文件），并把每个块的索引信息和Hash验证码写入种子文件（.torrent）中。所以，种子文件（.torrent）就是被下载文件的“索引”。</p>
 <p>Tracker：收集下载者信息的服务器，并将此信息提供给其他下载者，使下载者们相互连接起来，传输数据。</p>
 <h2 id="4-DHT是什么"><a href="#4-DHT是什么" class="headerlink" title="4.DHT是什么"></a>4.DHT是什么</h2><p>DHT全称为分布式<a href="https://baike.baidu.com/item/%E5%93%88%E5%B8%8C%E8%A1%A8" target="_blank" rel="noopener">哈希表</a>(Distributed Hash Table)，是一种分布式存储方法。在不需要服务器的情况下，每个客户端负责一个小范围的路由，并负责存储一小部分数据，从而实现整个DHT网络的寻址和存储。使用支持该技术的BT下载软件，用户无需连上Tracker就可以下载，因为软件会在DHT网络中寻找下载同一文件的其他用户并与之通讯，开始下载任务。</p>
-<p>DHT采用的算法为Kademlia。Kademlia(简称Kda)属于一种典型的结构化P2P覆盖网络(Structured P2P OverlayNetwork)，以分布式的应用层全网方式来进行信息的存储和检索是其尝试解决的主要问题。在Kademlia网络中，所有信息均以哈希表条目形式加以存储，这些条目被分散地存储在各个节点上，从而以全网方式构成一张巨大的分布式哈希表。我们可以形象地把这张哈希大表看成是一本字典：只要知道了信息索引的key，我们便可以通过Kademlia协议来查询其所对应的value信息，而不管这个value信息究竟是存储在哪一个节点之上。在eMule、BitTorrent等P2P文件交换系统中，Kademlia主要充当了文件信息检索协议这一关键角色。</p>
+<p>DHT采用的算法为Kademlia。Kademlia(简称Kda)属于一种典型的结构化P2P覆盖网络(Structured P2P OverlayNetwork)，以分布式的应用层全网方式来进行信息的存储和检索是其尝试解决的主要问题。在Kademlia网络中，所有信息均以哈希表条目形式加以存储，这些条目被分散地存储在各个节点上，从而以全网方式构成一张巨大的分布式哈希表。我们可以形象地把这张哈希大表看成是一本字典：只要知道了信息索引的key，我们便可以通过Kademlia协议来查询其所对应的value信息，而不管这个value信息究竟是存储在哪一个节点之上。在eMule、BitTorrent等P2P文件交换系统中，Kademlia主要充当了文件信息检索协议这一关键角色。<br><a href="www.jinjiakarl.com">个人网站</a><br><a href="https://github.com/jinjiaKarl" target="_blank" rel="noopener">github地址</a></p>
 
       
 
@@ -219,6 +219,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/03/12/常见共识算法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          常见共识算法
+        
+      </div>
+    </a>
   
   
     <a href="/2018/03/07/ISO七层模型/" id="article-nav-older" class="article-nav-link-wrap">

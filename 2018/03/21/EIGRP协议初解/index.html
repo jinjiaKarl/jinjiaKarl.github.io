@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="www.jinjiaKarl.com">
-  <title>Tag: 区块链 | 陌离</title>
+  <title>EIGRP协议初解 | 陌离</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是我的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="陌离">
-<meta property="og:url" content="www.jinjiaKarl.com/tags/区块链/index.html">
+  <meta name="description" content="EIGRP协议初解 1.EIGRP：扩展的内部网关路由协议，高级的距离矢量路由协议。&amp;emsp;IGRP：内部网关路由协议2.EIGPR路径度量值metric不是跳数hop，是利用接口参数和公式计算出来的。EIGRP的距离(跳数)限制了网络的规模，并不用来选路，默认最大跳数100，可以设置最大为255，更新发送时跳数加一。">
+<meta name="keywords" content="计算机网络 - EIGRP协议">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EIGRP协议初解">
+<meta property="og:url" content="www.jinjiaKarl.com/2018/03/21/EIGRP协议初解/index.html">
 <meta property="og:site_name" content="陌离">
-<meta property="og:description" content="这是我的博客">
+<meta property="og:description" content="EIGRP协议初解 1.EIGRP：扩展的内部网关路由协议，高级的距离矢量路由协议。&amp;emsp;IGRP：内部网关路由协议2.EIGPR路径度量值metric不是跳数hop，是利用接口参数和公式计算出来的。EIGRP的距离(跳数)限制了网络的规模，并不用来选路，默认最大跳数100，可以设置最大为255，更新发送时跳数加一。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-22T02:31:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="陌离">
-<meta name="twitter:description" content="这是我的博客">
+<meta name="twitter:title" content="EIGRP协议初解">
+<meta name="twitter:description" content="EIGRP协议初解 1.EIGRP：扩展的内部网关路由协议，高级的距离矢量路由协议。&amp;emsp;IGRP：内部网关路由协议2.EIGPR路径度量值metric不是跳数hop，是利用接口参数和公式计算出来的。EIGRP的距离(跳数)限制了网络的规模，并不用来选路，默认最大跳数100，可以设置最大为255，更新发送时跳数加一。">
   
     <link rel="alternative" href="/atom.xml" title="陌离" type="application/atom+xml">
   
@@ -145,98 +147,110 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-EIGRP协议初解" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/12/常见共识算法/" class="archive-article-date">
-  	<time datetime="2018-03-12T14:40:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-12</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/12/常见共识算法/">常见共识算法</a>
+    <h1 class="article-title" itemprop="name">
+      EIGRP协议初解
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/03/21/EIGRP协议初解/" class="archive-article-date">
+  	<time datetime="2018-03-21T10:57:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="EIGRP协议初解"><a href="#EIGRP协议初解" class="headerlink" title="EIGRP协议初解"></a>EIGRP协议初解</h2><hr>
+<p>1.EIGRP：扩展的内部网关路由协议，高级的距离矢量路由协议。<br>&emsp;IGRP：内部网关路由协议<br>2.EIGPR路径度量值metric不是跳数hop，是利用<strong>接口参数和公式</strong>计算出来的。EIGRP的距离(跳数)限制了网络的规模，并不用来选路，默认最大跳数100，可以设置最大为255，更新发送时跳数加一。<br> <a id="more"></a><br>3.EIGRP度量值metric的计算<br>跳数hop是发送+1。<br>度量值metric是接收更新路由接口的参数进行计算与之前的metric相加，所以参与计算的参数都叫做K值，一共有5个参数。<br>K1：接收更新接口的带宽bandwidth<br>K2：负载Loding<br>K3：延迟delay<br>K4：可靠性reality<br>K5：最大传输单元MTU (帧头和帧尾之间的数据）1500Byte<br>MTU越大，负载越大，可靠性越低<br>最终真正参与计算的是K1，K3<br>(10^7/bw)+(DLY/10)=metric  10^7bit=10Mb<br>目前根据接口类型设置成固定的metric，不需要每次都需要计算。当自己改变bw、DLY时会计算metric值。<br>4.EIGRP更新方式：<strong>触发增量更新</strong><br>一个更新包最多114个路由，rip一个更新包最多有25个路由。更新方式为多播，地址为224.0.0.10。<br>5.EIGRP的特性</p>
+<ul>
+<li>百分百无环路</li>
+<li>快速（优进路由表，良待机standby即存在备份路由，当优出现故障，备份路由表进入路由表，主动查找备份路由，等待）</li>
+<li>支持多网络层协议(ip、apple talk、ipx/spx)</li>
+<li>支持认证（与rip一样）</li>
+<li>支持手动汇总</li>
+</ul>
+<p>6.EIGRP三张表</p>
+<ul>
+<li>neighbor table邻居表，路由器相互直连，都起eigrp。邻接关系，首先是邻居，并且相互信任且交换路由更新。邻居表里放着所有形成邻接关系的邻居信息。</li>
+<li>topology table拓扑表，存放邻居共享的路由更新。</li>
+<li>eigrp RIB EIGRP路由表，将拓扑表中的路由中的最优路径写入EIGRP路由表。</li>
+</ul>
+<p>7.EIGRP路由代码D，分为3种，内部D：90，系统D：5，外部D_EX：170。同一AS内路由器相互学习的EIGRP就是内部路由，来自AS外的路由就是外部路由，系统路由是EIGRP自己产生的(自动汇总产生的路由)。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">区块链</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络 - EIGRP协议</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/06/区块链核心概念/" class="archive-article-date">
-  	<time datetime="2018-03-06T08:21:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-06</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/03/21/RIP协议详解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">RIP协议详解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/06/区块链核心概念/">区块链核心概念</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">区块链</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -259,9 +273,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

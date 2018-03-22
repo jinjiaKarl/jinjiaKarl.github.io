@@ -6,18 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="www.jinjiaKarl.com">
-  <title>Tag: 区块链 | 陌离</title>
+  <title>RIP协议详解 | 陌离</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是我的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="陌离">
-<meta property="og:url" content="www.jinjiaKarl.com/tags/区块链/index.html">
+  <meta name="description" content="RIP协议详解 1.动态路由协议作用：动态路由协议是路由器间交换网络信息，计算路径的机制。AS：自制系统，是由若干拥有统一管理策略和维护策略所组成的，其实就是一个网络。AS-id：1-65535。AS内动态路由协议（IGPS内部网关协议集）：RIP、EIGRP、OSPF、IS-ISAS间动态路由协议（EGPS边界网关协议集）：BGP">
+<meta name="keywords" content="计算机网络 - RIP协议">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RIP协议详解">
+<meta property="og:url" content="www.jinjiaKarl.com/2018/03/21/RIP协议详解/index.html">
 <meta property="og:site_name" content="陌离">
-<meta property="og:description" content="这是我的博客">
+<meta property="og:description" content="RIP协议详解 1.动态路由协议作用：动态路由协议是路由器间交换网络信息，计算路径的机制。AS：自制系统，是由若干拥有统一管理策略和维护策略所组成的，其实就是一个网络。AS-id：1-65535。AS内动态路由协议（IGPS内部网关协议集）：RIP、EIGRP、OSPF、IS-ISAS间动态路由协议（EGPS边界网关协议集）：BGP">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/41.png">
+<meta property="og:updated_time" content="2018-03-22T02:31:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="陌离">
-<meta name="twitter:description" content="这是我的博客">
+<meta name="twitter:title" content="RIP协议详解">
+<meta name="twitter:description" content="RIP协议详解 1.动态路由协议作用：动态路由协议是路由器间交换网络信息，计算路径的机制。AS：自制系统，是由若干拥有统一管理策略和维护策略所组成的，其实就是一个网络。AS-id：1-65535。AS内动态路由协议（IGPS内部网关协议集）：RIP、EIGRP、OSPF、IS-ISAS间动态路由协议（EGPS边界网关协议集）：BGP">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/41.png">
   
     <link rel="alternative" href="/atom.xml" title="陌离" type="application/atom+xml">
   
@@ -145,98 +149,138 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-RIP协议详解" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/12/常见共识算法/" class="archive-article-date">
-  	<time datetime="2018-03-12T14:40:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-12</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/12/常见共识算法/">常见共识算法</a>
+    <h1 class="article-title" itemprop="name">
+      RIP协议详解
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/03/21/RIP协议详解/" class="archive-article-date">
+  	<time datetime="2018-03-21T10:34:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="RIP协议详解"><a href="#RIP协议详解" class="headerlink" title="RIP协议详解"></a>RIP协议详解</h2><hr>
+<p>1.动态路由协议<br>作用：动态路由协议是路由器间交换网络信息，计算路径的机制。<br>AS：自制系统，是由若干拥有统一管理策略和维护策略所组成的，其实就是一个网络。AS-id：1-65535。<br>AS内动态路由协议（IGPS内部网关协议集）：RIP、EIGRP、OSPF、IS-IS<br>AS间动态路由协议（EGPS边界网关协议集）：BGP<br> <a id="more"></a><br>2.RIP协议：距离矢量路由协议<br>RIPv1、RIPv2适用IPv4，RIPng适用IPv6。<br>RIP路由代码R，管理距离AD：120<br>3.RIPv1配置（全局配置模式下）<br>router rip //启用rip<br>version 1 //设置版本<br>network <a.b.c.d>  //宣告网络<br>宣告的作用：将主网包含的<strong>子网</strong>变成更新、将子网对应的物理接口划入rip发送更新。<br><strong>只能主网宣告，是有类的路由协议</strong><br>4.RIPv1详解<br>1）更新方式：UDP广播更新，目的IP：255.255.255.255，目的端口号：520，源端口号随机，更新包携带25个条目，周期性更新30s。<br>2）度量值metric计算：更新发送时，跳数hop+1，最大跳数为15。<br>3）环路：路由删除后立即从路由表消失，更新周期未到，跳数可以无限累加所导致形成环路。<br>4）避环机制：</a.b.c.d></p>
+<ul>
+<li>抑制定时器hold time：无效路由不会立刻删除，0-180s视为无效，180s-240s挂起，到达240s后删除此条目。</li>
+<li>触发更新：以有变化，立刻发送更新。</li>
+<li>水平分割：接口接受的路由更新，绝对不可以反发回去</li>
+<li>毒性逆转： 无效路由通过触发更新被发送，跳数设置为16，16hop的更新意味着接受者删除该条目。</li>
+<li>最大跳数：15，无效跳数16<br>5）RIPv1不支持VLSM，并不是说不能把经过VLSM的网络当做更新发送，如果接收的更新对应的网络本地就有，则不学习。<br>6）更新发送流程图<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/41.png" alt=""></li>
+</ul>
+<p>5.RIPv2配置（全局配置模式下）<br>router rip<br>version 2<br>no auto-summary //关闭自动汇总<br>network <a.b.c.d><br>配置手动汇总（<strong>在路由更新的出接口上</strong>，先进入接口）<br>ip summary-address rip &lt;汇总后网络&gt; &lt;掩码&gt; //也可以汇总成子网<br>6.RIPv2详解<br>1）与RIPv1的不同点：</a.b.c.d></p>
+<ul>
+<li>v2可以关闭自动汇总，开启手动汇总，汇总的目的是为了减少对方路由表条目数量，增加路由效率。</li>
+<li>v2支持VLSM，更新时携带掩码</li>
+<li>v2多播更新，目的ip：224.0.0.9</li>
+<li>v2支持被动接口（只收更新，不发送更新）和单播更新（指定目标ip接收更新即指定邻居）</li>
+<li>v2支持协议认证，认证通过才能更新</li>
+<li>v2支持偏移列表offset-list，偏移更新就是路由器在更新接收、发送时额外增加的跳数。</li>
+</ul>
+<p>2）认证详解</p>
+<ul>
+<li>明文认证的工作机制：明文认证是将口令当做字符串直接发送给对端，对端进行比较，一致则通过认证，否则不通过。</li>
+<li>密文md5认证：md5实际上就是哈希算法，通过比较哈希值判断秘钥口令是否一致。</li>
+<li>认证的关键组件：钥匙链key chain、钥匙ID key、钥匙的口令string</li>
+<li>明文认证的工作过程：双方永远从ID最小的key开始发送，并且比较他们的string，钥匙间的轮转如果没有配置，那么永远都只发送最小ID的key。</li>
+<li>密文认证的工作过程：钥匙ID和钥匙的string参与md5计算，ID和哈希值被发送出去进行比较。</li>
+</ul>
+<p><strong>明文认证的钥匙ID不需要一致，密文认证的钥匙ID必须一致，因为参与md5的计算</strong></p>
+<ul>
+<li>钥匙的轮转： 按照一定的顺序或者时间，分别用钥匙链上的不同钥匙进行匹配对比。</li>
+</ul>
+<p>7.RIP认证的配置</p>
+<ul>
+<li>step1：创建钥匙链<br>key chain &lt;钥匙名&gt; //创建钥匙链<br>key <id>  //定义钥匙id<br>key-string &lt;口令&gt; //设定口令</id></li>
+<li>step2：接口下引用钥匙链（首先进入接口）<br>ip rip authentication key-chain &lt;钥匙名&gt;<br>[ip rip authentication mode md5] //启用md5认证</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">区块链</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">计算机网络 - RIP协议</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/06/区块链核心概念/" class="archive-article-date">
-  	<time datetime="2018-03-06T08:21:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-06</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/03/21/EIGRP协议初解/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          EIGRP协议初解
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/12/常见共识算法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">常见共识算法</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/06/区块链核心概念/">区块链核心概念</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">区块链</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -259,9 +303,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

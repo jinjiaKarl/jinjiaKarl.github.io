@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="www.jinjiaKarl.com">
   <title>EIGRP协议初解 | 陌离</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="EIGRP协议初解 1.EIGRP：扩展的内部网关路由协议，高级的距离矢量路由协议。&amp;emsp;IGRP：内部网关路由协议2.EIGPR路径度量值metric不是跳数hop，是利用接口参数和公式计算出来的。EIGRP的距离(跳数)限制了网络的规模，并不用来选路，默认最大跳数100，可以设置最大为255，更新发送时跳数加一。">
+  <meta name="description" content="EIGRP协议初解 1.EIGRP：扩展的内部网关路由协议，高级的距离矢量路由协议。&amp;emsp;IGRP：内部网关路由协议。 2.EIGPR路径度量值metric不是跳数hop，是利用接口参数和公式计算出来的。EIGRP的距离(跳数)限制了网络的规模，并不用来选路，默认最大跳数100，可以设置最大为255，更新发送时跳数加一。">
 <meta name="keywords" content="计算机网络,EIGRP协议">
 <meta property="og:type" content="article">
 <meta property="og:title" content="EIGRP协议初解">
 <meta property="og:url" content="www.jinjiaKarl.com/2018/03/21/EIGRP协议初解/index.html">
 <meta property="og:site_name" content="陌离">
-<meta property="og:description" content="EIGRP协议初解 1.EIGRP：扩展的内部网关路由协议，高级的距离矢量路由协议。&amp;emsp;IGRP：内部网关路由协议2.EIGPR路径度量值metric不是跳数hop，是利用接口参数和公式计算出来的。EIGRP的距离(跳数)限制了网络的规模，并不用来选路，默认最大跳数100，可以设置最大为255，更新发送时跳数加一。">
+<meta property="og:description" content="EIGRP协议初解 1.EIGRP：扩展的内部网关路由协议，高级的距离矢量路由协议。&amp;emsp;IGRP：内部网关路由协议。 2.EIGPR路径度量值metric不是跳数hop，是利用接口参数和公式计算出来的。EIGRP的距离(跳数)限制了网络的规模，并不用来选路，默认最大跳数100，可以设置最大为255，更新发送时跳数加一。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-22T02:40:57.000Z">
+<meta property="og:updated_time" content="2018-03-25T07:17:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EIGRP协议初解">
-<meta name="twitter:description" content="EIGRP协议初解 1.EIGRP：扩展的内部网关路由协议，高级的距离矢量路由协议。&amp;emsp;IGRP：内部网关路由协议2.EIGPR路径度量值metric不是跳数hop，是利用接口参数和公式计算出来的。EIGRP的距离(跳数)限制了网络的规模，并不用来选路，默认最大跳数100，可以设置最大为255，更新发送时跳数加一。">
+<meta name="twitter:description" content="EIGRP协议初解 1.EIGRP：扩展的内部网关路由协议，高级的距离矢量路由协议。&amp;emsp;IGRP：内部网关路由协议。 2.EIGPR路径度量值metric不是跳数hop，是利用接口参数和公式计算出来的。EIGRP的距离(跳数)限制了网络的规模，并不用来选路，默认最大跳数100，可以设置最大为255，更新发送时跳数加一。">
   
     <link rel="alternative" href="/atom.xml" title="陌离" type="application/atom+xml">
   
@@ -168,7 +168,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="EIGRP协议初解"><a href="#EIGRP协议初解" class="headerlink" title="EIGRP协议初解"></a>EIGRP协议初解</h2><hr>
-<p>1.EIGRP：扩展的内部网关路由协议，高级的距离矢量路由协议。<br>&emsp;IGRP：内部网关路由协议<br>2.EIGPR路径度量值metric不是跳数hop，是利用<strong>接口参数和公式</strong>计算出来的。EIGRP的距离(跳数)限制了网络的规模，并不用来选路，默认最大跳数100，可以设置最大为255，更新发送时跳数加一。<br> <a id="more"></a><br>3.EIGRP度量值metric的计算<br>跳数hop是发送+1。<br>度量值metric是接收更新路由接口的参数进行计算与之前的metric相加，所以参与计算的参数都叫做K值，一共有5个参数。<br>K1：接收更新接口的带宽bandwidth<br>K2：负载Loding<br>K3：延迟delay<br>K4：可靠性reality<br>K5：最大传输单元MTU (帧头和帧尾之间的数据）1500Byte<br>MTU越大，负载越大，可靠性越低<br>最终真正参与计算的是K1，K3<br>(10^7/bw)+(DLY/10)=metric  10^7bit=10Mb<br>目前根据接口类型设置成固定的metric，不需要每次都需要计算。当自己改变bw、DLY时会计算metric值。<br>4.EIGRP更新方式：<strong>触发增量更新</strong><br>一个更新包最多114个路由，rip一个更新包最多有25个路由。更新方式为多播，地址为224.0.0.10。<br>5.EIGRP的特性</p>
+<p>1.EIGRP：扩展的内部网关路由协议，高级的距离矢量路由协议。<br>&emsp;IGRP：内部网关路由协议。</p>
+<p>2.EIGPR路径度量值metric不是跳数hop，是利用<strong>接口参数和公式</strong>计算出来的。EIGRP的距离(跳数)限制了网络的规模，并不用来选路，默认最大跳数100，可以设置最大为255，更新发送时跳数加一。</p>
+ <a id="more"></a>
+<p>3.EIGRP度量值metric的计算<br>跳数hop是发送+1。<br>度量值metric是接收更新路由接口的参数进行计算与之前的metric相加，所以参与计算的参数都叫做K值，一共有5个参数。<br>K1：接收更新接口的带宽bandwidth<br>K2：负载Loding<br>K3：延迟delay<br>K4：可靠性reality<br>K5：最大传输单元MTU (帧头和帧尾之间的数据）1500Byte<br>MTU越大，负载越大，可靠性越低<br>最终真正参与计算的是K1，K3<br>(10^7/bw)+(DLY/10)=metric  10^7bit=10Mb<br>目前根据接口类型设置成固定的metric，不需要每次都需要计算。当自己改变bw、DLY时会计算metric值。</p>
+<p>4.EIGRP更新方式：<strong>触发增量更新</strong><br>一个更新包最多114个路由，rip一个更新包最多有25个路由。更新方式为多播，地址为224.0.0.10。</p>
+<p>5.EIGRP的特性</p>
 <ul>
 <li>百分百无环路</li>
 <li>快速（优进路由表，良待机standby即存在备份路由，当优出现故障，备份路由表进入路由表，主动查找备份路由，等待）</li>
@@ -249,6 +254,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/03/25/EIGRP详解/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          EIGRP详解
+        
+      </div>
+    </a>
   
   
     <a href="/2018/03/21/RIP协议详解/" id="article-nav-older" class="article-nav-link-wrap">
@@ -379,6 +393,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">IPFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">EIGRP</a>
               </li>
              
               <li class="article-tag-list-item">

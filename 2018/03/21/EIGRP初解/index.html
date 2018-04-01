@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="www.jinjiaKarl.com">
-  <title>常见共识算法 | 陌离</title>
+  <title>EIGRP初解 | 陌离</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="拜占庭将军问题(Byzantine Generals Problem) 故事：拜占庭帝国，拥有巨大的财富，周围10个邻邦垂诞已久，但拜占庭高墙耸立，没有一个单独的邻邦能够成功入侵。任何单个邻邦入侵的都会失败，同时也有可能自身被其他9个邻邦入侵。拜占庭帝国防御能力如此之强，至少要有十个邻邦中的一半以上同时进攻，才有行。其中的一个或者几个邻邦本身答应好一起进攻，但实际过程出现背叛，那么入侵者可能都会被">
-<meta name="keywords" content="区块链">
+  <meta name="description" content="EIGRP初解 1.EIGRP：扩展的内部网关路由协议，高级的距离矢量路由协议。&amp;emsp;IGRP：内部网关路由协议。 2.EIGPR路径度量值metric不是跳数hop，是利用接口参数和公式计算出来的。EIGRP的距离(跳数)限制了网络的规模，并不用来选路，默认最大跳数100，可以设置最大为255，更新发送时跳数加一。">
+<meta name="keywords" content="计算机网络,EIGRP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="常见共识算法">
-<meta property="og:url" content="www.jinjiaKarl.com/2018/03/12/常见共识算法/index.html">
+<meta property="og:title" content="EIGRP初解">
+<meta property="og:url" content="www.jinjiaKarl.com/2018/03/21/EIGRP初解/index.html">
 <meta property="og:site_name" content="陌离">
-<meta property="og:description" content="拜占庭将军问题(Byzantine Generals Problem) 故事：拜占庭帝国，拥有巨大的财富，周围10个邻邦垂诞已久，但拜占庭高墙耸立，没有一个单独的邻邦能够成功入侵。任何单个邻邦入侵的都会失败，同时也有可能自身被其他9个邻邦入侵。拜占庭帝国防御能力如此之强，至少要有十个邻邦中的一半以上同时进攻，才有行。其中的一个或者几个邻邦本身答应好一起进攻，但实际过程出现背叛，那么入侵者可能都会被">
+<meta property="og:description" content="EIGRP初解 1.EIGRP：扩展的内部网关路由协议，高级的距离矢量路由协议。&amp;emsp;IGRP：内部网关路由协议。 2.EIGPR路径度量值metric不是跳数hop，是利用接口参数和公式计算出来的。EIGRP的距离(跳数)限制了网络的规模，并不用来选路，默认最大跳数100，可以设置最大为255，更新发送时跳数加一。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-12T14:54:53.000Z">
+<meta property="og:updated_time" content="2018-04-01T14:13:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="常见共识算法">
-<meta name="twitter:description" content="拜占庭将军问题(Byzantine Generals Problem) 故事：拜占庭帝国，拥有巨大的财富，周围10个邻邦垂诞已久，但拜占庭高墙耸立，没有一个单独的邻邦能够成功入侵。任何单个邻邦入侵的都会失败，同时也有可能自身被其他9个邻邦入侵。拜占庭帝国防御能力如此之强，至少要有十个邻邦中的一半以上同时进攻，才有行。其中的一个或者几个邻邦本身答应好一起进攻，但实际过程出现背叛，那么入侵者可能都会被">
+<meta name="twitter:title" content="EIGRP初解">
+<meta name="twitter:description" content="EIGRP初解 1.EIGRP：扩展的内部网关路由协议，高级的距离矢量路由协议。&amp;emsp;IGRP：内部网关路由协议。 2.EIGPR路径度量值metric不是跳数hop，是利用接口参数和公式计算出来的。EIGRP的距离(跳数)限制了网络的规模，并不用来选路，默认最大跳数100，可以设置最大为255，更新发送时跳数加一。">
   
     <link rel="alternative" href="/atom.xml" title="陌离" type="application/atom+xml">
   
@@ -147,47 +147,47 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-常见共识算法" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-EIGRP初解" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      常见共识算法
+      EIGRP初解
     </h1>
   
 
         
-        <a href="/2018/03/12/常见共识算法/" class="archive-article-date">
-  	<time datetime="2018-03-12T14:40:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-12</time>
+        <a href="/2018/03/21/EIGRP初解/" class="archive-article-date">
+  	<time datetime="2018-03-21T10:57:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="拜占庭将军问题-Byzantine-Generals-Problem"><a href="#拜占庭将军问题-Byzantine-Generals-Problem" class="headerlink" title="拜占庭将军问题(Byzantine Generals Problem)"></a>拜占庭将军问题(Byzantine Generals Problem)</h2><hr>
-<h2 id="故事："><a href="#故事：" class="headerlink" title="故事："></a>故事：</h2><p>拜占庭帝国，拥有巨大的财富，周围10个邻邦垂诞已久，但拜占庭高墙耸立，没有一个单独的邻邦能够成功入侵。任何单个邻邦入侵的都会失败，同时也有可能自身被其他9个邻邦入侵。拜占庭帝国防御能力如此之强，至少要有十个邻邦中的一半以上同时进攻，才有行。<br>其中的一个或者几个邻邦本身答应好一起进攻，但实际过程出现背叛，那么入侵者可能都会被歼灭。于是每一方都小心行事，不敢轻易相信邻国。这就是拜占庭将军问题。</p>
+        <h2 id="EIGRP初解"><a href="#EIGRP初解" class="headerlink" title="EIGRP初解"></a>EIGRP初解</h2><hr>
+<p>1.EIGRP：扩展的内部网关路由协议，高级的距离矢量路由协议。<br>&emsp;IGRP：内部网关路由协议。</p>
+<p>2.EIGPR路径度量值metric不是跳数hop，是利用<strong>接口参数和公式</strong>计算出来的。EIGRP的距离(跳数)限制了网络的规模，并不用来选路，默认最大跳数100，可以设置最大为255，更新发送时跳数加一。</p>
  <a id="more"></a>
-<p>所以想要吃到这块肥肉，最重要的是10个邻国的将军达成一致去进攻拜占庭帝国。这就是要解决10个相互不信任的个体，去获得最大利益的问题。</p>
-<p>针对这个问题有几个比较初级的解决方案，像口头信息，书面协议等，这些我们就不讲了，直接到高级点的，就是比特币的共识算法pow。</p>
-<h2 id="工作量证明-Proof-Of-Work"><a href="#工作量证明-Proof-Of-Work" class="headerlink" title="工作量证明(Proof Of Work)"></a>工作量证明(Proof Of Work)</h2><hr>
-<p>假如10个将军都发信息，很容易乱，因为每个人都收到另外9个人的信息，所以中本聪规定只有一个人可以发出发起进攻的信息，这个人是谁都可以，但是有一定的条件限制，这个条件就是“工作量”，就是说这个人必须完成一个计算工作才能发消息，谁先完成这个计算工作，谁就能发消息。<br>当某个将军计算出这个结果后就发出进攻的消息，其它将军看到后必须签名表示自己的身份，这里请注意，古代那个签名是很容易伪造的，所以中本聪引入了加密技术，就是非对称加密，它的好处：1.消息的私秘性。2.确认签名人身份。3.签名不可伪造不可篡改。</p>
-<h3 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h3><p>非对称加密算法是由非对称加密算法的加密和解密使用不同的两个密钥.这两个密钥就是公钥和私钥.<br>公钥和私钥一般成对出现, 如果消息使用公钥加密,那么需要该公钥对应的私钥才能解密; 同样，如果消息使用私钥加密,那么需要该私钥对应的公钥才能解密.非对称加密的作用是:保护消息内容, 并且让消息接收方确定发送方的身份.</p>
-<p>假如张将军想给将军李发送消息，为防止消息泄露，张将军只需要使用李将军的公钥对信息加密，而李将军的公钥是公开的，李将军只需要用只有他自己只的私钥解密即可。李将军想要在信件上声明自己的身份，他可以自己写一段”签名文本“，并用私钥签名，并广播出去，所有人可以根据李将军的公钥来验证该签名，确定的李将军的身份。</p>
-<h3 id="哈希现金-Hashcash"><a href="#哈希现金-Hashcash" class="headerlink" title="哈希现金(Hashcash)"></a>哈希现金(Hashcash)</h3><p>这个就是大家要完成的计算，找一个随机数，计算机只能用穷举法来找到这个随机数，谁也不能确定找到，随机是公平的，并且这个随机的数学逻辑是大家都认可的。</p>
-<h3 id="奖励机制"><a href="#奖励机制" class="headerlink" title="奖励机制"></a>奖励机制</h3><p>中本聪设计是每有一个人算出这个随机数，就奖励一定数量的比特币，这个机制是自动运行的。这个奖励机制促使了大家一起来做这个计算，工作没有白做。</p>
-<h2 id="权益证明-Proof-Of-Stake"><a href="#权益证明-Proof-Of-Stake" class="headerlink" title="权益证明(Proof Of Stake)"></a>权益证明(Proof Of Stake)</h2><hr>
-<p>在基于权益证明（或者股权证明）的密码货币中，下一个区块的选择是根据不同节点的股份和时间进行随机选择的。打个比方说，假如你买了1万个数字货币，然后就放在pos机制中，这样你就拥有了机会去获得新的区块从而得到奖励，机会有多大呢，就是那些拥有1千个数字货币的人的10倍概率，因为你有1万个，1万是1千的十倍，10%的股份分红权是1%股份的10倍，道理是一样的。</p>
-<h3 id="币龄"><a href="#币龄" class="headerlink" title="币龄"></a>币龄</h3><p>当然上面描述的是你拥有一天的情况，随着拥有数字货币的时间增加，引入了一个币龄的概念，假如你拥有1万个数字货币100天，那么你的币龄就是100万，比那些拥有1千个数字货币100天的人还是差了10倍，但是比那些拥有1千个数字货币10天的人可是差了100倍呢。当你发现一区块之后币龄就会清空，注意啊，是币龄清空，不是币清空。</p>
-<p>由于创造新的区块并不会消耗大量的 CPU，这也就给了很多节点作弊的机会，每一个节点为了最大化利益会在多条链上同时挖矿。显然这个问题要被解决，这里引入了惩罚机制，惩罚同时在多条链上投票的节点，第二种方法时直接惩罚在错误的链上创建块的节点，总而言之就是通过算法之外的事情解决这个问题，引入激励和惩罚。</p>
-<p>优势：不需要浪费算力，同时，进行51%攻击的代价更高，因为想要进行51%攻击的话，你得拥有51%的货币。也就是说，这东西越值钱，攻击的成本就越高。</p>
-<h2 id="股权授权证明机制-Delegated-Proof-of-Stake"><a href="#股权授权证明机制-Delegated-Proof-of-Stake" class="headerlink" title="股权授权证明机制(Delegated Proof of Stake)"></a>股权授权证明机制(Delegated Proof of Stake)</h2><hr>
-<p>上面介绍的权益证明算法可以将整个区块链网络理解为一家公司，占比最大的人有更多的机会得到区块；对于小股东来说，能产生区块的可能性很小，只能得到股份带来的分红和收益。</p>
-<p>但是在这里介绍的DPOS委托权益证明能够让每一个人选出可以代表自己利益的人参与到获取区块的争夺中，这样多个小股东就能够通过投票选出自己的代理人，争取自己的利益。</p>
-<p>在委托权益证明中，每一个参与者都能够选举任意数量的节点生成下一个区块，得票最多的前 M 个节点会被选择成为区块的创建者，下一个区块的创建者就会从这样一组当选者中随机选取，除此之外，M的数量也是由整个网络投票决定的，所以可以尽可能地保证网络的去中心化，而且最重要的还是随机选出的，也就是说数量M不确定，M中选取哪一个也不确定，再加上足够多的总量，可以确定几乎是不可操控的。</p>
-<p><a href="www.jinjiakarl.com">个人网站</a><br><a href="https://github.com/jinjiaKarl" target="_blank" rel="noopener">github地址</a></p>
+<p>3.EIGRP度量值metric的计算<br>跳数hop是发送+1。<br>度量值metric是接收更新路由接口的参数进行计算与之前的metric相加，所以参与计算的参数都叫做K值，一共有5个参数。<br>K1：接收更新接口的带宽bandwidth<br>K2：负载Loding<br>K3：延迟delay<br>K4：可靠性reality<br>K5：最大传输单元MTU (帧头和帧尾之间的数据）1500Byte<br>MTU越大，负载越大，可靠性越低<br>最终真正参与计算的是K1，K3<br>(10^7/bw)+(DLY/10)=metric  10^7bit=10Mb<br>目前根据接口类型设置成固定的metric，不需要每次都需要计算。当自己改变bw、DLY时会计算metric值。5K还用来参与邻接关系的审查。</p>
+<p>4.EIGRP更新方式：<strong>触发增量更新</strong><br>一个更新包最多114个路由，rip一个更新包最多有25个路由。更新方式为多播，地址为224.0.0.10。</p>
+<p>5.EIGRP的特性</p>
+<ul>
+<li>百分百无环路</li>
+<li>快速（优进路由表，良待机standby即存在备份路由，当优出现故障，备份路由表进入路由表，主动查找备份路由，等待）</li>
+<li>支持多网络层协议(ip、apple talk、ipx/spx)</li>
+<li>支持认证（与rip一样）</li>
+<li>支持手动汇总</li>
+</ul>
+<p>6.EIGRP三张表</p>
+<ul>
+<li>neighbor table邻居表，路由器相互直连，都起eigrp。邻接关系，首先是邻居，并且相互信任且交换路由更新。邻居表里放着所有形成邻接关系的邻居信息。</li>
+<li>topology table拓扑表，存放邻居共享的路由更新。</li>
+<li>eigrp RIB EIGRP路由表，将拓扑表中的路由中的最优路径写入EIGRP路由表。</li>
+</ul>
+<p>7.EIGRP路由代码D，分为3种，内部D：90，系统D：5，外部D_EX：170。同一AS内路由器相互学习的EIGRP就是内部路由，来自AS外的路由就是外部路由，系统路由是EIGRP自己产生的(自动汇总产生的路由)。</p>
 
       
 
@@ -232,7 +232,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">区块链</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">EIGRP</a>
         		</li>
       		
 		</ul>
@@ -251,18 +255,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/03/21/RIP详解/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/03/25/EIGRP详解/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          RIP详解
+          EIGRP详解
         
       </div>
     </a>
   
   
-    <a href="/2018/03/11/IPFS详解/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">IPFS详解</div>
+    <a href="/2018/03/21/RIP详解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">RIP详解</div>
       <i class="icon-circle-right"></i>
     </a>
   

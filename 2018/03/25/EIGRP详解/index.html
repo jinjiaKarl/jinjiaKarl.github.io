@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="陌离">
 <meta property="og:description" content="EIGRP详解 1.ERGPR邻接关系的审查机制eigrp hello message：携带了邻接关系审查的参数hello message的发送间隔：广播型的网络5s周期、非广播型网络（如点到点网络）60s周期。路由器是通过接口类型来判断网络类型，如广播型为以太口、快速以太口，非广播型为光纤接口。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-25T08:00:58.000Z">
+<meta property="og:updated_time" content="2018-04-01T03:31:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EIGRP详解">
 <meta name="twitter:description" content="EIGRP详解 1.ERGPR邻接关系的审查机制eigrp hello message：携带了邻接关系审查的参数hello message的发送间隔：广播型的网络5s周期、非广播型网络（如点到点网络）60s周期。路由器是通过接口类型来判断网络类型，如广播型为以太口、快速以太口，非广播型为光纤接口。">
@@ -185,7 +185,7 @@
 <li>reply message：回复消息</li>
 <li>ACK message：确认消息<br>最后4个消息和拓扑表相关。</li>
 </ul>
-<p>5.eigrp非可靠消息的可靠传输机制<br>更新、查询、回复是需要保证可靠传输的，但是是不可靠信息。<br>SRTT：平均返程时间，单位ms，动态计算，没有固定的数值。在SRTT时间内，对方给予了ACK消息，代表确认接收。<br>Queue-list：重传队列，是计数器，最大重传16次。<br>RTO：重传超时，每次重传间隔一个RTO，RTO时间内收到对端的ACK则可靠接收，重传成功，终止重传。16次重传没有一次成功，当前设备终止重传认定对端是无效邻接关系。<strong>重传都是单播。</strong></p>
+<p>5.eigrp非可靠消息的可靠传输机制<br>更新、查询、回复是需要保证可靠传输的，但是是不可靠信息。<br>SRTT：平均返程时间，单位ms，动态计算，没有固定的数值。在SRTT时间内，对方给予了ACK消息，代表确认接收。<br>Queue-list（QCnt）：重传队列，是计数器，最大重传16次。<br>RTO：重传超时，每次重传间隔一个RTO，RTO时间内收到对端的ACK则可靠接收，重传成功，终止重传。16次重传没有一次成功，当前设备终止重传认定对端是无效邻接关系。<strong>重传都是单播。</strong></p>
 <p>6.eigrp拓扑表SIA状态<br>SIA：卡在激活状态。eigrp的查询消息发送出去后，期望在3min内给予回应，因为eigrp经常出现递归查询和递归回复，所有可能会出现3min不回应的情况。<br>eigrp的查询是发现FDmin无效且没有FS才发送的。<br><strong>eigrp加入了半衰期概念，当1分30s时eigrp发送特定查询，给定10s等待时间，如果不回应，就当不可达。</strong></p>
 <p>7.eigrp的自动汇总<br>eigrp和rip一样更新发送时，会判断是否存在主网边界，如果有就自动汇总，eigrp可以关闭。</p>
 <p>1）eigrp自动汇总与rip的不同：</p>
@@ -203,7 +203,7 @@
 <p>例子：<br>10.1.1.0/24<br>10.1.2.0/24<br>10.1.3.0/24<br>network 10.0.0.0 主网宣告例子<br>network 10.1.1.0 0.0.254.255 //.1.3被宣告，通配符中二进制为0要精确匹配，为1忽悠匹配</p>
 <p>shutdown //关闭eigrp</p>
 <p>9.校验eigrp<br>show ip eigrp neighbor //查看邻居表<br>show ip eigrp topology all-links  //查看拓扑表中的详细信息<br>show ip route eigrp //查看路由表中eigrp条目<br>show ip protocol //查看eigrp协议参数</p>
-<p>10.eigrp的手动汇总配置<br>ip summary-address eigrp <as-id> &lt;汇总后的网络&gt; &lt;汇总后的网络掩码&gt;</as-id></p>
+<p>10.eigrp的手动汇总配置<br>ip summary-address eigrp <as-id> &lt;汇总后的网络&gt; &lt;汇总后的网络掩码&gt; 配置在更新的发送方</as-id></p>
 
       
 
@@ -270,6 +270,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/04/01/EIGRP实验/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          EIGRP实验
+        
+      </div>
+    </a>
   
   
     <a href="/2018/03/21/EIGRP协议初解/" id="article-nav-older" class="article-nav-link-wrap">
@@ -399,10 +408,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IPFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">EIGRP</a>
               </li>
              
@@ -411,7 +416,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">以太坊</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">IPFS</a>
               </li>
              
               <li class="article-tag-list-item">

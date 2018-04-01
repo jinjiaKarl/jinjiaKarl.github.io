@@ -147,6 +147,179 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Linux文件系统层次结构标准FHS详解[转]" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/01/Linux文件系统层次结构标准FHS详解[转]/">Linux文件系统层次结构标准FHS详解[转]</a>
+    </h1>
+  
+
+        
+        <a href="/2018/04/01/Linux文件系统层次结构标准FHS详解[转]/" class="archive-article-date">
+  	<time datetime="2018-04-01T13:39:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Linux文件系统层次结构标准FHS详解-转"><a href="#Linux文件系统层次结构标准FHS详解-转" class="headerlink" title="Linux文件系统层次结构标准FHS详解[转]"></a>Linux文件系统层次结构标准FHS详解[转]</h2><hr>
+<p>Linux和UNIX的文件系统是一个以“/ “为根的阶层式的树状文件结构，/ 因此被称为根目录。所有的文件和目录都置于根目录/ 之下。根目录/下面有/bin，/home，/usr等子目录。在早期的UNIX系统中，各个厂家各自定义了自己的UNIX系统的文件系统构成，比较混乱。</p>
+<p> 为了避免在Linux也产生同样的问题，在Linux面世不久，就开始了对Linux文件系统进行标准化的活动，于1994年推出了名为 FSSTND(Filesystem Standard)的Linux文件系统层次结构标准。之后，FSSTND标准吸引了UNIX社团的开发人员，他们把FSSTND扩大到UNIX系统，FSSTND就变为FHS (Filesystem Hierarchy Standard)。2001年3月，FHS 2.2版本发布，2004年1月29日发行了最新版本2.3。</p>
+<p> FHS实际上仅是规范在根目录（/）下面各个主要目录应该放什么样的文件。FHS定义了两层规范，第一层是， / 下面的各个目录应该要放什么文件数据，例如 /etc应该要放置设置文件，/bin与 /sbin则应该要放置可执行文件等等。第二层则是针对 /usr及 /var这两个目录的子目录来定义。例如 /var/log放置系统登录文件、/usr/share放置共享数据等等。</p>
+<p>由于FHS仅是定义出最上层（/）及子层（/usr, /var）的目录内容应该要放置的文件数据，因此，在其他子目录层级内，就可以随开发人员自行配置了。举例来说，FC4的网络设置数据放在 /etc/sysconfig/network-script/ 目录下，但SuSE Server 9则是将网络放在 /etc/sysconfig/network/ 目录下，目录名称是不同的。</p>
+<p>另外，在Linux中，所有的文件与目录都由根目录 / 开始。那是所有目录与文件的源头。然后再一个一个分支下来，有点像树状。因此，我们也称这种目录配置方式为：“目录树（directory tree）”。这个目录树主要特性有：<br>目录树的起始点为根目录（/, root）。</p>
+<p>   单一文件或目录的最大容许文件名为255个字符。包含完整路径名称及目录（/）的完整文件名为4096个字符。</p>
+<p>  我们知道，/var/log/ 下面有个文件名为message，这个message文件的最大文件名可达255个字符。var与log这两个上层目录最长也分别可达255个字符。但总的来说， /var/log/messages这样完整的文件名最长则可达4096个字符。</p>
+<p>提示:root在Linux里面的意义很多。如果从“账号”的角度来看，root指“系统管理员”身份，如果以“目录”的角度来看，root指的是根目录，就是 / 。要特别注意。</p>
+<p>目录内容和用途：</p>
+<p>| / | 根目录 |<br>| /bin | 一般用户使用的命令 |<br>| /boot | 放置内核及LILO、GRUB等导引程序(bootloader)的文件，用于启动。 |<br>| /dev | 硬盘，分区，键盘，鼠标，USB，tty等所有的设备文件都放在这个目录。 |<br>| /etc | 系统的所有配置文件都存放在此目录中。 |<br>| /home | 用户空间，所有的用户都是用此空间。 |<br>| /lib | 共享连接库，如C库和C编译器等等。 |<br>| /media | 挂接CD-ROM等设备的目录 |<br>| /mnt | 移动设备文件系统的挂点 |<br>| /opt | 存放后来追加的用户应用程序 |<br>| /root | 管理员之家 |<br>| /sbin | 存放系统管理所需要的命令 |<br>| /tmp | 临时文件目录，重新启动时被清除 |<br>| /usr | 存放只能读的命令和其他文件。<br>/usr/X11R6　X Window系统<br>/usr/bin　用户和管理员的标准命令<br>/usr/include　c/c++等各种开发语言环境的标准include文件<br>/usr/lib　应用程序及程序包的连接库<br>/usr/local/　系统管理员安装的应用程序目录<br>/usr/local/share　系统管理员安装的共享文件<br>/usr/sbin　用户和管理员的标准命令<br>/usr/share　存放使用手册等共享文件的目录<br>/usr/share/dict　存放词表的目录（选项）<br>/usr/share/man　系统使用手册<br>/usr/share/misc　一般数据<br>/usr/share/sgml　SGML数据（选项）<br>/usr/share/xml　XML数据（选项） |<br>| /var | 存放应用程序数据和日志记录的目录，例如，Apache Web服务器的文档一般就放在/var/www/html下。<br>/var/cache　应用程序缓存目录<br>/var/account　处理账号日志(选项)<br>/var/crash　系统错误信息（选项）<br>/var/games　游戏数据<br>/var/lib　　各种状态数据<br>/var/lock　文件锁定纪录<br>/var/log　日志记录<br>/var/mail　电子邮件<br>/var/opt　/opt目录的变量数据<br>/var/run　进程的标示数据<br>/var/spool　存放电子邮件，打印任务等的队列目录。<br>/var/spool/rwho　<br>/var/tmp　临时文件目录<br>/var/yp　NIS等黄页数据(选项)</p>
+<p>这个标准被设计的目的是给Unix发行版开发者，应用程序开发者，和系统实现者使用的，它的初终是作为一个参考，并不是来教用户怎么管理unix文件系统或目录结构的。<br>当前linux用户也面临一些问题， 由于FHS仅定义了最上层（/）及子层（/usr, /var）的目录内容应该要放置的文件数据，所有现有Linux不同发行版中，其他二层下面的内容各部相同，有时会给用户迁移到不同Linux发行版上带 来麻烦，比如/etc下面的对统一功能的不同配置文件放置的位置不同，导致用户花费大量时间去熟悉新的系统。其实有些比较稳定的共同的功能应用程序的配置 文件也应该在FHS中给出定义，来指导发行版供应商和程序开发者进行开发。因此FHS也许应该更进一步的定义某些目录文件，进一层的细化文件层次结构，促 进linux发展。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/04/01/Linux文件系统层次结构标准FHS详解[转]/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-EIGRP实验" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/01/EIGRP实验/">EIGRP实验</a>
+    </h1>
+  
+
+        
+        <a href="/2018/04/01/EIGRP实验/" class="archive-article-date">
+  	<time datetime="2018-04-01T02:08:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="LAB1：EIGRP基础实验"><a href="#LAB1：EIGRP基础实验" class="headerlink" title="LAB1：EIGRP基础实验"></a>LAB1：EIGRP基础实验</h2><hr>
+<p>1.实验目的</p>
+<ul>
+<li>熟悉EIGRP的配置</li>
+<li>熟悉邻居表、拓扑表和协议参数</li>
+<li>熟悉EIGRP度量值的影响方式</li>
+<li>理解EIGRP手动汇总产生的系统路由及手动汇总的配置</li>
+<li>理解EIGRP认证和配置方式</li>
+</ul>
+        
+          <a class="article-more-a" href="/2018/04/01/EIGRP实验/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">EIGRP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/04/01/EIGRP实验/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-EIGRP详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -797,161 +970,6 @@
 
 
   
-    <article id="post-搭建以太坊私有链进行挖矿和转账" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/04/搭建以太坊私有链进行挖矿和转账/">搭建以太坊私有链进行挖矿和转账</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/04/搭建以太坊私有链进行挖矿和转账/" class="archive-article-date">
-  	<time datetime="2018-03-04T12:06:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="建立以太坊私有链"><a href="#建立以太坊私有链" class="headerlink" title="建立以太坊私有链"></a>建立以太坊私有链</h2><hr>
-<p>&emsp;&emsp;搭建私有网络最方便的方法就是通过geth命令中的–networkid选项,设置一个与主网不同的networkid(主网的networkid为1),这也是官方推荐的方法.<br>&emsp;&emsp;系统和环境<br>&emsp;&emsp;&emsp;&emsp;mac os 10.12.6<br>&emsp;&emsp;&emsp;&emsp;geth（安装 brew tap ethereum/ethereum<br>&emsp;&emsp;&emsp;&emsp; brew install ethereum）<br>&emsp;&emsp;&emsp;&emsp;<strong>brew 是 Mac 下的包管理工具，和Ubuntu里的apt-get类似</strong> </p>
-        
-          <a class="article-more-a" href="/2018/03/04/搭建以太坊私有链进行挖矿和转账/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">以太坊</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/04/搭建以太坊私有链进行挖矿和转账/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-利用以太坊轻钱包MetaMask开发自己的代币" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/02/利用以太坊轻钱包MetaMask开发自己的代币/">利用以太坊轻钱包MetaMask开发自己的代币</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/02/利用以太坊轻钱包MetaMask开发自己的代币/" class="archive-article-date">
-  	<time datetime="2018-03-02T04:11:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一-MetaMask钱包下载及配置"><a href="#一-MetaMask钱包下载及配置" class="headerlink" title="一.MetaMask钱包下载及配置"></a>一.MetaMask钱包下载及配置</h2><hr>
-<ol>
-<li><p><a href="https://metamask.io" target="_blank" rel="noopener">MetaMask钱包插件下载</a><br>&emsp;&emsp; 此处你可以选择你喜欢的浏览器进行安装(进行下载的时候需要梯子).<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/MetaMask.png" alt="网页截图"><br>（图1：MetaMask下载页面）</p>
-        
-          <a class="article-more-a" href="/2018/03/02/利用以太坊轻钱包MetaMask开发自己的代币/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">以太坊</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/02/利用以太坊轻钱包MetaMask开发自己的代币/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1049,10 +1067,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IPFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">EIGRP</a>
               </li>
              
@@ -1061,7 +1075,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">以太坊</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">IPFS</a>
               </li>
              
               <li class="article-tag-list-item">

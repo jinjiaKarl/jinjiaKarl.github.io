@@ -6,18 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="www.jinjiaKarl.com">
-  <title>Tag: 计算机网络 | 陌离</title>
+  <title>EIGRP实验 | 陌离</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是我的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="陌离">
-<meta property="og:url" content="www.jinjiaKarl.com/tags/计算机网络/index.html">
+  <meta name="description" content="LAB1：EIGRP基础实验 1.实验目的  熟悉EIGRP的配置 熟悉邻居表、拓扑表和协议参数 熟悉EIGRP度量值的影响方式 理解EIGRP手动汇总产生的系统路由及手动汇总的配置 理解EIGRP认证和配置方式">
+<meta name="keywords" content="计算机网络,EIGRP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EIGRP实验">
+<meta property="og:url" content="www.jinjiaKarl.com/2018/04/01/EIGRP实验/index.html">
 <meta property="og:site_name" content="陌离">
-<meta property="og:description" content="这是我的博客">
+<meta property="og:description" content="LAB1：EIGRP基础实验 1.实验目的  熟悉EIGRP的配置 熟悉邻居表、拓扑表和协议参数 熟悉EIGRP度量值的影响方式 理解EIGRP手动汇总产生的系统路由及手动汇总的配置 理解EIGRP认证和配置方式">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/42.png">
+<meta property="og:updated_time" content="2018-04-01T13:40:26.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="陌离">
-<meta name="twitter:description" content="这是我的博客">
+<meta name="twitter:title" content="EIGRP实验">
+<meta name="twitter:description" content="LAB1：EIGRP基础实验 1.实验目的  熟悉EIGRP的配置 熟悉邻居表、拓扑表和协议参数 熟悉EIGRP度量值的影响方式 理解EIGRP手动汇总产生的系统路由及手动汇总的配置 理解EIGRP认证和配置方式">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/42.png">
   
     <link rel="alternative" href="/atom.xml" title="陌离" type="application/atom+xml">
   
@@ -145,36 +149,104 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-EIGRP实验" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      EIGRP实验
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/01/EIGRP实验/" class="archive-article-date">
+
+        
+        <a href="/2018/04/01/EIGRP实验/" class="archive-article-date">
   	<time datetime="2018-04-01T02:08:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-01</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/01/EIGRP实验/">EIGRP实验</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="LAB1：EIGRP基础实验"><a href="#LAB1：EIGRP基础实验" class="headerlink" title="LAB1：EIGRP基础实验"></a>LAB1：EIGRP基础实验</h2><hr>
+<p>1.实验目的</p>
+<ul>
+<li>熟悉EIGRP的配置</li>
+<li>熟悉邻居表、拓扑表和协议参数</li>
+<li>熟悉EIGRP度量值的影响方式</li>
+<li>理解EIGRP手动汇总产生的系统路由及手动汇总的配置</li>
+<li>理解EIGRP认证和配置方式</li>
+</ul>
+<a id="more"></a>
+<p>2.实验拓扑<br>R1 —————R2<br>R1：10.1.1.1 10.2.2.2 两个环回口  e0/0 12.12.12.1 255.255.255.0<br>R2：20.1.1.1 20.2.2.2 两个环回口 e0/0 12.12.12.2 255.255.255.0<br>AS号：12</p>
+<p>3.实验步骤</p>
+<ul>
+<li>完成接口的配置和协议的配置，DUAL是EIGRP的算法名称。<br>控制台信息：<br>&amp;DUAL-5-NBRCHANGE：EIGRP-IPv4 12：Nerighbor 12.12.12.1（EThernet 0/0）is up：new adjacency<br>R2的E0/0发现了邻居12.12.12.1，并且形成新的邻接关系。</li>
+<li>校验邻居表和路由表<br><strong>邻居表里关键字含义：<br>hold(sec)：邻接关系有效计数器<br>uptime：邻接关系的存在时间<br>SRTT：平均返程时间，更新查询回复发送出去后在规定时间内回应<br>RTO：重传超时，每次重传时等待的时间<br>QCnt：重传队列计数器，如果是0就是没有重传</strong></li>
+<li>查看协议参数，如5K值和跳数<br><strong>拓扑表中括号内前面是FD后面是AD，（FD/AD）</strong></li>
+<li>通过修改延迟影响度量值的结果，最终达到选路的影响<br>查看<strong>接收更新的接口</strong>的延迟<br>show interface e0/0 | include DLY，单位是us。<br>修改接口的延迟interface e0/0 ，delay 99（数值是基础上会自动乘以10），延迟小10，度量值就会小256。</li>
+<li>配置手动汇总（在更新发送方配置）<br>ip summary-address eigrp 12 10.0.0.0 255.0.0.0<br>汇总会导致邻居关系的重新建立<br>ip route 10.0.0.0 255.0.0..0 系统路由的管理距离5，本地查看（更新发送方）<br>汇总后的路由是当做内部路由看待，管理距离90，其他路由器上查看</li>
+<li>EIGRP启用认证<br>key chain cisco<br>key 1<br>key-string cisco<br>int e0/0<br>ip authentication-key-chain eigrp 12 cisco<br>ip authentication mode eigrp 12  md5<br>认证会影响邻接关系</li>
+</ul>
+<p>4.思考题</p>
+<ul>
+<li>EIGRP RID一样，邻接关系是否建立？<br>建立，因为EIGRP不考虑这个问题。</li>
+<li>修改5K，metric weights 0 1 1 1 1 1 //修改k1-5都参与metric计算（1表示参与，后面5个1代表5K）</li>
+<li>不同子网EIGRP邻接关系是否建立？不同子网连续网络建立，不同子网不连续网络不建立。（网络位相同的建立）</li>
+</ul>
+<p>5.等价负载均衡、不等价负载均衡<br>等价负载均衡：抵达目标网络多条路径，每条路径的开销都相同<br>不等价负载均衡的目的和机制规则：通过配置使得次优路径和最佳路径同时分担数据流。<br>如何实现不等价负载均衡：次优路径的FD除以FDmin，结果取整+1，得到不等价负载均衡值，宣告该值完成配置。</p>
+<h2 id="LAB2不等价负载均衡"><a href="#LAB2不等价负载均衡" class="headerlink" title="LAB2不等价负载均衡"></a>LAB2不等价负载均衡</h2><hr>
+<p>1.实验拓扑<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/42.png" alt=""><br>2.实验需求</p>
+<ul>
+<li>完成EIGRP配置后，观察R1拓扑表，确定优选路径和次优路径</li>
+<li>完成不等价负载均衡的配置，观察实验现象</li>
+</ul>
+<p>3.实验步骤</p>
+<ul>
+<li>完成EIGRP的配置并且进行校验，此时校验R1路由表，确认R1是优选R3抵达，其次校验R1拓扑表，确认R2提供了次优路径</li>
+<li>R1上计算出不等价负载均衡值，并且宣告它<br>router eigrp 123<br>variance &lt;不等价负载均衡值&gt;</li>
+<li>完成如上配置后，校验R1路由表，确认是否实现<br>**EIGRP的不等价负载均衡值规则：<br>条件1：不等价负载均衡链路组成员默认是4个，最大可以改成32个。<br>router eigrp 123<br>maximum-paths <number><br>条件2：次优路径的AD必须小于FDmin<br>条件3：最佳路径的开销乘以不等价值必须大于次优的FD</number></li>
+</ul>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/wechat.jpeg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -190,183 +262,64 @@
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/25/EIGRP详解/" class="archive-article-date">
-  	<time datetime="2018-03-25T01:51:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-25</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/04/01/Linux文件系统层次结构标准FHS详解[转]/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Linux文件系统层次结构标准FHS详解[转]
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/25/EIGRP详解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">EIGRP详解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/25/EIGRP详解/">EIGRP详解</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">EIGRP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/21/EIGRP协议初解/" class="archive-article-date">
-  	<time datetime="2018-03-21T10:57:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/21/EIGRP协议初解/">EIGRP协议初解</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">EIGRP协议</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/21/RIP协议详解/" class="archive-article-date">
-  	<time datetime="2018-03-21T10:34:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/21/RIP协议详解/">RIP协议详解</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">RIP协议</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/07/ISO七层模型/" class="archive-article-date">
-  	<time datetime="2018-03-07T14:22:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/07/ISO七层模型/">ISO七层模型</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -389,9 +342,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

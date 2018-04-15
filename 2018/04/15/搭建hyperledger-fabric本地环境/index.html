@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/53.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/54.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/55.png">
-<meta property="og:updated_time" content="2018-04-15T14:45:18.000Z">
+<meta property="og:updated_time" content="2018-04-15T14:53:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建hyperledger fabric本地环境">
 <meta name="twitter:description" content="1.前言 在本文中用到的宿主主机环境是Ubuntu，版本为16.04.4 LTS，通过Docker容器来运行Fabric的节点，版本为v1.0（目前最新版本为v1.1），在启动Fabric网络中的节点时要先安装Docker、Docker-compose和Go语言环境，然后在网上拉取Docker镜像、Fabric源码，然后通过各种配置文件和脚本命令启动Fabric网络。">
@@ -198,6 +198,7 @@
 <p>操作命令：<br>docker pull hyperledger/fabric-peer:x86_64-1.0.0<br>docker pull hyperledger/fabric-orderer:x86_64-1.0.0<br>docker pull hyperledger/fabric-tools:x86_64-1.0.0<br>docker pull hyperledger/fabric-ccenv:x86_64-1.0.0</p>
 <p>为了方便docker-compose的配置，我们将所有镜像的tag都改成latest，执行如下命令：<br>docker tag hyperledger/fabric-peer:x86_64-1.0.0 hyperledger/fabric-peer:latest</p>
 <p>所有的镜像文件及版本号修改完成后，执行如下命令：<br>docker images<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/55.png" alt=""></p>
+<p><a href="https://hyperledger-fabric.readthedocs.io/en/latest/" target="_blank" rel="noopener">参考链接</a></p>
 
       
 
@@ -393,15 +394,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">RIP协议</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">IPFS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">RIP协议</a>
               </li>
              
               <li class="article-tag-list-item">

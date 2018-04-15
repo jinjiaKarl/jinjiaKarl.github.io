@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="陌离">
 <meta property="og:description" content="EIGRP详解 1.ERGPR邻接关系的审查机制eigrp hello message：携带了邻接关系审查的参数hello message的发送间隔：广播型的网络5s周期、非广播型网络（如点到点网络）60s周期。路由器是通过接口类型来判断网络类型，如广播型为以太口、快速以太口，非广播型为光纤接口。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-01T03:31:40.000Z">
+<meta property="og:updated_time" content="2018-04-08T12:27:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EIGRP详解">
 <meta name="twitter:description" content="EIGRP详解 1.ERGPR邻接关系的审查机制eigrp hello message：携带了邻接关系审查的参数hello message的发送间隔：广播型的网络5s周期、非广播型网络（如点到点网络）60s周期。路由器是通过接口类型来判断网络类型，如广播型为以太口、快速以太口，非广播型为光纤接口。">
@@ -202,7 +202,7 @@
 <p>no auto-summary   //关闭自动汇总<br>network <a.b.c.d> <wild-mask> //eigrp的宣告：主网宣告、精确子网宣告</wild-mask></a.b.c.d></p>
 <p>例子：<br>10.1.1.0/24<br>10.1.2.0/24<br>10.1.3.0/24<br>network 10.0.0.0 主网宣告例子<br>network 10.1.1.0 0.0.254.255 //.1.3被宣告，通配符中二进制为0要精确匹配，为1忽悠匹配</p>
 <p>shutdown //关闭eigrp</p>
-<p>9.校验eigrp<br>show ip eigrp neighbor //查看邻居表<br>show ip eigrp topology all-links  //查看拓扑表中的详细信息<br>show ip route eigrp //查看路由表中eigrp条目<br>show ip protocol //查看eigrp协议参数</p>
+<p>9.校验eigrp<br>show ip eigrp neighbors //查看邻居表<br>show ip eigrp topology all-links  //查看拓扑表中的详细信息<br>show ip route eigrp //查看路由表中eigrp条目<br>show ip protocol //查看eigrp协议参数</p>
 <p>10.eigrp的手动汇总配置<br>ip summary-address eigrp <as-id> &lt;汇总后的网络&gt; &lt;汇总后的网络掩码&gt; 配置在更新的发送方</as-id></p>
 
       
@@ -408,6 +408,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">RIP协议</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">IPFS</a>
               </li>
              
@@ -416,15 +420,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">RIP协议</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">以太坊</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">区块链</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">hyperledger</a>
               </li>
             
             <div class="clearfix"></div>

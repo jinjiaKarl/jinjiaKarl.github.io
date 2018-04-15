@@ -17,7 +17,7 @@
 <meta property="og:description" content="LAB1：EIGRP基础实验 1.实验目的  熟悉EIGRP的配置 熟悉邻居表、拓扑表和协议参数 熟悉EIGRP度量值的影响方式 理解EIGRP手动汇总产生的系统路由及手动汇总的配置 理解EIGRP认证和配置方式">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/42.png">
-<meta property="og:updated_time" content="2018-04-01T14:13:11.000Z">
+<meta property="og:updated_time" content="2018-04-08T14:31:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EIGRP实验">
 <meta name="twitter:description" content="LAB1：EIGRP基础实验 1.实验目的  熟悉EIGRP的配置 熟悉邻居表、拓扑表和协议参数 熟悉EIGRP度量值的影响方式 理解EIGRP手动汇总产生的系统路由及手动汇总的配置 理解EIGRP认证和配置方式">
@@ -186,14 +186,14 @@
 <li>校验邻居表和路由表<br><strong>邻居表里关键字含义：<br>hold(sec)：邻接关系有效计数器<br>uptime：邻接关系的存在时间<br>SRTT：平均返程时间，更新查询回复发送出去后在规定时间内回应<br>RTO：重传超时，每次重传时等待的时间<br>QCnt：重传队列计数器，如果是0就是没有重传</strong></li>
 <li>查看协议参数，如5K值和跳数<br><strong>拓扑表中括号内前面是FD后面是AD，（FD/AD）</strong></li>
 <li>通过修改延迟影响度量值的结果，最终达到选路的影响<br>查看<strong>接收更新的接口</strong>的延迟<br>show interface e0/0 | include DLY，单位是us。<br>修改接口的延迟interface e0/0 ，delay 99（数值是基础上会自动乘以10），延迟小10，度量值就会小256。</li>
-<li>配置手动汇总（在更新发送方配置）<br>ip summary-address eigrp 12 10.0.0.0 255.0.0.0<br>汇总会导致邻居关系的重新建立<br>ip route 10.0.0.0 255.0.0..0 系统路由的管理距离5，本地查看（更新发送方）<br>汇总后的路由是当做内部路由看待，管理距离90，其他路由器上查看</li>
-<li>EIGRP启用认证<br>key chain cisco<br>key 1<br>key-string cisco<br>int e0/0<br>ip authentication-key-chain eigrp 12 cisco<br>ip authentication mode eigrp 12  md5<br>认证会影响邻接关系</li>
+<li>配置手动汇总（在更新发送方配置，接口下）<br>ip summary-address eigrp 12 10.0.0.0 255.0.0.0<br>汇总会导致邻居关系的重新建立<br>show ip route 10.0.0.0 255.0.0..0 系统路由的管理距离5，本地查看（更新发送方）<br>汇总后的路由是当做内部路由看待，管理距离90，其他路由器上查看</li>
+<li>EIGRP启用认证<br>key chain cisco<br>key 1<br>key-string cisco<br>int e0/0<br>ip authentication key-chain eigrp 12 cisco<br>ip authentication mode eigrp 12  md5<br>认证会影响邻接关系</li>
 </ul>
 <p>4.思考题</p>
 <ul>
 <li>EIGRP RID一样，邻接关系是否建立？<br>建立，因为EIGRP不考虑这个问题。</li>
 <li>修改5K，metric weights 0 1 1 1 1 1 //修改k1-5都参与metric计算（1表示参与，后面5个1代表5K）</li>
-<li>不同子网EIGRP邻接关系是否建立？不同子网连续网络建立，不同子网不连续网络不建立。（网络位相同的建立）</li>
+<li>不同子网EIGRP邻接关系是否建立？不同子网连续网络建立，不同子网不连续网络不建立。（网络位相同的建立）<br>12.12.12.1/24和12.12.12.2/30可以建立<br>12.12.12.1/24和12.12.12.5/30不可以建立</li>
 </ul>
 <p>5.等价负载均衡、不等价负载均衡<br>等价负载均衡：抵达目标网络多条路径，每条路径的开销都相同<br>不等价负载均衡的目的和机制规则：通过配置使得次优路径和最佳路径同时分担数据流。<br>如何实现不等价负载均衡：次优路径的FD除以FDmin，结果取整+1，得到不等价负载均衡值，宣告该值完成配置。</p>
 <h2 id="LAB2不等价负载均衡"><a href="#LAB2不等价负载均衡" class="headerlink" title="LAB2不等价负载均衡"></a>LAB2不等价负载均衡</h2><hr>
@@ -412,6 +412,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">RIP协议</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">IPFS</a>
               </li>
              
@@ -420,15 +424,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">RIP协议</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">以太坊</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">区块链</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">hyperledger</a>
               </li>
             
             <div class="clearfix"></div>

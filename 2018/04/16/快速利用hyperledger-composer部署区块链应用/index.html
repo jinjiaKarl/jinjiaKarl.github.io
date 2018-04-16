@@ -6,18 +6,32 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="www.jinjiaKarl.com">
-  <title>Archives: 2018 | 陌离</title>
+  <title>快速利用hyperledger composer部署区块链应用 | 陌离</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是我的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="陌离">
-<meta property="og:url" content="www.jinjiaKarl.com/archives/2018/page/2/index.html">
+  <meta name="description" content="前言 本次教程我们通过建立一个网络，定义资产、参与者、交易，并且通过建立一些参与者、资产、提交交易（改变资产的所有者）来测试我们的网络。">
+<meta name="keywords" content="区块链,hyperledger">
+<meta property="og:type" content="article">
+<meta property="og:title" content="快速利用hyperledger composer部署区块链应用">
+<meta property="og:url" content="www.jinjiaKarl.com/2018/04/16/快速利用hyperledger-composer部署区块链应用/index.html">
 <meta property="og:site_name" content="陌离">
-<meta property="og:description" content="这是我的博客">
+<meta property="og:description" content="前言 本次教程我们通过建立一个网络，定义资产、参与者、交易，并且通过建立一些参与者、资产、提交交易（改变资产的所有者）来测试我们的网络。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/60.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/61.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/62.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/63.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/64.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/65.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/66.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/67.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/69.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/70%20.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/71.png">
+<meta property="og:updated_time" content="2018-04-16T04:30:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="陌离">
-<meta name="twitter:description" content="这是我的博客">
+<meta name="twitter:title" content="快速利用hyperledger composer部署区块链应用">
+<meta name="twitter:description" content="前言 本次教程我们通过建立一个网络，定义资产、参与者、交易，并且通过建立一些参与者、资产、提交交易（改变资产的所有者）来测试我们的网络。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/60.png">
   
     <link rel="alternative" href="/atom.xml" title="陌离" type="application/atom+xml">
   
@@ -145,120 +159,72 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-快速利用hyperledger-composer部署区块链应用" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      快速利用hyperledger composer部署区块链应用
+    </h1>
+  
+
+        
+        <a href="/2018/04/16/快速利用hyperledger-composer部署区块链应用/" class="archive-article-date">
+  	<time datetime="2018-04-16T03:31:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-16</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><hr>
+<p>本次教程我们通过建立一个网络，定义资产、参与者、交易，并且通过建立一些参与者、资产、提交交易（改变资产的所有者）来测试我们的网络。<br> <a id="more"></a><br>此次的交易模型为：<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/60.png" alt=""></p>
+<h3 id="Step"><a href="#Step" class="headerlink" title="Step"></a>Step</h3><hr>
+<p>可以有两种方式使用composer工具，一种是本地部署，一种是利用<a href="https://composer-playground.mybluemix.net/login" target="_blank" rel="noopener">Composer Playgroud</a>网页版，需要科学上网。在这里我们介绍简单的Composer Playgroud。<br>开始的页面，当然我创建了两个，刚开始你的上面应该没有。<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/61.png" alt=""><br>点击Deploy a new business network，即可创建一个网络。点击右边的Delopy即可部署。<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/62.png" alt=""><br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/63.png" alt=""><br>点击Connect now，进入具体的设置。<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/64.png" alt=""><br>添加一个Script File的文件，加入如下内容：<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/65.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Track the trade of a commodity from one trader to another</span><br><span class="line"> * @param &#123;org.acme.mynetwork.Trade&#125; trade - the trade to be processed</span><br><span class="line"> * @transaction</span><br><span class="line"> */</span><br><span class="line">async function tradeCommodity(trade) &#123;</span><br><span class="line">    trade.commodity.owner = trade.newOwner;</span><br><span class="line">    let assetRegistry = await getAssetRegistry(&apos;org.acme.mynetwork.Commodity&apos;);</span><br><span class="line">    await assetRegistry.update(trade.commodity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在Model File文件中，删除原来的内容，加入如下内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * My commodity trading network</span><br><span class="line"> */</span><br><span class="line">namespace org.acme.mynetwork</span><br><span class="line">asset Commodity identified by tradingSymbol &#123;</span><br><span class="line">    o String tradingSymbol</span><br><span class="line">    o String description</span><br><span class="line">    o String mainExchange</span><br><span class="line">    o Double quantity</span><br><span class="line">    --&gt; Trader owner</span><br><span class="line">&#125;</span><br><span class="line">participant Trader identified by tradeId &#123;</span><br><span class="line">    o String tradeId</span><br><span class="line">    o String firstName</span><br><span class="line">    o String lastName</span><br><span class="line">&#125;</span><br><span class="line">transaction Trade &#123;</span><br><span class="line">    --&gt; Commodity commodity</span><br><span class="line">    --&gt; Trader newOwner</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后点击左下角的Deploy changes，完成之后点击Test。<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/66.png" alt=""><br>添加两个参与者，ID分别为4337和4667，此处ID自动生成。<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/67.png" alt=""><br>定义商品资产ID为ABC，属于4337。<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/69.png" alt=""><br>然后点击Submit Transaction，将商品的所有权转移给4667。<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/70%20.png" alt=""><br>查看商品的所有权属于4667。<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/71.png" alt=""><br>详细内容可以在All Transactions上查看。</p>
+<p><a href="https://hyperledger.github.io/composer/latest/introduction/introduction" target="_blank" rel="noopener">参考文档</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/wechat.jpeg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/21/EIGRP初解/" class="archive-article-date">
-  	<time datetime="2018-03-21T10:57:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/21/EIGRP初解/">EIGRP初解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">EIGRP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/21/RIP详解/" class="archive-article-date">
-  	<time datetime="2018-03-21T10:34:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/21/RIP详解/">RIP详解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">RIP协议</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/12/常见共识算法/" class="archive-article-date">
-  	<time datetime="2018-03-12T14:40:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/12/常见共识算法/">常见共识算法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -266,102 +232,62 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">区块链</a>
         		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/11/IPFS详解/" class="archive-article-date">
-  	<time datetime="2018-03-11T02:38:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/11/IPFS详解/">IPFS详解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
+      		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">IPFS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hyperledger</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/07/ISO七层模型/" class="archive-article-date">
-  	<time datetime="2018-03-07T14:22:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-07</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/04/15/搭建hyperledger-fabric本地环境/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">搭建hyperledger fabric本地环境</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/07/ISO七层模型/">ISO七层模型</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2018/">&laquo; Prev</a><a class="page-number" href="/archives/2018/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2018/page/3/">3</a><a class="extend next" rel="next" href="/archives/2018/page/3/">Next &raquo;</a>
-    </nav>
+  
+
   
 
 
@@ -385,8 +311,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

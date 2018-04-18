@@ -147,6 +147,132 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-内网穿透" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/18/内网穿透/">内网穿透</a>
+    </h1>
+  
+
+        
+        <a href="/2018/04/18/内网穿透/" class="archive-article-date">
+  	<time datetime="2018-04-18T00:14:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><hr>
+<p>在我国，由于网民众多，运营商无法保证为每一个宽带用户提供全球唯一的公网IPv4地址。因此很多用户会发现通过路由器端查看到的WAN端IP与百度“IP”关键词所得到的IP不一致，并且前者的IP为一个私有IP。私有IP是不允许出现在公网上的，现在最常见的一种技术NAPT，也叫“网络端口地址转换”，和NAT相差不大。</p>
+<p>但是有的时候我们个人宽带用户也想将自己的服务发布到公网IP上。比如说我们做了一个很漂亮的网站想发布到互联网上供大家参观，在没有公网IP的情况下该怎么实现呢？</p>
+<p>简单来说内网穿透的目的是：让外网能访问你本地的应用。<br>首先我们先要了解几个基本的概念。</p>
+<h2 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h2><hr>
+<p>网络中的唯一定位一台设备的逻辑地址，类似于电话号码，但真正要确定到一台主机的话还需要MAC地址和端口号。</p>
+<p>IP地址是IP协议提供的一种统一的地址格式，它为互联网上的每一个网络和每一台主机分配一个逻辑地址，以此来屏蔽物理地址的差异。</p>
+<p>内网IP可以同时出现在多个不同的局域网络中，如A公司的U1用户获得了192.168.0.5，B公司的U3用户也可以获得192.168.0.5；但公网IP是唯一的，因为我们只有一个Internet。</p>
+<p>局域网可使用的网段（私网地址段）有三大段：<br>10.0.0.0~10.255.255.255（A类）<br>172.16.0.0~172.31.255.255（B类）<br>192.168.0.0~192.168.255.255（C类）</p>
+<h2 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h2><hr>
+<p>域名是IP的别名，便于记忆，域名最终通过DNS解析成IP地址。<br>IP V4是一个32位的数字，IP V6有128位，要记住一串毫无意义的数字非常困难，域名解决了这个问题。</p>
+<p>如www.zhangguo.com.cn就是一个域名，cn表示地区，com表示商业机构，zhangguo是公司名称，www是主机名。<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/85.png" alt=""></p>
+<p>DNS查询过程如下，最终域名变成IP地址<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/86.png" alt=""></p>
+<h2 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h2><hr>
+<p>NAT（Network Address Translation）即网络地址转换，NAT能将其本地地址转换成全球IP地址。</p>
+<p>内网的一些主机本来已经分配到了本地IP地址（如局域网DHCP分配的IP），但现在又想和因特网上的主机通信（并不需要加密）时，可使用NAT方法。</p>
+<p>通过使用少量的公有IP 地址代表较多的私有IP 地址的方式，将有助于减缓可用的IP地址空间的枯竭。</p>
+<p>NAT不仅能解决了lP地址不足与共享上网的问题，而且还能够有效地避免来自网络外部的攻击，隐藏并保护网络内部的计算机。</p>
+<p>NAT的实现方式：</p>
+<p><strong>静态转换</strong>是指将内部网络的私有IP地址转换为公有IP地址，IP地址对是一对一。</p>
+<p><strong>动态转换</strong>是指将内部网络的私有IP地址转换为公用IP地址时，IP地址是不确定的，是随机的。</p>
+<p><strong>网络端口地址转换</strong>是指内部网络的所有主机均可共享一个合法外部IP地址实现对Internet的访问，从而可以最大限度地节约IP地址资源。同时又可隐藏网络内部的所有主机，有效避免来自internet的攻击。通过不同的端口来区别不同的网络内部主机。</p>
+<h2 id="代理和DDNS"><a href="#代理和DDNS" class="headerlink" title="代理和DDNS"></a>代理和DDNS</h2><hr>
+<ul>
+<li><p>正向代理<br>比如X花店代A,B,C,D,E五位男生向Candy女生送匿名的生日鲜花，这里的X花店就是5位顾客的代理，花店代理的是客户，隐藏的是客户。这就是我们常说的代理。</p>
+<p>  正向代理隐藏了真实的请求客户端。服务端不知道真实的客户端是谁，客户端请求的服务都被代理服务器代替来请求，某些科学上网工具扮演的就是典型的正向代理角色。用浏览器访问<a href="http://www.google.com时被墙了，于是你可以在国外搭建一台代理服务器，让代理帮我去请求google.com，代理把请求返回的相应结构再返回给我。" target="_blank" rel="noopener">http://www.google.com时被墙了，于是你可以在国外搭建一台代理服务器，让代理帮我去请求google.com，代理把请求返回的相应结构再返回给我。</a><br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/87.png" alt=""></p>
+</li>
+<li><p>反向代理</p>
+<p>  拨打10086客服电话，接线员可能有很多个，调度器会智能的分配一个接线员与你通话。这里的调度器就是一个代理，只不过他代理的是接线员，客户端不能确定真正与自己通话的人，隐藏与保护的是目标对象。</p>
+<p>  反向代理隐藏了真实的服务端，当我们请求 ww.baidu.com 的时候，就像拨打10086一样，背后可能有成千上万台服务器为我们服务，但具体是哪一台，你不知道，也不需要知道，你只需要知道反向代理服务器是谁就好了，ww.baidu.com 就是我们的反向代理服务器，反向代理服务器会帮我们把请求转发到真实的服务器那里去。Nginx就是性能非常好的反向代理服务器，用来做负载均衡。<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/88.png" alt=""></p>
+</li>
+<li>DDNS<br>DDNS即动态域名解析，是将用户的动态IP地址映射到一个固定的域名解析服务上，用户每次连接网络的时候，客户端程序就会通过信息传递把该主机的动态IP地址传送给位于服务商主机上的服务器程序，服务程序负责提供DNS服务并实现动态域名解析。就是说DDNS捕获用户每次变化的IP地址，然后将其与域名相对应，这样域名就可以始终解析到非固定IP的服务器上，互联网用户通过本地的域名服务器获得网站域名的IP地址，从而可以访问网站的服务。在反向代理的时候就需要DDNS。</li>
+</ul>
+<h2 id="内网穿透"><a href="#内网穿透" class="headerlink" title="内网穿透"></a>内网穿透</h2><hr>
+<p>当内网中的主机没有静态IP地址要被外网稳定访问时可以使用内网穿透。</p>
+<ul>
+<li><p>障碍<br>  <strong>障碍一</strong>：位于局域网内的主机有两套 IP 地址，一套是局域网内的 IP 地址，通常是动态分配的，仅供局域网内的主机间通信使用；一套是经过网关转换后的外网 IP 地址，用于与外网程序进行通信。</p>
+<p>  <strong>障碍二：</strong>位于不同局域网内的两台主机，即使是知道了对方的 IP 地址和端口号，“一厢情愿”地将数据包发送过去，对方也是接收不到的。</p>
+</li>
+<li><p>解决办法<br>要想解决以上两大障碍，我们需要借助一台具有公网 IP 的服务器进行桥接，这里简单介绍下这个过程是怎么实现的。</p>
+<p>  我们通过NAPT原理得知：NAPT实现了内网主机在没有公网IP的情况下访问公网主机。那么我们可以这样做：假设公网IP为23.23.23.23，内网IP为192.168.1.2。公网主机先监听80端口，监听这个端口是用于向外部提供一个HTTP服务，80是WEB服务器的默认端口。同时其他任意一个端口（这里我们假设为7777），监听这个端口是用于让内网服务器主动连接进来打通一个隧道。接着内网再主动向公网主机的7777发起一个请求，这样内网就成功与公网主机建立了一个连接通道。然后当有任何客户端主动连接公网的80端口时，公网接收到连接请求之后马上把这连接请求通过先前建立好的隧道转发到内网主机，内网主机接收到来自隧道的数据包后再主动连接内网主机自身的80端口，连接成功之后将数据包原封不动地转发数据包给80端口，待HTTP服务器程序处理完这个数据包，生成了响应报文之后再原路转发回去，最终到达公网的80端口，然后返回给最开始请求公网服务器80端口的客户端。</p>
+</li>
+<li><p>穿透防火墙<br>为了安全起见，通常会在网络中加入防火墙，防火墙有入站规则和出站规则。如果不是非常严格的安全管控，通常是不会设置出站规则的，但是入站规则一般都会设置的，比如说外部可以通过80端口传入内网的WEB服务器访问网页，但是不能通过3389端口登陆内网的远程桌面。</p>
+<p>  而在内网渗透的过程中碰到这种情况，我们也可以借助上面内网传统的方式实现穿透防火墙的入站规则。因为防火墙通常只拦截了入站，没有拦截出站，那么我们可以让内网服务器主动出站（主动连接到黑客的服务器），与黑客自己的服务器打通隧道，最终绕过防火墙连上3389远程桌面。</p>
+<p>  还有一种情况就是我们已经拿下了内网其中一台并没有做任何防火墙规则的白名单服务器，但是我们想连上内网另一台做了入站规则的目标服务器，那么我们可以让这台白名单服务器作为一个跳板，让他先监听自身任意一个端口，然后在有任何用户连上这个端口之后，白名单服务器就主动连上内网的目标服务器，然后借助这台白名单服务器打通黑客和目标服务器的连接隧道。</p>
+<p>  而在黑客工具中大名鼎鼎的lcx原理也就是如此，前者的实现是lcx的listen和slave命令，后者的实现是lcx的tran命令。</p>
+</li>
+</ul>
+<p><a href="https://blog.csdn.net/zhangguo5/article/details/77848658?utm_source=5ibc.net&amp;utm_medium=referral" target="_blank" rel="noopener">参考文档</a><br><a href="https://blog.csdn.net/moshenglv/article/details/78789019" target="_blank" rel="noopener">参考文档</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网穿透</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/04/18/内网穿透/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-SDN概述" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -876,82 +1002,6 @@
 
 
   
-    <article id="post-IPFS详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/11/IPFS详解/">IPFS详解</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/11/IPFS详解/" class="archive-article-date">
-  	<time datetime="2018-03-11T02:38:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-IPFS是什么"><a href="#1-IPFS是什么" class="headerlink" title="1.IPFS是什么"></a>1.IPFS是什么</h2><p><code>IPFS（InterPlanetary File System）</code>是一个点对点的分布式超媒体分发协议，它整合了过去几年最好的分布式系统思路，为所有人提供全球统一的可寻址空间，包括<code>Git</code>、自证明文件系统<code>SFS</code>、<code>BitTorrent</code>和<code>DHT</code>，同时也被认为是最有可能取代<code>HTTP</code>的新一代互联网协议。</p>
-        
-          <a class="article-more-a" href="/2018/03/11/IPFS详解/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">IPFS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/11/IPFS详解/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1049,10 +1099,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">RIP协议</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">IPFS</a>
               </li>
              
@@ -1061,11 +1107,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">RIP协议</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SDN</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">以太坊</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">内网穿透</a>
               </li>
              
               <li class="article-tag-list-item">

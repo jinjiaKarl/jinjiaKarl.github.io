@@ -69,12 +69,18 @@
 	        
 				<li><a href="/archives">所有文章</a></li>
 	        
+				<li><a href="/photos/">相册</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
     		
     			
     			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+            
+    			
+    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">true</a>
     			
             
     			
@@ -93,6 +99,23 @@
 		</nav>
 	</header>		
 </div>
+
+
+<nav class="header-nav">
+    <div class="social">
+        
+            <a class="github" target="_blank" href="https://github.com/jinjiaKarl" title="github"><i class="icon-github"></i></a>
+        
+            <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/chui-meng-dao-xi-zhou-14/activities" title="zhihu"><i class="icon-zhihu"></i></a>
+        
+    </div>
+
+    <!--音乐播放插件-->
+    <div style="margin-top:30px;">
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=240 height=52 src="//music.163.com/outchain/2/19160481/player?type=2&id=33035954&auto=1&height=32"></iframe>
+    </div>
+</nav>
+
 
     </div>
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
@@ -119,6 +142,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -132,12 +157,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/archives">所有文章</a></li>
+					<li style="width: 33.333333333333336%"><a href="/archives">所有文章</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/photos/">相册</a></li>
 		        
 				</ul>
 			</nav>
@@ -417,17 +444,25 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
       
     
+      
+      
+      
+    
     
 
     <ul style="width: 70%">
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">true</a></li>
+      
+        
+      
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -456,7 +491,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">IPFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SDN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">以太坊</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -468,23 +515,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">以太坊</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SDN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">区块链</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">hyperledger</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IPFS</a>
               </li>
             
             <div class="clearfix"></div>
@@ -531,11 +566,143 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
 
     
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="/硬" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>0</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/件" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>1</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/爱" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>2</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/好" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>3</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/者" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>4</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/：" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>5</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/h" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>6</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/t" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>7</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/t" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>8</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/p" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>9</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/:" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>10</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>11</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>12</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/w" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>13</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/w" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>14</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/w" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>15</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/." target="_blank" class="search-title"><i class="icon-quo-left icon"></i>16</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/w" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>17</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/e" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>18</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/n" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>19</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/z" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>20</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/h" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>21</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/e" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>22</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/n" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>23</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/g" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>24</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/." target="_blank" class="search-title"><i class="icon-quo-left icon"></i>25</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/c" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>26</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/l" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>27</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/u" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>28</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/b" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>29</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>30</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
+    
 
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">南京邮电大学物联网工程大二在读，网络技术、区块链爱好者</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">南京邮电大学物联网工程在读，网络技术、区块链爱好者</div>
   	  	
     	</section>
     

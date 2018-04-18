@@ -8,22 +8,22 @@
   <link rel="dns-prefetch" href="www.jinjiaKarl.com">
   <title>内网穿透 | 陌离</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言 在我国，由于网民众多，运营商无法保证为每一个宽带用户提供全球唯一的公网IPv4地址。因此很多用户会发现通过路由器端查看到的WAN端IP与百度“IP”关键词所得到的IP不一致，并且前者的IP为一个私有IP。私有IP是不允许出现在公网上的，现在最常见的一种技术NAPT，也叫“网络端口地址转换”，和NAT相差不大。 但是有的时候我们个人宽带用户也想将自己的服务发布到公网IP上。比如说我们做了一个很">
+  <meta name="description" content="前言 在我国，由于网民众多，运营商无法保证为每一个宽带用户提供全球唯一的公网IPv4地址。因此很多用户会发现通过路由器端查看到的WAN端IP与百度“IP”关键词所得到的IP不一致，并且前者的IP为一个私有IP。私有IP是不允许出现在公网上的，现在最常见的一种技术NAPT，也叫“网络端口地址转换”，使用端口来区分内网的主机。">
 <meta name="keywords" content="计算机网络,内网穿透">
 <meta property="og:type" content="article">
 <meta property="og:title" content="内网穿透">
 <meta property="og:url" content="www.jinjiaKarl.com/2018/04/18/内网穿透/index.html">
 <meta property="og:site_name" content="陌离">
-<meta property="og:description" content="前言 在我国，由于网民众多，运营商无法保证为每一个宽带用户提供全球唯一的公网IPv4地址。因此很多用户会发现通过路由器端查看到的WAN端IP与百度“IP”关键词所得到的IP不一致，并且前者的IP为一个私有IP。私有IP是不允许出现在公网上的，现在最常见的一种技术NAPT，也叫“网络端口地址转换”，和NAT相差不大。 但是有的时候我们个人宽带用户也想将自己的服务发布到公网IP上。比如说我们做了一个很">
+<meta property="og:description" content="前言 在我国，由于网民众多，运营商无法保证为每一个宽带用户提供全球唯一的公网IPv4地址。因此很多用户会发现通过路由器端查看到的WAN端IP与百度“IP”关键词所得到的IP不一致，并且前者的IP为一个私有IP。私有IP是不允许出现在公网上的，现在最常见的一种技术NAPT，也叫“网络端口地址转换”，使用端口来区分内网的主机。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/85.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/86.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/87.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/88.png">
-<meta property="og:updated_time" content="2018-04-18T01:05:48.000Z">
+<meta property="og:updated_time" content="2018-04-18T01:08:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="内网穿透">
-<meta name="twitter:description" content="前言 在我国，由于网民众多，运营商无法保证为每一个宽带用户提供全球唯一的公网IPv4地址。因此很多用户会发现通过路由器端查看到的WAN端IP与百度“IP”关键词所得到的IP不一致，并且前者的IP为一个私有IP。私有IP是不允许出现在公网上的，现在最常见的一种技术NAPT，也叫“网络端口地址转换”，和NAT相差不大。 但是有的时候我们个人宽带用户也想将自己的服务发布到公网IP上。比如说我们做了一个很">
+<meta name="twitter:description" content="前言 在我国，由于网民众多，运营商无法保证为每一个宽带用户提供全球唯一的公网IPv4地址。因此很多用户会发现通过路由器端查看到的WAN端IP与百度“IP”关键词所得到的IP不一致，并且前者的IP为一个私有IP。私有IP是不允许出现在公网上的，现在最常见的一种技术NAPT，也叫“网络端口地址转换”，使用端口来区分内网的主机。">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/85.png">
   
     <link rel="alternative" href="/atom.xml" title="陌离" type="application/atom+xml">
@@ -173,8 +173,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><hr>
-<p>在我国，由于网民众多，运营商无法保证为每一个宽带用户提供全球唯一的公网IPv4地址。因此很多用户会发现通过路由器端查看到的WAN端IP与百度“IP”关键词所得到的IP不一致，并且前者的IP为一个私有IP。私有IP是不允许出现在公网上的，现在最常见的一种技术NAPT，也叫“网络端口地址转换”，和NAT相差不大。</p>
-<p>但是有的时候我们个人宽带用户也想将自己的服务发布到公网IP上。比如说我们做了一个很漂亮的网站想发布到互联网上供大家参观，在没有公网IP的情况下该怎么实现呢？</p>
+<p>在我国，由于网民众多，运营商无法保证为每一个宽带用户提供全球唯一的公网IPv4地址。因此很多用户会发现通过路由器端查看到的WAN端IP与百度“IP”关键词所得到的IP不一致，并且前者的IP为一个私有IP。私有IP是不允许出现在公网上的，现在最常见的一种技术NAPT，也叫“网络端口地址转换”，使用端口来区分内网的主机。<br> <a id="more"></a><br>但是有的时候我们个人宽带用户也想将自己的服务发布到公网IP上。比如说我们做了一个很漂亮的网站想发布到互联网上供大家参观，在没有公网IP的情况下该怎么实现呢？</p>
 <p>简单来说内网穿透的目的是：让外网能访问你本地的应用。<br>首先我们先要了解几个基本的概念。</p>
 <h2 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h2><hr>
 <p>网络中的唯一定位一台设备的逻辑地址，类似于电话号码，但真正要确定到一台主机的话还需要MAC地址和端口号。</p>

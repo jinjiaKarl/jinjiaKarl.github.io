@@ -6,18 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="www.jinjiaKarl.com">
-  <title>Archives: 2018/4 | 陌离</title>
+  <title>SDN概述 | 陌离</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是我的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="陌离">
-<meta property="og:url" content="www.jinjiaKarl.com/archives/2018/04/index.html">
+  <meta name="description" content="SDN的概念 业界普遍认可的SDN（Software Defined Network，软件定义网络）定义是由开放网络基金会（Open Network Foundation，ONF）提出的基于OpenFlow的SDN定义。ONF认为SDN是一种将网络控制功能与转发功能分离、实现控制可编程的新型网络架构，架构图如图所示：">
+<meta name="keywords" content="计算机网络,SDN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SDN概述">
+<meta property="og:url" content="www.jinjiaKarl.com/2018/04/17/SDN概述/index.html">
 <meta property="og:site_name" content="陌离">
-<meta property="og:description" content="这是我的博客">
+<meta property="og:description" content="SDN的概念 业界普遍认可的SDN（Software Defined Network，软件定义网络）定义是由开放网络基金会（Open Network Foundation，ONF）提出的基于OpenFlow的SDN定义。ONF认为SDN是一种将网络控制功能与转发功能分离、实现控制可编程的新型网络架构，架构图如图所示：">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/82.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/80.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/81.png">
+<meta property="og:updated_time" content="2018-04-18T00:04:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="陌离">
-<meta name="twitter:description" content="这是我的博客">
+<meta name="twitter:title" content="SDN概述">
+<meta name="twitter:description" content="SDN的概念 业界普遍认可的SDN（Software Defined Network，软件定义网络）定义是由开放网络基金会（Open Network Foundation，ONF）提出的基于OpenFlow的SDN定义。ONF认为SDN是一种将网络控制功能与转发功能分离、实现控制可编程的新型网络架构，架构图如图所示：">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/82.png">
   
     <link rel="alternative" href="/atom.xml" title="陌离" type="application/atom+xml">
   
@@ -145,36 +151,70 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-SDN概述" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/17/SDN概述/" class="archive-article-date">
-  	<time datetime="2018-04-17T15:09:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-17</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/17/SDN概述/">SDN概述</a>
+    <h1 class="article-title" itemprop="name">
+      SDN概述
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/04/17/SDN概述/" class="archive-article-date">
+  	<time datetime="2018-04-17T15:09:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="SDN的概念"><a href="#SDN的概念" class="headerlink" title="SDN的概念"></a>SDN的概念</h3><hr>
+<p>业界普遍认可的SDN（Software Defined Network，软件定义网络）定义是由开放网络基金会（Open Network Foundation，ONF）提出的基于OpenFlow的SDN定义。ONF认为SDN是一种将网络控制功能与转发功能分离、实现控制可编程的新型网络架构，架构图如图所示：<br> <a id="more"></a><br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/82.png" alt=""><br>ONF将SDN架构分成基础设施层、控制层和应用层。网络智能逻辑集中在控制层中，控制层基于软件实现，拥有全局网络视图，向上通过标准接口向应用层开放抽象后的网络功能及服务，向下控制和协调底层网络设备的转发行为。各层直接通过标准开放的接口实现资源分配和网络服务，其中控制层和基础设施层之间的通信接口称为南向接口（Southbound API），控制层和应用层之间的通信接口称为北向接口（Northbound API）。OpenFlow属于南向接口协议，也是ONF给出的SDN架构汇中的首个标准协议，用于定义控制器和转发设备之间的通信接口，支持直接访问和配置网络设备的转发平面（包括物理和虚拟的交换机、路由器）。<br>简单来说就是将网络的控制层和转发层解耦，下面我们来看一个具体的案例。<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/80.png" alt=""><br>如图，一个传统的网络由许多网络节点和链路组成，每一个节点都有一个控制面和数据转发面，如节点C。如果节点A获得一个新的网络的存在，它就需要将这一信息告诉给网络中的其他节点，彼此传给临近节点，最终消息到达整个网络，每个节点都会更新自己的路由表。如果某个链路中段，会花一定的时间来向整个网络传送网络更新状态，但是在这个时间段内，除了直连的节点外，剩余节点还会往这个链路发送数据包，导致数据会堆积到直连的节点上。<br>SDN是将控制面和数据面分离开，将网络控制面整合于一体，拥有全局网络视图。路由协议交换、路由表生成等路由功能均在统一的控制面完成。实现控制平面与数据平面分离的协议叫OpenFlow，OpenFlow是SDN一个网络协议。如图所示：<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/81.png" alt=""><br>通过OpenFlow将网络拓扑镜像到控制面，初始化网络拓扑，控制面实时更新网络拓扑。</p>
+<h3 id="NFV的概念"><a href="#NFV的概念" class="headerlink" title="NFV的概念"></a>NFV的概念</h3><hr>
+<p>NFV（Network Function Virtualzation，网络功能虚拟化），就是把在传统网络中只在专门硬件上跑着的功能放到虚拟机里跑，比较典型的例子就是把防火墙跑在虚拟机上。使得网络设备功能不再依赖于专有硬件，资源可以充分灵活共享，实现新业务的快速开发和部署，并基于实际业务需求进行自动部署、弹性伸缩、故障隔离和自愈等。<br>NFV的目的就是用服务器、存储和交换设备来取代通信网的那些专用的网元设备。本质上是希望通过软件的方式实现特定的网络功能，并将其一直到服务器等廉价的设备中。</p>
+<p>参考：《解惑SDN》樊勇兵等著，人民邮电出版</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/wechat.jpeg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -190,183 +230,55 @@
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/16/快速利用hyperledger-composer部署区块链应用/" class="archive-article-date">
-  	<time datetime="2018-04-16T03:31:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-16</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/04/16/快速利用hyperledger-composer部署区块链应用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">快速利用hyperledger composer部署区块链应用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/16/快速利用hyperledger-composer部署区块链应用/">快速利用hyperledger composer部署区块链应用</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">区块链</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hyperledger</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/15/搭建hyperledger-fabric本地环境/" class="archive-article-date">
-  	<time datetime="2018-04-15T12:59:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/15/搭建hyperledger-fabric本地环境/">搭建hyperledger fabric本地环境</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">区块链</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hyperledger</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/01/Linux文件系统层次结构标准FHS详解[转]/" class="archive-article-date">
-  	<time datetime="2018-04-01T13:39:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/01/Linux文件系统层次结构标准FHS详解[转]/">Linux文件系统层次结构标准FHS详解[转]</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/01/EIGRP实验/" class="archive-article-date">
-  	<time datetime="2018-04-01T02:08:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/01/EIGRP实验/">EIGRP实验</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">EIGRP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -389,8 +301,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

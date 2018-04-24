@@ -17,7 +17,7 @@
 <meta property="og:description" content="RIP详解 1.动态路由协议作用：动态路由协议是路由器间交换网络信息，计算路径的机制。AS：自制系统，是由若干拥有统一管理策略和维护策略所组成的，其实就是一个网络。AS-id：1-65535。AS内动态路由协议（IGPS内部网关协议集）：RIP、EIGRP、OSPF、IS-ISAS间动态路由协议（EGPS边界网关协议集）：BGP">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/41.png">
-<meta property="og:updated_time" content="2018-04-01T14:13:39.000Z">
+<meta property="og:updated_time" content="2018-04-21T01:18:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RIP详解">
 <meta name="twitter:description" content="RIP详解 1.动态路由协议作用：动态路由协议是路由器间交换网络信息，计算路径的机制。AS：自制系统，是由若干拥有统一管理策略和维护策略所组成的，其实就是一个网络。AS-id：1-65535。AS内动态路由协议（IGPS内部网关协议集）：RIP、EIGRP、OSPF、IS-ISAS间动态路由协议（EGPS边界网关协议集）：BGP">
@@ -187,7 +187,7 @@
  <a id="more"></a>
 <p>2.RIP协议：距离矢量路由协议<br>RIPv1、RIPv2适用IPv4，RIPng适用IPv6。<br>RIP路由代码R，管理距离AD：120</p>
 <p>3.RIPv1配置（全局配置模式下）<br>router rip //启用rip<br>version 1 //设置版本<br>network <a.b.c.d>  //宣告网络<br>宣告的作用：将主网包含的<strong>子网</strong>变成更新、将子网对应的物理接口划入rip发送更新。<br><strong>只能主网宣告，是有类的路由协议</strong></a.b.c.d></p>
-<p>4.RIPv1详解<br>1）更新方式：UDP广播更新，目的IP：255.255.255.255，目的端口号：520，源端口号随机，更新包携带25个条目，周期性更新30s。<br>2）度量值metric计算：更新发送时，跳数hop+1，最大跳数为15。<br>3）环路：路由删除后立即从路由表消失，更新周期未到，跳数可以无限累加所导致形成环路。<br>4）避环机制：</p>
+<p>4.RIPv1详解<br>1）更新方式：UDP广播更新，目的IP：255.255.255.255，目的端口号：520，源端口号随机，更新包携带25个条目，<strong>周期性更新30s</strong>。<br>2）度量值metric计算：更新发送时，跳数hop+1，最大跳数为15，最多连16台路由器。<br>3）环路：路由删除后立即从路由表消失，更新周期未到，跳数可以无限累加所导致形成环路。<br>4）避环机制：</p>
 <ul>
 <li>抑制定时器hold time：无效路由不会立刻删除，0-180s视为无效，180s-240s挂起，到达240s后删除此条目。</li>
 <li>触发更新：以有变化，立刻发送更新。</li>
@@ -200,7 +200,7 @@
 <ul>
 <li>v2可以关闭自动汇总，开启手动汇总，汇总的目的是为了减少对方路由表条目数量，增加路由效率。</li>
 <li>v2支持VLSM，更新时携带掩码</li>
-<li>v2多播更新，目的ip：224.0.0.9</li>
+<li>v2多/组播更新，目的ip：224.0.0.9</li>
 <li>v2支持被动接口（只收更新，不发送更新）和单播更新（指定目标ip接收更新即指定邻居）</li>
 <li>v2支持协议认证，认证通过才能更新</li>
 <li>v2支持偏移列表offset-list，偏移更新就是路由器在更新接收、发送时额外增加的跳数。</li>
@@ -455,6 +455,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">EIGRP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">OSPF</a>
               </li>
              
               <li class="article-tag-list-item">

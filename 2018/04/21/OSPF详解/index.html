@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="www.jinjiaKarl.com">
-  <title>Tag: 内网穿透 | 陌离</title>
+  <title>OSPF详解 | 陌离</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是我的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="陌离">
-<meta property="og:url" content="www.jinjiaKarl.com/tags/内网穿透/index.html">
+  <meta name="description" content="1.概念开放最短路径优先协议，由IETF提出（互联网任务小组），使用最为广泛的的IGP协议之一，链路状态加到LSDB中（链路状态数据库）。管理距离：110metric计算依据：以带宽作为计算参数算出路径的开销cost，小优，更新接受时计算。cost=10^8/接收接口的带宽">
+<meta name="keywords" content="计算机网络,OSPF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OSPF详解">
+<meta property="og:url" content="www.jinjiaKarl.com/2018/04/21/OSPF详解/index.html">
 <meta property="og:site_name" content="陌离">
-<meta property="og:description" content="这是我的博客">
+<meta property="og:description" content="1.概念开放最短路径优先协议，由IETF提出（互联网任务小组），使用最为广泛的的IGP协议之一，链路状态加到LSDB中（链路状态数据库）。管理距离：110metric计算依据：以带宽作为计算参数算出路径的开销cost，小优，更新接受时计算。cost=10^8/接收接口的带宽">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-24T15:14:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="陌离">
-<meta name="twitter:description" content="这是我的博客">
+<meta name="twitter:title" content="OSPF详解">
+<meta name="twitter:description" content="1.概念开放最短路径优先协议，由IETF提出（互联网任务小组），使用最为广泛的的IGP协议之一，链路状态加到LSDB中（链路状态数据库）。管理距离：110metric计算依据：以带宽作为计算参数算出路径的开销cost，小优，更新接受时计算。cost=10^8/接收接口的带宽">
   
     <link rel="alternative" href="/atom.xml" title="陌离" type="application/atom+xml">
   
@@ -149,36 +151,108 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-OSPF详解" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/18/内网穿透/" class="archive-article-date">
-  	<time datetime="2018-04-18T00:14:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-18</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/18/内网穿透/">内网穿透</a>
+    <h1 class="article-title" itemprop="name">
+      OSPF详解
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/04/21/OSPF详解/" class="archive-article-date">
+  	<time datetime="2018-04-21T01:44:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-21</time>
+</a>
+        
+      </header>
+
+
+
+    <span class="archive-article-date">
+      阅读量 <span id="busuanzi_value_page_pv"></span>
+    </span>
+
+
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.概念<br>开放最短路径优先协议，由IETF提出（互联网任务小组），使用最为广泛的的IGP协议之一，链路状态加到LSDB中（链路状态数据库）。<br>管理距离：110<br>metric计算依据：以带宽作为计算参数算出路径的开销cost，小优，<strong>更新接受时计算</strong>。cost=10^8/接收接口的带宽<br><a id="more"></a><br>常用的默认cost值：<br>10M 100<br>100M 19<br>1000M 4<br>10000M 2<br>快速以太口 1<br>以太口  10<br>串口 64<br>广播域：广播信息(广播地址)能传递的范围，交换机就是一个广播域，路由器分割广播域。<br>冲突域：会产生冲突的最小范围，在计算机和计算机通过设备互联时，会建立一条通道，如果这条通道只允许瞬间一个数据报文通过，那么在同时如果有两个或更多的数据报文想从这里通过时就会出现冲突了。一个集线器是一个冲突域，交换机的一个端口为一个冲突域。<br>2.提出了网络架构<br>层次化的架构和区域化的设计<br>双层理念：骨干层和非骨干层<br>区域化设计：</p>
+<ul>
+<li>骨干层/区域—–&gt;区域0</li>
+<li>非骨干层—–&gt;常规区域（1~65535），特殊区域（末梢区域和非完全末梢区域）</li>
+</ul>
+<p>骨干区域也可以称为传输区域。</p>
+<p>3.OSPF的三张表<br>邻接表：存储所有形成邻接关系的邻居信息<br>LSDB：链路状态数据库，网络的拓扑<br>OSPF的路由表：<br>O代表区域内路由<br>OIA代表区域间路由<br>OE(类型1和类型2)代表外部路由<br>ON(类型1和类型2)代表特殊区域路由<br>启用ospf到正常工作要经过7种状态：<br>/<em> down—init–(hello)–two-way(建立好邻居关系)—–exstart–(DBD数据库描述)—exchange—(LSR链路状态查询，LSU链路状态更新信息)—-loading—-(LSACK链路状态确认信息，进行SPF计算)—-full </em>/</p>
+<p>down—init–(hello)–two-way(建立好邻居关系，选举DR和BDR)—–exstart–(空的DBD数据库描述，主从竞选)—exchange—(发送DBD)—-loading—-(LSR链路状态查询，LSU链路状态更新信息，LSACK链路状态确认信息，进行SPF计算)—-full<br>two-way到exstart为过渡 ，不发送任何东西。<br>能够交换LSA的邻居关系(Hello消息建立)叫邻接关系。</p>
+<p>4.OSPF的消息<br>hello：用于发现、建立、维护邻居关系，只发送到直连路由器，广播和点到点10s发送间隔，点到多点和非广播30s间隔，老化计时器（发送间隔*4）<br>邻接关系建立的审查条件(与进程号无关)：</p>
+<ul>
+<li>区域信息必须一致</li>
+<li>hello发送间隔及邻接老化时间必须一致</li>
+<li>认证必须通过</li>
+<li>区域内设备特殊区域标识必须一致</li>
+</ul>
+<p>DBD：数据库描述信息，存放若干LSA，就是LSA的集合。<br>LSA：链路状态通告，描述了节点网络拓扑信息，包括LSR、LSU、LSACK。<br>LSR：链路状态请求，查询消息，DBD交换完毕后发。<br>LSU：链路状态更新(回复消息、更新消息)，DBD只发一次，用检索的方式告诉对端拓扑信息，后续网络变化的更新，维护消息由LSU负责。<br>LSACK：确认消息。</p>
+<p>5.OSPF中路由器的分类<br>1）区域层面上：<br>骨干区域的路由器：骨干路由器<br>常规区域的路由器：常规区域内的路由器<br>2）区域内的分类：<br>DR：指定路由器，统筹路由更新的过程<br>BDR：备份指定路由器<br>DR和BDR在广播线网络上选举<br>DR-other：非DR和BDR<br>DR先发更新，触发DR-OTHER路由器发送自己的信息给DR和BDR，DR和BDR互相学习，当DR学习完成，发送给其他路由器。<br>DR-other和BDR必须与DR建立邻接关系，DR-other之间只需要维护邻居关系。<br>ABR：区域边界路由器，共享区域内路由信息(连接常规区域到骨干区域的设备)<br>ASBR：自制系统边界路由器(连接其他自制系统的设备)<br>DR-ohter发送到DR和BDR：组播224.0.0.6<br>DR发送到DR-other、BDR：组播224.0.0.5</p>
+<p>6.DR和BDR选举和影响<br>1）优先级：0-255，越大则越有可能成为DR，默认优先级为1。优先级为0代表不参与DR和BDR的选举，直接成为DR-other。<br>2）RID(router-id)：越大越优<br>ospf的DR一旦存在，除非DR设备放弃角色，不然无法取代。<br>在two-way状态下完成DR和BDR的选举。</p>
+<p>7.网络类型<br>广播型：需要DR和BDR<br>点到点：不需要DR和BDR<br>NBMA：非广播型多链路访问，每个路由必须手工配置出邻居路由器信息，根据这写信息，路由器们再自动选举出DR与BDR，两两之间有虚电路。单播。<br>点到多点：用于DMVPN，不需要选举DR和BDR。组播。</p>
+<p>8.LSDB的老化刷新时间和更新序列号<br>1）序列号：ospf的每个LSA都自带一个序列号，LSA对应的目标网络变化一次，序列号+1。<br>2）LSDB老化时间：1h<br>刷新时间：30min</p>
+<p>9.主从的竞选<br>RID越大越优，可能被取代。</p>
+<p>10.ospf基本配置<br>一个路由器可以启用多个ospf，根据进程号区别。<br>router ospf &lt;进程号&gt;<br>router-id <a.b.c.d><br>network <a.b.c.d> <wild-mask> area <a-id></a-id></wild-mask></a.b.c.d></a.b.c.d></p>
+<p>router-id选举原则：<br>1)若本路由器有环回接口存在，选举环回接口ip大的为router-id<br>2)若本路由器无环回接口，选举本路由器上物理接口ip大的为router-id<br>3)手动指定</p>
+<p>interface &lt;接口&gt;<br>ip ospf &lt;进程号&gt; area <a-id><br>接口下配置ospf优先于协议进程配置</a-id></p>
+<p>show ip ospf neighbor  //查看邻居表<br>show ip ospf database<br>show ip route ospf<br>show ip procotols<br>show ip ospf int e0/0  //能够查看DR和BDR信息</p>
+<p>int e0/0<br>ip ospf network point-to-point //修改网络类型</p>
+<p>show run-config | section ospf<br>show interface e0/0 //查看接口的物理信息<br>show run interface e0/0  //查看接口的配置<br>int range e0/0-1,e0/3 //进入多个接口</p>
+<p>11.ospf虚链路(每条路只能用一次)<br>1）作用：</p>
+<ul>
+<li>通过常规区域将孤岛区域与骨干区域连接</li>
+<li>通过常规区域连接被分割的骨干区域</li>
+</ul>
+<p>ospf要求所有的常规区域必须通过ABR和骨干区域连接</p>
+<p>12.ospf的LSA类型<br>1）LSA1：network LSA<br>起源：区域内任意路由器都会产生<br>内容：节点信息（个人信息RID、直连网络信息、直连网络类型）<br>直连网络类型：末梢网络、直连网络、点到点连接<br>扩散半径：不能穿越ABR<br>对应的路由：区域内路由<br>2）LSA2：network LSA<br>起源：只有DR产生<br>内容：区域内节点整体信息及DR信息<br>扩散半径：不能穿越ABR<br>对应的路由：区域内路由<br>3）LSA 3<br>起源：只有ABR产生<br>内容：区域的网络信息<br>扩散半径：整个自制系统<br>对应的路由：区域间路由<br>4）LSA 4<br>起源：只有ABR产生<br>内容：ASBR的RID<br>扩散半径：整个自制系统<br>5）LSA 5<br>起源：只有ASBR产生<br>内容：外部路由<br>扩散半径：整个自制系统<br>对应的路由：外部路由<br>6）LSA 6<br>多播OSPF用<br>7）LSA 7<br>特殊区域用<br>8）LSA 8<br>特殊区域所用，实现口袋路由<br>9）LSA 9、10<br>用于ipv6的ospf，作用类似于LSA1、2<br>10）LSA 11<br>特殊区域用，做路由策略</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/wechat.jpeg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -188,25 +262,95 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网穿透</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">OSPF</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/04/23/超级账本术语表/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          超级账本术语表
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2018/04/18/内网穿透/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">内网穿透</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+ 
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTgyNy8xMjM2Mw==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-    
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+
 
 
           </div>
@@ -236,9 +380,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

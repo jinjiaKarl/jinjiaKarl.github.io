@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="www.jinjiaKarl.com">
-  <title>Tag: 内网穿透 | 陌离</title>
+  <title>超级账本术语表 | 陌离</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是我的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="陌离">
-<meta property="og:url" content="www.jinjiaKarl.com/tags/内网穿透/index.html">
+  <meta name="description" content="Anchor Peer - 锚节点一个通道内可以有不同的组织，每个组织可以指定锚节点，负责代表组织跟其他组织的成员进行数据交换。 Leading Peer - 主节点加入通道内的节点需要指定或者选举出主节点，负责代表组织从排序服务拉取排序后的区块信息，然后通过Goosip协议传播给组织内的其他节点。 Block - 区块在一个通道上，区块是一组有序交易的集合。区块往往通过密码学手段hash值连接到">
+<meta name="keywords" content="hyperledger">
+<meta property="og:type" content="article">
+<meta property="og:title" content="超级账本术语表">
+<meta property="og:url" content="www.jinjiaKarl.com/2018/04/23/超级账本术语表/index.html">
 <meta property="og:site_name" content="陌离">
-<meta property="og:description" content="这是我的博客">
+<meta property="og:description" content="Anchor Peer - 锚节点一个通道内可以有不同的组织，每个组织可以指定锚节点，负责代表组织跟其他组织的成员进行数据交换。 Leading Peer - 主节点加入通道内的节点需要指定或者选举出主节点，负责代表组织从排序服务拉取排序后的区块信息，然后通过Goosip协议传播给组织内的其他节点。 Block - 区块在一个通道上，区块是一组有序交易的集合。区块往往通过密码学手段hash值连接到">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-23T08:35:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="陌离">
-<meta name="twitter:description" content="这是我的博客">
+<meta name="twitter:title" content="超级账本术语表">
+<meta name="twitter:description" content="Anchor Peer - 锚节点一个通道内可以有不同的组织，每个组织可以指定锚节点，负责代表组织跟其他组织的成员进行数据交换。 Leading Peer - 主节点加入通道内的节点需要指定或者选举出主节点，负责代表组织从排序服务拉取排序后的区块信息，然后通过Goosip协议传播给组织内的其他节点。 Block - 区块在一个通道上，区块是一组有序交易的集合。区块往往通过密码学手段hash值连接到">
   
     <link rel="alternative" href="/atom.xml" title="陌离" type="application/atom+xml">
   
@@ -149,64 +151,197 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-超级账本术语表" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/18/内网穿透/" class="archive-article-date">
-  	<time datetime="2018-04-18T00:14:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-18</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/18/内网穿透/">内网穿透</a>
+    <h1 class="article-title" itemprop="name">
+      超级账本术语表
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/04/23/超级账本术语表/" class="archive-article-date">
+  	<time datetime="2018-04-23T08:01:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-23</time>
+</a>
+        
+      </header>
+
+
+
+    <span class="archive-article-date">
+      阅读量 <span id="busuanzi_value_page_pv"></span>
+    </span>
+
+
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Anchor Peer - 锚节点<br>一个通道内可以有不同的组织，每个组织可以指定锚节点，负责代表组织跟其他组织的成员进行数据交换。</p>
+<p>Leading Peer - 主节点<br>加入通道内的节点需要指定或者选举出主节点，负责代表组织从排序服务拉取排序后的区块信息，然后通过Goosip协议传播给组织内的其他节点。</p>
+<p>Block - 区块<br>在一个通道上，区块是一组有序交易的集合。区块往往通过密码学手段hash值连接到前导区块。</p>
+<p>Chain - 链<br>Chain就是block之间以hash连接为结构的交易日志。Peer从orderer service接受交易block，并根据背书策略和并发冲突标记block上的交易是否有效，然后将该block追加到peer文件系统中的hash chain上。</p>
+<p>Chaincode – 链码<br>链码是一个运行在账本上的软件，它可以对资产进行编码，其中的交易指令(或者叫业务逻辑)也可以用来修改资产。</p>
+<p>Ledger - 账本<br>从结构上看，账本包括区块链结构，以及多个数据库结构。区块链结构一般通过文件系统进行存储，状态数据库支持LevelDB、CouchDB两种实现，历史数据库和索引数据库则主要支持LevelDB实现。<br>State Database:状态数据库，由区块链结构中交易执行推演而成，记录最新的世界状态。<br>History Database:历史数据库，存放各个状态的历史变化记录。<br>Index Database:索引数据库，存放索引信息，例如从Hash、编号索引到区块，从ID索引到交易等。</p>
+<p>Channel - 通道<br>通道是构建在“Fabric”网络上的私有区块链，实现了数据的隔离和保密。通道 特定的账本在通道 中是与所有对等节点共享的，并且交易方必须通过该通道的 正确验证才能与账本逬行交互。通道 是由一个“配置交易”来定义的。</p>
+<p>-客户端节点<br>最终由用户操作的实体，我们一般称为客户端或应用程序。<br>其必须链接至某一个Peer节点或排序服务节点之上，才可以与区块链网络进行通信。客户端一般是提交交易提案（Transaction Proposal）至背书节点（Endorser），当收集到足够的背书后，就向排序服务广播交易，进行排序操作，进而生成区块。</p>
+<p>-Peer节点<br>一般来说，所有的Peer节点亦是记账节点（Committer）。<br>其负责验证从排序服务节点区块里面的交易，维护状态数据和账本的副本。另外，部分是节点会执行交易并且对结果进行签名背书，即充当背书节点。<br>需要说明的是，背书节点是一个动态的角色，其与具体的链码绑定。而且，每个链码在实例化的时候都会设置背书策略，指定哪些节点对交易背书后才是有效的。<br>也就是说，只有在应用程序发起交易背书请求的时候，被请求的节点才是背书节点，其它时候其就是普通的记账节点，只参与验证交易和记账工作。<br>注：负责和排序服务节点通信的节点（从中获取新的区块并进行内部同步的节点），我们一般称其为主节点。有的节点可能同时是背书节点、记账节点；也有可能有的同时是背书节点、记账节点和主节点。</p>
+<p>-排序服务节点<br>排序服务节点（Ordering Service Node、Orderer），其接收包含背书签名的交易，进行排序操作完成打包生成区块，广播给Peer节点。其需要保证的是，同一个链上的节点接收到相同的消息信息，并且有相同的逻辑顺序。<br>其中，排序服务中的多通道（Multi Channel）实现了多链的数据隔离，保证了只有同一个链上的Peer节点才可以访问链上的数据信息，这对用户隐私的保护起到了作用。<br>另外，排序服务可以采用分布式协议，也可以采用集中式服务，此根据实际情况选择。</p>
+<p>-CA节点<br>CA节点是 Hyperledger Fabric 1.0 的证书颁发机构（Certificate Authority）。一般由服务器和客户端组成。<br>CA节点接收客户端的注册申请，返回注册密码用于用户登录，以获取身份证书。<br>它向网络成员及其用户颁发基于PKI的证书。 CA为每个成员颁发一个根证书(rootCert)，为每个授权用户颁发一个注册证书 (eCert)，为每个注册证书颁发大量交易证书(tCerts)。<br>在区块链网络上的操作，都是需要对用户身份进行验证的。<br>注：CA也可以选择其它成熟的第三方CA颁发证书。</p>
+<p>Concurrency Control Version Check - 并发控制 版本检查(CCVC)<br>CCVC 是保持通道中各对等节点间状态同步的一种方法。对等节点并行的执行交 易，在交易提交至账本之前，对等节点会检查交易在执行期间读到的数据是否被 修改。如果读取的数据在执行和提交之间被改变，就会引发 CCVC 冲突，该交易 就会在账本中被标记为无效，而且值不会更新到状态数据库中。</p>
+<p>Current State - 当前状态<br>ledger 的 current state 表示其 chain 交易 log 中所有 key 的最新值。peer 会将处 理过的block中的每个交易对应的修改value提交到ledger的current state,由 于 current state 表示 channel 所知的所有最新的 k-v，所以 current state 也被称 为 World State。Chaincode 执行交易 proposal 就是针对的 current state。</p>
+<p>Endorsement policy - 背书策略<br>Endorsement policy定义了依赖于特定chaincode执行交易的channel上的peer 响应结果 (endorsements)的必要组合条件(即返回Yes或No的条件)。 Endorsement policy可指定对某一chaincode，可以对交易背书的最小背书节点数 或者最小背书节点百分比。背书策略由背书节点基于应用程序和对抵御不良行为 的期望水平来组织管理。在install和instantiate Chaincode (deploy tx)时需要指定 背书策略。</p>
+<p>Genesis Block- 创世区块<br> Genesis Block是初始化区块链网络或channel的配置区块，也是链上的第一个区块。</p>
+<p>Gossip Protocol - Gossip 协议<br>Gossip数据传输协议有三项功能:</p>
+<ul>
+<li>管理peer发现和channel成员;</li>
+<li>channel上的所有peer间广播账本数据;</li>
+<li>channel上的所有peer间同步账本数据。</li>
+</ul>
+<p>Initialize – 初始化<br>一个初始化chaincode程序的方法。</p>
+<p>Install – 安装<br>将chaincode放到peer的文件系统的过程。</p>
+<p>Instantiate – 实例化<br>启动chaincode容器的过程。</p>
+<p>Invoke – 调用<br>用于调用chaincode内的函数。Chaincode invoke就是一个交易proposal,然后执行 模块化的流程(背书、共识、验证、提交)。Invoke的结构就是一个函数和一个 参数数组。</p>
+<p>Transaction – 交易<br>Chaincode的invoke或instantiate操作。Invoke是从ledger中请求read-write set;</p>
+<p>Instantiate是请求在peer上启动Chaincode容器。</p>
+<p>Membership Services – 成员服务<br>成员服务在许可的区块链网络上认证、授权和管理身份。在peer和order中运行的成员服务的代码都会认证和授权区块链操作。它是基于PKI的MSP实现。 Fabric-ca 组件实现了成员服务，来管理身份。特别的，它处理ECert和TCert的颁发和撤销。 ECert是长期的身份凭证;TCert是短期的身份凭证，是匿名和不可链接的。</p>
+<p>Member – 成员<br>拥有网络唯一根证书的合法独立实体。像peer节点和app client这样的网络组件 会链接到一个Member。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/wechat.jpeg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网穿透</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hyperledger</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/04/24/stp协议/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          stp协议
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2018/04/21/OSPF详解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">OSPF详解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+ 
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTgyNy8xMjM2Mw==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-    
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+
 
 
           </div>
@@ -236,9 +371,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

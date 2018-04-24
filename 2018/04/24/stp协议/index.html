@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="www.jinjiaKarl.com">
-  <title>Tag: 内网穿透 | 陌离</title>
+  <title>stp协议 | 陌离</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是我的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="陌离">
-<meta property="og:url" content="www.jinjiaKarl.com/tags/内网穿透/index.html">
+  <meta name="description" content="1.spaning tree protocol生成树协议(运行在同一个vlan下)功能：应用于交换网络中，避免冗余拓扑带来的问题同时保障连通性。冗余拓扑：为了避免单故障点，比如链路、接口无备份，提供的链路及接口的备份。">
+<meta name="keywords" content="计算机网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="stp协议">
+<meta property="og:url" content="www.jinjiaKarl.com/2018/04/24/stp协议/index.html">
 <meta property="og:site_name" content="陌离">
-<meta property="og:description" content="这是我的博客">
+<meta property="og:description" content="1.spaning tree protocol生成树协议(运行在同一个vlan下)功能：应用于交换网络中，避免冗余拓扑带来的问题同时保障连通性。冗余拓扑：为了避免单故障点，比如链路、接口无备份，提供的链路及接口的备份。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-24T15:14:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="陌离">
-<meta name="twitter:description" content="这是我的博客">
+<meta name="twitter:title" content="stp协议">
+<meta name="twitter:description" content="1.spaning tree protocol生成树协议(运行在同一个vlan下)功能：应用于交换网络中，避免冗余拓扑带来的问题同时保障连通性。冗余拓扑：为了避免单故障点，比如链路、接口无备份，提供的链路及接口的备份。">
   
     <link rel="alternative" href="/atom.xml" title="陌离" type="application/atom+xml">
   
@@ -149,36 +151,99 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-stp协议" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/18/内网穿透/" class="archive-article-date">
-  	<time datetime="2018-04-18T00:14:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-18</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/18/内网穿透/">内网穿透</a>
+    <h1 class="article-title" itemprop="name">
+      stp协议
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/04/24/stp协议/" class="archive-article-date">
+  	<time datetime="2018-04-24T12:32:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-24</time>
+</a>
+        
+      </header>
+
+
+
+    <span class="archive-article-date">
+      阅读量 <span id="busuanzi_value_page_pv"></span>
+    </span>
+
+
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.spaning tree protocol生成树协议(运行在同一个vlan下)<br>功能：应用于交换网络中，避免冗余拓扑带来的问题同时保障连通性。<br>冗余拓扑：为了避免单故障点，比如链路、接口无备份，提供的链路及接口的备份。</p>
+ <a id="more"></a>
+<p>交换机mac地址列表构成：源mac与接口关联、arp请求<br>交换机处理广播数据流和未知数据流：泛洪<br> 冗余的环路拓扑带来的问题：</p>
+<ul>
+<li>广播风暴(交换机对广播流的泛洪)</li>
+<li>紊乱的mac地址列表信息(交换机学习mac地址方式导致)</li>
+<li>数据的重复发送和接收</li>
+</ul>
+<p>2.stp工作机制(默认开启)</p>
+<ul>
+<li>交换网络中竞选出一个根桥<br>stp根桥是非根桥用来决定交换机互连接口哪些被阻塞，哪些处于数据转发mac地址学习状态，非根桥保留的接口是抵达根桥最佳最短路径。<br>stp根桥的竞选过程：交换机互连接口会互相发送stp交互信息(BPDU桥协议数据单元)，用于竞选根桥，间隔2s发送一次。BPDU中包含了BID字段，BID就是用于竞选根桥所用，其中包含了优先级(默认为32768,修改时必须为4096的倍数),交换机芯片的mac地址。<br>交换机之间的BID，先比较优先级，越小越可能成为根桥，若优先级相同，mac地址越小越优。<br>！！每个vlan对应一个生成树，BID中的优先级为32768+vlan编号。<br>根桥选定后，是可以被取代的。根桥上所有本地接口都是处于学习和转发状态。</li>
+<li>非根桥上根端口的竞选(根端口是非根桥上唯一处于激活状态的交换机互连接口，在非根桥上到达根桥上最近的端口)，根端口通过交换机间交换BPDU，比较BPDU中的三个参数竞选而来。<br>1）本端口上的cost值，越小越优<br>2）Sender BID：非根桥不同接口比较接口收到的<strong>发送者BID</strong>，小优。<br>3）Sender PID：实际上为端口ID，是优先级128(更改时必须是64 的倍数)和端口号的组合。<br>！！stp时刻监控着交换网络，一旦根端口出现问题，stp竞选新的根端口。</li>
+<li>在每一个交换机之间的链路上选择一个端口，作为指定端口。关于选择指定端口：每个网段上选择一个指定端口。选择顺序为：根路径成本较低→发送BPDU的交换机的网桥ID值较小→本端口的ID值较小。另外，根网桥的接口皆为指定端口，因为根网桥上端口的根路径成本为0。</li>
+</ul>
+<p>3.stp的重算<br>stp的老化时间，是BPDU间隔的10倍，20s。<br>根桥、非根桥一旦竞选成功，非根桥老化计时器开始倒计时，理想状态下老化计时器会被来自于根桥的BPDU刷新。若老化计时器超时，也未收到根桥的BPDU，那么stp开始放弃之前所有结果，重新开始计算。</p>
+<p>4.stp中端口的角色、状态<br>根端口：提供最小的路径开销。<br>指定端口：每个网段内必须有一个指定端口。<br>阻塞端口<br>init：初始化状态。1~2s后，进入block状态<br>block：阻塞状态，该状态下不会去发BPDU，无法转发用户数据，无法学习数据携带的mac地址。<br>listen：侦听状态，接口开始发送BPDU，开始根桥等角色的选举。<br>learn：学习状态，只有根端口、指定端口进入该状态，不然返回block状态。端口无法转发用户数据，学习mac地址，构建mac地址列表。<br>forward：转发状态，根端口、指定端口进入。端口可以转发用户数据，同时学习mac地址。</p>
+<p>当非根桥后网络发送变化时，从根端口发出TCN BPDU，描述了变化的信息，发送给根桥，再由根桥发送TCA BPDU给所有交换机。</p>
+<p>5.PVST+只在思科设备上生效<br>portfast特性：用于接入层交换机上，该端口直接进入转发状态，不参与生成树的选举。<br>BPDU根保护：若portfast端口收到BPDU，丢弃BPDU，将端口改成down状态，若要打开，必须手动开启，不会自动恢复。<br>BPDU FIlter：若portfast端口收到BPDU，将该端口改成普通端口，不再是porfast端口。</p>
+<p>6.RSTP(快速生成树，在网络变化时更快的收敛网络)<br>根端口<br>指定端口<br>阻塞端口<br>替代端口：作为根端口的备份<br>备份端口：作为指定端口的备份(只存在交换机间有多条线相连)<br>边缘端口：直接进入转发状态portfast</p>
+<p>discarding：丢弃状态，向外发送BPDU竞选(init,block,listen)<br>learning：学习状态<br>forwarding：转发状态</p>
+<p>！！交换机协商是否为全双工，PC机直接发送是全双工。交换机根据此来判断相连为交换和还是PC。</p>
+<p>拓扑变更机制：<a href="http://networking.ctocio.com.cn/StandardProtocol/164/9080664_4.shtml" target="_blank" rel="noopener">协商同意机制</a></p>
+<p>spanning-tree mode rapid-pvst //启用RSTP</p>
+<p>7.mstp(多实例生成树，一个组为一个实例)<br>启用的前提：基于RSTP<br>当有多个vlan的根桥为同一个交换机，需要发送多个BPDU维护stp，若配置了mstp的一个实例，只发送一次BPDU进行维护stp。<br>spanning-tree mode mst //默认所有的vlan都属于实例0内<br>spanning-tree mst configuration //进入实例配置<br>instance &lt;实例编号&gt; vlan <vlan编号> //将vlan放入实例中</vlan编号></p>
+<p>8.BPDU类型<br>1）configuration BPDU：选举根桥的信息<br>2）TCN/TCA BPDU：拓扑改变通告/拓扑改变确定<br>TCN通告改变，TCA确定变化且刷新mac地址列表。<br>在stp中只有根桥可以发TCA，而在rswtp中任意的设备都可以发送TCA。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/wechat.jpeg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -186,27 +251,84 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网穿透</a>
-        		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/04/23/超级账本术语表/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">超级账本术语表</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+ 
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTgyNy8xMjM2Mw==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-    
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+
 
 
           </div>
@@ -236,9 +358,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

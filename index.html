@@ -151,6 +151,285 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-stp协议" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/24/stp协议/">stp协议</a>
+    </h1>
+  
+
+        
+        <a href="/2018/04/24/stp协议/" class="archive-article-date">
+  	<time datetime="2018-04-24T12:32:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-24</time>
+</a>
+        
+      </header>
+
+
+
+
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.spaning tree protocol生成树协议(运行在同一个vlan下)<br>功能：应用于交换网络中，避免冗余拓扑带来的问题同时保障连通性。<br>冗余拓扑：为了避免单故障点，比如链路、接口无备份，提供的链路及接口的备份。</p>
+        
+          <a class="article-more-a" href="/2018/04/24/stp协议/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/04/24/stp协议/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <article id="post-超级账本术语表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/23/超级账本术语表/">超级账本术语表</a>
+    </h1>
+  
+
+        
+        <a href="/2018/04/23/超级账本术语表/" class="archive-article-date">
+  	<time datetime="2018-04-23T08:01:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-23</time>
+</a>
+        
+      </header>
+
+
+
+
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Anchor Peer - 锚节点<br>一个通道内可以有不同的组织，每个组织可以指定锚节点，负责代表组织跟其他组织的成员进行数据交换。</p>
+<p>Leading Peer - 主节点<br>加入通道内的节点需要指定或者选举出主节点，负责代表组织从排序服务拉取排序后的区块信息，然后通过Goosip协议传播给组织内的其他节点。</p>
+<p>Block - 区块<br>在一个通道上，区块是一组有序交易的集合。区块往往通过密码学手段hash值连接到前导区块。</p>
+<p>Chain - 链<br>Chain就是block之间以hash连接为结构的交易日志。Peer从orderer service接受交易block，并根据背书策略和并发冲突标记block上的交易是否有效，然后将该block追加到peer文件系统中的hash chain上。</p>
+<p>Chaincode – 链码<br>链码是一个运行在账本上的软件，它可以对资产进行编码，其中的交易指令(或者叫业务逻辑)也可以用来修改资产。</p>
+<p>Ledger - 账本<br>从结构上看，账本包括区块链结构，以及多个数据库结构。区块链结构一般通过文件系统进行存储，状态数据库支持LevelDB、CouchDB两种实现，历史数据库和索引数据库则主要支持LevelDB实现。<br>State Database:状态数据库，由区块链结构中交易执行推演而成，记录最新的世界状态。<br>History Database:历史数据库，存放各个状态的历史变化记录。<br>Index Database:索引数据库，存放索引信息，例如从Hash、编号索引到区块，从ID索引到交易等。</p>
+<p>Channel - 通道<br>通道是构建在“Fabric”网络上的私有区块链，实现了数据的隔离和保密。通道 特定的账本在通道 中是与所有对等节点共享的，并且交易方必须通过该通道的 正确验证才能与账本逬行交互。通道 是由一个“配置交易”来定义的。</p>
+<p>-客户端节点<br>最终由用户操作的实体，我们一般称为客户端或应用程序。<br>其必须链接至某一个Peer节点或排序服务节点之上，才可以与区块链网络进行通信。客户端一般是提交交易提案（Transaction Proposal）至背书节点（Endorser），当收集到足够的背书后，就向排序服务广播交易，进行排序操作，进而生成区块。</p>
+<p>-Peer节点<br>一般来说，所有的Peer节点亦是记账节点（Committer）。<br>其负责验证从排序服务节点区块里面的交易，维护状态数据和账本的副本。另外，部分是节点会执行交易并且对结果进行签名背书，即充当背书节点。<br>需要说明的是，背书节点是一个动态的角色，其与具体的链码绑定。而且，每个链码在实例化的时候都会设置背书策略，指定哪些节点对交易背书后才是有效的。<br>也就是说，只有在应用程序发起交易背书请求的时候，被请求的节点才是背书节点，其它时候其就是普通的记账节点，只参与验证交易和记账工作。<br>注：负责和排序服务节点通信的节点（从中获取新的区块并进行内部同步的节点），我们一般称其为主节点。有的节点可能同时是背书节点、记账节点；也有可能有的同时是背书节点、记账节点和主节点。</p>
+<p>-排序服务节点<br>排序服务节点（Ordering Service Node、Orderer），其接收包含背书签名的交易，进行排序操作完成打包生成区块，广播给Peer节点。其需要保证的是，同一个链上的节点接收到相同的消息信息，并且有相同的逻辑顺序。<br>其中，排序服务中的多通道（Multi Channel）实现了多链的数据隔离，保证了只有同一个链上的Peer节点才可以访问链上的数据信息，这对用户隐私的保护起到了作用。<br>另外，排序服务可以采用分布式协议，也可以采用集中式服务，此根据实际情况选择。</p>
+<p>-CA节点<br>CA节点是 Hyperledger Fabric 1.0 的证书颁发机构（Certificate Authority）。一般由服务器和客户端组成。<br>CA节点接收客户端的注册申请，返回注册密码用于用户登录，以获取身份证书。<br>它向网络成员及其用户颁发基于PKI的证书。 CA为每个成员颁发一个根证书(rootCert)，为每个授权用户颁发一个注册证书 (eCert)，为每个注册证书颁发大量交易证书(tCerts)。<br>在区块链网络上的操作，都是需要对用户身份进行验证的。<br>注：CA也可以选择其它成熟的第三方CA颁发证书。</p>
+<p>Concurrency Control Version Check - 并发控制 版本检查(CCVC)<br>CCVC 是保持通道中各对等节点间状态同步的一种方法。对等节点并行的执行交 易，在交易提交至账本之前，对等节点会检查交易在执行期间读到的数据是否被 修改。如果读取的数据在执行和提交之间被改变，就会引发 CCVC 冲突，该交易 就会在账本中被标记为无效，而且值不会更新到状态数据库中。</p>
+<p>Current State - 当前状态<br>ledger 的 current state 表示其 chain 交易 log 中所有 key 的最新值。peer 会将处 理过的block中的每个交易对应的修改value提交到ledger的current state,由 于 current state 表示 channel 所知的所有最新的 k-v，所以 current state 也被称 为 World State。Chaincode 执行交易 proposal 就是针对的 current state。</p>
+<p>Endorsement policy - 背书策略<br>Endorsement policy定义了依赖于特定chaincode执行交易的channel上的peer 响应结果 (endorsements)的必要组合条件(即返回Yes或No的条件)。 Endorsement policy可指定对某一chaincode，可以对交易背书的最小背书节点数 或者最小背书节点百分比。背书策略由背书节点基于应用程序和对抵御不良行为 的期望水平来组织管理。在install和instantiate Chaincode (deploy tx)时需要指定 背书策略。</p>
+<p>Genesis Block- 创世区块<br> Genesis Block是初始化区块链网络或channel的配置区块，也是链上的第一个区块。</p>
+<p>Gossip Protocol - Gossip 协议<br>Gossip数据传输协议有三项功能:</p>
+<ul>
+<li>管理peer发现和channel成员;</li>
+<li>channel上的所有peer间广播账本数据;</li>
+<li>channel上的所有peer间同步账本数据。</li>
+</ul>
+<p>Initialize – 初始化<br>一个初始化chaincode程序的方法。</p>
+<p>Install – 安装<br>将chaincode放到peer的文件系统的过程。</p>
+<p>Instantiate – 实例化<br>启动chaincode容器的过程。</p>
+<p>Invoke – 调用<br>用于调用chaincode内的函数。Chaincode invoke就是一个交易proposal,然后执行 模块化的流程(背书、共识、验证、提交)。Invoke的结构就是一个函数和一个 参数数组。</p>
+<p>Transaction – 交易<br>Chaincode的invoke或instantiate操作。Invoke是从ledger中请求read-write set;</p>
+<p>Instantiate是请求在peer上启动Chaincode容器。</p>
+<p>Membership Services – 成员服务<br>成员服务在许可的区块链网络上认证、授权和管理身份。在peer和order中运行的成员服务的代码都会认证和授权区块链操作。它是基于PKI的MSP实现。 Fabric-ca 组件实现了成员服务，来管理身份。特别的，它处理ECert和TCert的颁发和撤销。 ECert是长期的身份凭证;TCert是短期的身份凭证，是匿名和不可链接的。</p>
+<p>Member – 成员<br>拥有网络唯一根证书的合法独立实体。像peer节点和app client这样的网络组件 会链接到一个Member。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hyperledger</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/04/23/超级账本术语表/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <article id="post-OSPF详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/21/OSPF详解/">OSPF详解</a>
+    </h1>
+  
+
+        
+        <a href="/2018/04/21/OSPF详解/" class="archive-article-date">
+  	<time datetime="2018-04-21T01:44:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-21</time>
+</a>
+        
+      </header>
+
+
+
+
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.概念<br>开放最短路径优先协议，由IETF提出（互联网任务小组），使用最为广泛的的IGP协议之一，链路状态加到LSDB中（链路状态数据库）。<br>管理距离：110<br>metric计算依据：以带宽作为计算参数算出路径的开销cost，小优，<strong>更新接受时计算</strong>。cost=10^8/接收接口的带宽<br>
+        
+          <a class="article-more-a" href="/2018/04/21/OSPF详解/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">OSPF</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/04/21/OSPF详解/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
     <article id="post-内网穿透" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -708,7 +987,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="EIGRP详解"><a href="#EIGRP详解" class="headerlink" title="EIGRP详解"></a>EIGRP详解</h2><hr>
-<p>1.ERGPR邻接关系的审查机制<br>eigrp hello message：携带了邻接关系审查的参数<br>hello message的发送间隔：广播型的网络5s周期、非广播型网络（如点到点网络）60s周期。路由器是通过接口类型来判断网络类型，如广播型为以太口、快速以太口，非广播型为光纤接口。<br>
+<p>1.ERGPR邻接关系的审查机制<br>eigrp hello message：携带了邻接关系审查的参数<br>hello message的发送间隔：广播型的网络5s周期、非广播型网络（如点到点网络）60s周期。路由器是通过接口类型来判断网络类型，如广播型为以太口、快速以太口，非广播型为光纤接口、串口。<br>
         
           <a class="article-more-a" href="/2018/03/25/EIGRP详解/#more">more >></a>
         
@@ -739,267 +1018,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/03/25/EIGRP详解/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <article id="post-EIGRP初解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/21/EIGRP初解/">EIGRP初解</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/21/EIGRP初解/" class="archive-article-date">
-  	<time datetime="2018-03-21T10:57:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-21</time>
-</a>
-        
-      </header>
-
-
-
-
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="EIGRP初解"><a href="#EIGRP初解" class="headerlink" title="EIGRP初解"></a>EIGRP初解</h2><hr>
-<p>1.EIGRP：扩展的内部网关路由协议，高级的距离矢量路由协议。<br>&emsp;IGRP：内部网关路由协议。</p>
-<p>2.EIGPR路径度量值metric不是跳数hop，是利用<strong>接口参数和公式</strong>计算出来的。EIGRP的距离(跳数)限制了网络的规模，并不用来选路，默认最大跳数100，可以设置最大为255，更新发送时跳数加一。</p>
-        
-          <a class="article-more-a" href="/2018/03/21/EIGRP初解/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">EIGRP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/21/EIGRP初解/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <article id="post-RIP详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/21/RIP详解/">RIP详解</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/21/RIP详解/" class="archive-article-date">
-  	<time datetime="2018-03-21T10:34:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-21</time>
-</a>
-        
-      </header>
-
-
-
-
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="RIP详解"><a href="#RIP详解" class="headerlink" title="RIP详解"></a>RIP详解</h2><hr>
-<p>1.动态路由协议<br>作用：动态路由协议是路由器间交换网络信息，计算路径的机制。<br>AS：自制系统，是由若干拥有统一管理策略和维护策略所组成的，其实就是一个网络。AS-id：1-65535。<br>AS内动态路由协议（IGPS内部网关协议集）：RIP、EIGRP、OSPF、IS-IS<br>AS间动态路由协议（EGPS边界网关协议集）：BGP</p>
-        
-          <a class="article-more-a" href="/2018/03/21/RIP详解/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">RIP协议</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/21/RIP详解/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <article id="post-常见共识算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/12/常见共识算法/">常见共识算法</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/12/常见共识算法/" class="archive-article-date">
-  	<time datetime="2018-03-12T14:40:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-12</time>
-</a>
-        
-      </header>
-
-
-
-
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="拜占庭将军问题-Byzantine-Generals-Problem"><a href="#拜占庭将军问题-Byzantine-Generals-Problem" class="headerlink" title="拜占庭将军问题(Byzantine Generals Problem)"></a>拜占庭将军问题(Byzantine Generals Problem)</h2><hr>
-<h2 id="故事："><a href="#故事：" class="headerlink" title="故事："></a>故事：</h2><p>拜占庭帝国，拥有巨大的财富，周围10个邻邦垂诞已久，但拜占庭高墙耸立，没有一个单独的邻邦能够成功入侵。任何单个邻邦入侵的都会失败，同时也有可能自身被其他9个邻邦入侵。拜占庭帝国防御能力如此之强，至少要有十个邻邦中的一半以上同时进攻，才有行。<br>其中的一个或者几个邻邦本身答应好一起进攻，但实际过程出现背叛，那么入侵者可能都会被歼灭。于是每一方都小心行事，不敢轻易相信邻国。这就是拜占庭将军问题。</p>
-        
-          <a class="article-more-a" href="/2018/03/12/常见共识算法/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">区块链</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/12/常见共识算法/">展开全文 >></a>
         </p>
       
 
@@ -1132,6 +1150,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">EIGRP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">OSPF</a>
               </li>
              
               <li class="article-tag-list-item">

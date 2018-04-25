@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="陌离">
 <meta property="og:description" content="1.概念开放最短路径优先协议，由IETF提出（互联网任务小组），使用最为广泛的的IGP协议之一，链路状态加到LSDB中（链路状态数据库）。管理距离：110metric计算依据：以带宽作为计算参数算出路径的开销cost，小优，更新接受时计算。cost=10^8/接收接口的带宽">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-24T15:14:56.000Z">
+<meta property="og:updated_time" content="2018-04-25T00:43:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OSPF详解">
 <meta name="twitter:description" content="1.概念开放最短路径优先协议，由IETF提出（互联网任务小组），使用最为广泛的的IGP协议之一，链路状态加到LSDB中（链路状态数据库）。管理距离：110metric计算依据：以带宽作为计算参数算出路径的开销cost，小优，更新接受时计算。cost=10^8/接收接口的带宽">
@@ -214,6 +214,8 @@
 </ul>
 <p>ospf要求所有的常规区域必须通过ABR和骨干区域连接</p>
 <p>12.ospf的LSA类型<br>1）LSA1：network LSA<br>起源：区域内任意路由器都会产生<br>内容：节点信息（个人信息RID、直连网络信息、直连网络类型）<br>直连网络类型：末梢网络、直连网络、点到点连接<br>扩散半径：不能穿越ABR<br>对应的路由：区域内路由<br>2）LSA2：network LSA<br>起源：只有DR产生<br>内容：区域内节点整体信息及DR信息<br>扩散半径：不能穿越ABR<br>对应的路由：区域内路由<br>3）LSA 3<br>起源：只有ABR产生<br>内容：区域的网络信息<br>扩散半径：整个自制系统<br>对应的路由：区域间路由<br>4）LSA 4<br>起源：只有ABR产生<br>内容：ASBR的RID<br>扩散半径：整个自制系统<br>5）LSA 5<br>起源：只有ASBR产生<br>内容：外部路由<br>扩散半径：整个自制系统<br>对应的路由：外部路由<br>6）LSA 6<br>多播OSPF用<br>7）LSA 7<br>特殊区域用<br>8）LSA 8<br>特殊区域所用，实现口袋路由<br>9）LSA 9、10<br>用于ipv6的ospf，作用类似于LSA1、2<br>10）LSA 11<br>特殊区域用，做路由策略</p>
+<p>13.ospf外部路由类型1和类型2的区别<br>类型1：会将当前设备到ASBR的开销累加到默认外部路由的度量值上。<br>类型2：不会累加，默认为OE2<br>如果多余OE2的外部路由能抵达同一目标网络，那么当前路由器会选择开销较小的路径。</p>
+<p>14.ospf的特殊区域<br>1）ospf的骨干区域接受和产生的LSA<br>LSA1：yes<br>LSA2：yes<br>LSA3：(ABR)in/out<br>LSA4：(ABR)in/out<br>LSA5：(ASBR)yes<br>LSA7：no<br>常规区域也是如此，常规区域优化成特殊区域的目的：限制ABR给予的LSA，从而达到减少路由学习的目的，但不影响可达性。<br>2）常规区域优化成完成末梢区域<br>LSA1：yes<br>LSA2：yes<br>LSA3：out<br>LSA4：no<br>LSA5：no<br>LSA7：no<br>完全末梢区域中的设备只从ABR接收缺省路由，不接收抵达其他区域的路由及外部路由。<br>末梢区域允许区域间路由通过ABR进来，不允许外部路由进来。<br>Fstub和stub绝对不可以连接外部自制系统。<br>3）NSSA区域：连接了外部的自制系统，要求优化<br>特点：当前区域的外部路由要共享给其它的ospf区域，而其它区域的外部路由当前区域不学习，但必须可达(通过缺省)，依旧学习区域间路由。<br>LSA1：yes<br>LSA2：yes<br>LSA3：(ABR)in/out<br>LSA4：out<br>LSA5：out<br>4）T-NSSA区域：共享外部路由，不学其它外部路由和区域间路由。</p>
 
       
 
@@ -450,19 +452,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IPFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">OSPF</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">RIP协议</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -470,7 +460,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">IPFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">以太坊</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">RIP协议</a>
               </li>
              
               <li class="article-tag-list-item">

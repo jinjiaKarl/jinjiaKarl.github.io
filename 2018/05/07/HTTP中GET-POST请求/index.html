@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="www.jinjiaKarl.com">
-  <title>Archives: 2018/4 | 陌离</title>
+  <title>HTTP中GET/POST请求 | 陌离</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是我的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="陌离">
-<meta property="og:url" content="www.jinjiaKarl.com/archives/2018/04/page/2/index.html">
+  <meta name="description" content="近段时间一直在研究IBM的hyperledger fabric项目，对于开发并没有任何经验的我，在研究期间遇到了太多困难，也学习到了密码学、分布式系统、go语言、nodejs等方面的知识，今天来看看nodejs中的get和post请求的区别。">
+<meta name="keywords" content="http">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP中GET&#x2F;POST请求">
+<meta property="og:url" content="www.jinjiaKarl.com/2018/05/07/HTTP中GET-POST请求/index.html">
 <meta property="og:site_name" content="陌离">
-<meta property="og:description" content="这是我的博客">
+<meta property="og:description" content="近段时间一直在研究IBM的hyperledger fabric项目，对于开发并没有任何经验的我，在研究期间遇到了太多困难，也学习到了密码学、分布式系统、go语言、nodejs等方面的知识，今天来看看nodejs中的get和post请求的区别。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-07T15:11:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="陌离">
-<meta name="twitter:description" content="这是我的博客">
+<meta name="twitter:title" content="HTTP中GET&#x2F;POST请求">
+<meta name="twitter:description" content="近段时间一直在研究IBM的hyperledger fabric项目，对于开发并没有任何经验的我，在研究期间遇到了太多困难，也学习到了密码学、分布式系统、go语言、nodejs等方面的知识，今天来看看nodejs中的get和post请求的区别。">
   
     <link rel="alternative" href="/atom.xml" title="陌离" type="application/atom+xml">
   
@@ -149,190 +151,177 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-HTTP中GET-POST请求" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HTTP中GET/POST请求
+    </h1>
+  
+
+        
+        <a href="/2018/05/07/HTTP中GET-POST请求/" class="archive-article-date">
+  	<time datetime="2018-05-07T14:42:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-07</time>
+</a>
+        
+      </header>
+
+
+
+    <span class="archive-article-date">
+      阅读量 <span id="busuanzi_value_page_pv"></span>
+    </span>
+
+
+
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>近段时间一直在研究IBM的hyperledger fabric项目，对于开发并没有任何经验的我，在研究期间遇到了太多困难，也学习到了密码学、分布式系统、go语言、nodejs等方面的知识，今天来看看nodejs中的get和post请求的区别。</p>
+<a id="more"></a>
+<p>1.首先get和post都是HTTP与服务器交互的方式，说简单点，get就是从服务器端获取数据，post就是修改服务器端的数据。</p>
+<p>首先引入一个副作用的概念，副作用指当你发送完一个请求以后，网站上的资源状态没有发生修改，即认为这个请求是无副作用的。比如注册用户这个请求是有副作用的，获取用户详情可以认为是无副作用的。</p>
+<p>再引入一个幂等性的概念，幂等是说，一个请求原封不动的发送N次和M次（N不等于M，N和M都大于1）服务器上资源的状态最终是一致的。比如发贴是非幂等的，重放10次发贴请求会创建10个帖子。但修改帖子内容是幂等的，一个修改请求重放无论多少次，帖子最终状态都是一致的。</p>
+<p>2.接下来就来说说这两个的区别</p>
+<ul>
+<li><strong>get</strong>把请求的数据放在url上，即HTTP协议头上，其格式为：<br>以?分割URL和传输数据，参数之间以&amp;相连。<br>数据如果是英文字母/数字，原样发送，<br>如果是空格，转换为+，<br>如果是中文/其他字符，则直接把字符串用BASE64加密，及“%”加上“字符串的16进制ASCII码”。<br><strong>get</strong>提交的数据最大是2k</li>
+<li><p><strong>post</strong>把数据放在HTTP的包体内（requrest body）。<strong>post</strong>理论上没有限制。</p>
+</li>
+<li><p><strong>GET</strong>产生一个TCP数据包，浏览器会把http header和data一并发送出去，服务器响应200(返回数据);<br><strong>POST</strong>产生两个TCP数据包，浏览器先发送header，服务器响应100 continue，浏览器再发送data，服务器响应200 ok(返回数据)。</p>
+</li>
+<li><p>GET：无副作用，幂等，安全，不可带 Request Body（一般都是访问都是GET方法）<br>POST：副作用，非幂等，不安全，可以带 Request Body</p>
+</li>
+</ul>
+<ol>
+<li>Node.js 的GET/POST方法<br><a href="http://www.runoob.com/nodejs/nodejs-express-framework.html" target="_blank" rel="noopener">参考</a><br><a href="https://www.runoob.com/nodejs/node-js-get-post.html" target="_blank" rel="noopener">参考</a></li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/wechat.jpeg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/16/快速利用hyperledger-composer部署区块链应用/" class="archive-article-date">
-  	<time datetime="2018-04-16T03:31:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/16/快速利用hyperledger-composer部署区块链应用/">快速利用hyperledger composer部署区块链应用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">区块链</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hyperledger</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">http</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/15/搭建hyperledger-fabric本地环境/" class="archive-article-date">
-  	<time datetime="2018-04-15T12:59:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-15</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/04/24/stp协议/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">stp协议</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/15/搭建hyperledger-fabric本地环境/">搭建hyperledger fabric本地环境</a>
-    </h1>
+        
+        
+    </div>
+</aside>
+
+
+
+
+ 
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTgyNy8xMjM2Mw==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">区块链</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hyperledger</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/01/Linux文件系统层次结构标准FHS详解[转]/" class="archive-article-date">
-  	<time datetime="2018-04-01T13:39:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-01</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/01/Linux文件系统层次结构标准FHS详解[转]/">Linux文件系统层次结构标准FHS详解[转]</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/01/EIGRP实验/" class="archive-article-date">
-  	<time datetime="2018-04-01T02:08:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/01/EIGRP实验/">EIGRP实验</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">EIGRP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2018/04/">&laquo; Prev</a><a class="page-number" href="/archives/2018/04/">1</a><span class="page-number current">2</span>
-    </nav>
   
+
+
 
 
           </div>
@@ -362,8 +351,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="www.jinjiaKarl.com">
-  <title>Tag: 计算机网络 | 陌离</title>
+  <title>使用nvm管理node | 陌离</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是我的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="陌离">
-<meta property="og:url" content="www.jinjiaKarl.com/tags/计算机网络/page/2/index.html">
+  <meta name="description" content="为什么要使用NVM？由于node的生态圈的繁华，基于node的工具或者项目层出不穷。各种工具使用的node版本可能不一致，就会出现一些奇怪的问题。比如：你电脑安装的是最新的node，但是有个工具用最新的node就会报错。解决办法是使用低版本的node。NVM就是用来帮助我们快速切换node版本的。">
+<meta name="keywords" content="vmv,node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用nvm管理node">
+<meta property="og:url" content="www.jinjiaKarl.com/2018/05/08/使用nvm管理node/index.html">
 <meta property="og:site_name" content="陌离">
-<meta property="og:description" content="这是我的博客">
+<meta property="og:description" content="为什么要使用NVM？由于node的生态圈的繁华，基于node的工具或者项目层出不穷。各种工具使用的node版本可能不一致，就会出现一些奇怪的问题。比如：你电脑安装的是最新的node，但是有个工具用最新的node就会报错。解决办法是使用低版本的node。NVM就是用来帮助我们快速切换node版本的。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-08T13:59:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="陌离">
-<meta name="twitter:description" content="这是我的博客">
+<meta name="twitter:title" content="使用nvm管理node">
+<meta name="twitter:description" content="为什么要使用NVM？由于node的生态圈的繁华，基于node的工具或者项目层出不穷。各种工具使用的node版本可能不一致，就会出现一些奇怪的问题。比如：你电脑安装的是最新的node，但是有个工具用最新的node就会报错。解决办法是使用低版本的node。NVM就是用来帮助我们快速切换node版本的。">
   
     <link rel="alternative" href="/atom.xml" title="陌离" type="application/atom+xml">
   
@@ -149,190 +151,182 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-使用nvm管理node" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      使用nvm管理node
+    </h1>
+  
+
+        
+        <a href="/2018/05/08/使用nvm管理node/" class="archive-article-date">
+  	<time datetime="2018-05-08T13:43:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
+</a>
+        
+      </header>
+
+
+
+    <span class="archive-article-date">
+      阅读量 <span id="busuanzi_value_page_pv"></span>
+    </span>
+
+
+
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="为什么要使用NVM？"><a href="#为什么要使用NVM？" class="headerlink" title="为什么要使用NVM？"></a>为什么要使用NVM？</h2><p>由于node的生态圈的繁华，基于node的工具或者项目层出不穷。<br>各种工具使用的node版本可能不一致，就会出现一些奇怪的问题。<br>比如：你电脑安装的是最新的node，但是有个工具用最新的node就会报错。解决办法是使用低版本的node。<br><strong>NVM就是用来帮助我们快速切换node版本的。</strong><br><a id="more"></a><br>先说一下nvm,node,npm之间的区别吧。<br>1.<strong>nvm</strong>的官方叫法：nodejs版本管理工具。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nvm相当于是家长，一个家长可以管理多个孩子。</span><br><span class="line">也就是说:一个nvm可以管理很多node版本和npm版本。</span><br></pre></td></tr></table></figure>
+<p>2. nodejs</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在项目开发时的所需要的代码库</span><br></pre></td></tr></table></figure>
+<p>3. npm</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在安装的nodejs的时候，npm也会跟着一起安装，它是包管理工具。</span><br><span class="line">npm管理nodejs中的第三方插件</span><br></pre></td></tr></table></figure>
+<h2 id="Mac中安装nvm"><a href="#Mac中安装nvm" class="headerlink" title="Mac中安装nvm"></a>Mac中安装nvm</h2><p>curl -o- <a href="https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh" target="_blank" rel="noopener">https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh</a><br>安装成功默认将会在用户文件夹中生成一个隐藏的 .nvm 文件<br>在~/..bash_profile文件中添加如下内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export NVM_DIR=&quot;$HOME/.nvm&quot;</span><br><span class="line">  [  -s  &quot;$NVM_DIR/nvm.sh&quot;  ] &amp;&amp; \. &quot;$NVM_DIR/nvm.sh&quot;  # This loads nvm</span><br><span class="line"></span><br><span class="line"> [  -s  &quot;$NVM_DIR/bash_completion&quot;  ] &amp;&amp; \. &quot;$NVM_DIR/bash_completion&quot;  # This l  oads nvm bash_completion</span><br></pre></td></tr></table></figure></p>
+<p>source ~/.bash_profile使得修改生效</p>
+<h2 id="nvm常用命令："><a href="#nvm常用命令：" class="headerlink" title="nvm常用命令："></a>nvm常用命令：</h2><p>nvm install ## 安装指定版本，可模糊安装，如：安装v4.4.0，既可nvm install v4.4.0，又可nvm install 4.4</p>
+<p>nvm uninstall ## 删除已安装的指定版本，语法与install类似</p>
+<p>nvm use ## 切换使用指定的版本node，关闭终端又变成默认版本</p>
+<p>nvm ls ## 列出所有安装的版本</p>
+<p>nvm ls-remote ## 列出所以远程服务器的版本（官方node version list）</p>
+<p>nvm install stable：安装最稳定的版本</p>
+<p>nvm current ## 显示当前的版本</p>
+<p>nvm alias ## 给不同的版本号添加别名</p>
+<p>nvm unalias ## 删除已定义的别名</p>
+<p>nvm reinstall-packages ## 在当前版本node环境下，重新全局安装指定版本号的npm包</p>
+<p> nvm alias default  8.6.0 ##设置默认 node 版本为8.6.0</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/wechat.jpeg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/25/EIGRP详解/" class="archive-article-date">
-  	<time datetime="2018-03-25T01:51:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/25/EIGRP详解/">EIGRP详解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vmv</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">EIGRP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">node</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/21/EIGRP初解/" class="archive-article-date">
-  	<time datetime="2018-03-21T10:57:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-21</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/08/go语言的异常处理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">go语言的异常处理[转]</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/21/EIGRP初解/">EIGRP初解</a>
-    </h1>
+        
+        
+    </div>
+</aside>
+
+
+
+
+ 
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTgyNy8xMjM2Mw==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">EIGRP</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/21/RIP详解/" class="archive-article-date">
-  	<time datetime="2018-03-21T10:34:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-21</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/21/RIP详解/">RIP详解</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">RIP协议</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/07/ISO七层模型/" class="archive-article-date">
-  	<time datetime="2018-03-07T14:22:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/07/ISO七层模型/">ISO七层模型</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/tags/计算机网络/">&laquo; Prev</a><a class="page-number" href="/tags/计算机网络/">1</a><span class="page-number current">2</span>
-    </nav>
   
+
+
 
 
           </div>
@@ -362,9 +356,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

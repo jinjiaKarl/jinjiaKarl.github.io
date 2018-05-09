@@ -6,22 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="www.jinjiaKarl.com">
-  <title>IPFS详解 | 陌离</title>
+  <title>Tag: fabric | 陌离</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.IPFS是什么IPFS（InterPlanetary File System）是一个点对点的分布式超媒体分发协议，它整合了过去几年最好的分布式系统思路，为所有人提供全球统一的可寻址空间，包括Git、自证明文件系统SFS、BitTorrent和DHT，同时也被认为是最有可能取代HTTP的新一代互联网协议。">
-<meta name="keywords" content="IPFS">
-<meta property="og:type" content="article">
-<meta property="og:title" content="IPFS详解">
-<meta property="og:url" content="www.jinjiaKarl.com/2018/03/11/IPFS详解/index.html">
+  <meta name="description" content="这是我的博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="陌离">
+<meta property="og:url" content="www.jinjiaKarl.com/tags/fabric/index.html">
 <meta property="og:site_name" content="陌离">
-<meta property="og:description" content="1.IPFS是什么IPFS（InterPlanetary File System）是一个点对点的分布式超媒体分发协议，它整合了过去几年最好的分布式系统思路，为所有人提供全球统一的可寻址空间，包括Git、自证明文件系统SFS、BitTorrent和DHT，同时也被认为是最有可能取代HTTP的新一代互联网协议。">
+<meta property="og:description" content="这是我的博客">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/40.jpg">
-<meta property="og:updated_time" content="2018-03-12T14:54:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="IPFS详解">
-<meta name="twitter:description" content="1.IPFS是什么IPFS（InterPlanetary File System）是一个点对点的分布式超媒体分发协议，它整合了过去几年最好的分布式系统思路，为所有人提供全球统一的可寻址空间，包括Git、自证明文件系统SFS、BitTorrent和DHT，同时也被认为是最有可能取代HTTP的新一代互联网协议。">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/40.jpg">
+<meta name="twitter:title" content="陌离">
+<meta name="twitter:description" content="这是我的博客">
   
     <link rel="alternative" href="/atom.xml" title="陌离" type="application/atom+xml">
   
@@ -153,187 +149,64 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-IPFS详解" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      IPFS详解
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/05/09/Hyperledger-Fabric的ChainCode开发/" class="archive-article-date">
+  	<time datetime="2018-05-09T10:37:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-09</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/05/09/Hyperledger-Fabric的ChainCode开发/">Hyperledger Fabric的ChainCode开发</a>
     </h1>
   
 
-        
-        <a href="/2018/03/11/IPFS详解/" class="archive-article-date">
-  	<time datetime="2018-03-11T02:38:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-11</time>
-</a>
-        
-      </header>
-
-
-
-    <span class="archive-article-date">
-      阅读量 <span id="busuanzi_value_page_pv"></span>
-    </span>
-
-
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-IPFS是什么"><a href="#1-IPFS是什么" class="headerlink" title="1.IPFS是什么"></a>1.IPFS是什么</h2><p><code>IPFS（InterPlanetary File System）</code>是一个点对点的分布式超媒体分发协议，它整合了过去几年最好的分布式系统思路，为所有人提供全球统一的可寻址空间，包括<code>Git</code>、自证明文件系统<code>SFS</code>、<code>BitTorrent</code>和<code>DHT</code>，同时也被认为是最有可能取代<code>HTTP</code>的新一代互联网协议。</p>
- <a id="more"></a>
-<p><code>IPFS</code>用基于内容的寻址替代传统的基于域名的寻址，用户不需要关心服务器的位置，不用考虑文件存储的名字和路径。我们将一个文件放到<code>IPFS</code>节点中，将会得到基于其内容计算出的唯一加密哈希值。哈希值直接反映文件的内容，哪怕只修改<code>1</code>比特，哈希值也会完全不同。当<code>IPFS</code>被请求一个文件哈希时，它会使用一个分布式哈希表找到文件所在的节点，取回文件并验证文件数据。</p>
-<p>IPFS是通用目的的基础架构，基本没有存储上的限制。大文件会被切分成小的分块，下载的时候可以从多个服务器同时获取。IPFS的网络是不固定的、细粒度的、分布式的网络，可以很好的适应内容分发网络的要求。这样的设计可以很好的共享各类数据，包括图像、视频流、分布式数据库、整个操作系统、模块链、8英寸软盘的备份，还有静态网站。</p>
-<p><code>IPFS</code>提供了一个友好的<code>WEB</code>访问接口，用户可通过<code>http://ipfs.io/hash</code> 获取IPFS网络中的内容，也许在不久的将来，IPFS协议将会彻底替代传统的HTTP协议。</p>
-<p> 由于IPFS/IPNS的哈希值都是很长和难记的字符串，所以IPFS兼容了现存的域名系统（DNS），可以通过可读的链接访问IPFS/IPNS内容。使用方法是在<code>nameserver</code>上创建一个文本记录，插入网站的哈希值。</p>
-<h2 id="2-HTTP是什么"><a href="#2-HTTP是什么" class="headerlink" title="2.HTTP是什么"></a>2.HTTP是什么</h2><p>HTTP协议（HyperText Transfer Protocol，超文本传输协议）是用于从WWW服务器传输超文本到本地浏览器的传送协议。它不仅保证计算机正确快速地传输超文本文档，还确定传输文档中的哪一部分，以及哪部分内容首先显示(如文本先于图形)等。</p>
-<p>HTTP协议通常承载于TCP协议之上，有时也承载于TLS或SSL协议层之上，这个时候，就成了我们常说的HTTPS。如下图所示：<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/40.jpg" alt=""><br>默认HTTP的端口号为80，HTTPS的端口号为443。</p>
-<p>一次HTTP操作称为一个事务，其工作过程可分为四步：</p>
-<p>1）首先客户机与服务器需要建立连接。只要单击某个超级链接，HTTP的工作开始。</p>
-<p>2）建立连接后，客户机发送一个请求给服务器，请求方式的格式为：统一资源标识符（URL）、协议版本号，后边是MIME信息包括请求修饰符、客户机信息和可能的内容。</p>
-<p>3）服务器接到请求后，给予相应的响应信息，其格式为一个状态行，包括信息的协议版本号、一个成功或错误的代码，后边是MIME信息包括服务器信息、实体信息和可能的内容。</p>
-<p>4）客户端接收服务器所返回的信息通过浏览器显示在用户的显示屏上，然后客户机与服务器断开连接。</p>
-<h2 id="3-BitTorrent是什么"><a href="#3-BitTorrent是什么" class="headerlink" title="3.BitTorrent是什么"></a>3.BitTorrent是什么</h2><p>BitTorrent(简称BT)是一个文件分发协议，每个下载者在下载的同时不断向其他下载者上传已下载的数据。而在<a href="https://baike.baidu.com/item/FTP/13839" target="_blank" rel="noopener">FTP</a>,<a href="https://baike.baidu.com/item/HTTP" target="_blank" rel="noopener">HTTP</a>协议中，每个下载者在下载自己所需文件的同时，各个下载者之间没有交互。当非常多的用户同时访问和下载服务器上的文件时，由于FTP服务器处理能力和带宽的限制，下载速度会急剧下降，有的用户可能访问不了服务器。BT协议与FTP协议不同，特点是下载的人越多，下载速度越快，原因在于每个下载者将已下载的数据提供给其他下载者下载，充分利用了用户的上载带宽。通过一定的策略保证上传速度越快，下载速度也越快。</p>
-<p>根据BitTorrent协议，文件发布者会根据要发布的文件生成提供一个.torrent文件，即<a href="https://baike.baidu.com/item/%E7%A7%8D%E5%AD%90%E6%96%87%E4%BB%B6" target="_blank" rel="noopener">种子文件</a>，也简称为“种子”。</p>
-<p>.torrent文件本质上是文本文件，包含Tracker信息和文件信息两部分。<a href="https://baike.baidu.com/item/Tracker" target="_blank" rel="noopener">Tracker</a>信息主要是<a href="https://baike.baidu.com/item/BT%E4%B8%8B%E8%BD%BD" target="_blank" rel="noopener">BT下载</a>中需要用到的Tracker<a href="https://baike.baidu.com/item/%E6%9C%8D%E5%8A%A1%E5%99%A8" target="_blank" rel="noopener">服务器</a>的地址和针对Tracker服务器的设置，文件信息是根据对<a href="https://baike.baidu.com/item/%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6" target="_blank" rel="noopener">目标文件</a>的计算生成的，计算结果根据BitTorrent协议内的B编码规则进行编码。它的主要原理是需要把提供下载的文件虚拟分成大小相等的块，块大小必须为2k的整数次方（由于是虚拟分块，硬盘上并不产生各个块文件），并把每个块的索引信息和Hash验证码写入种子文件（.torrent）中。所以，种子文件（.torrent）就是被下载文件的“索引”。</p>
-<p>Tracker：收集下载者信息的服务器，并将此信息提供给其他下载者，使下载者们相互连接起来，传输数据。</p>
-<h2 id="4-DHT是什么"><a href="#4-DHT是什么" class="headerlink" title="4.DHT是什么"></a>4.DHT是什么</h2><p>DHT全称为分布式<a href="https://baike.baidu.com/item/%E5%93%88%E5%B8%8C%E8%A1%A8" target="_blank" rel="noopener">哈希表</a>(Distributed Hash Table)，是一种分布式存储方法。在不需要服务器的情况下，每个客户端负责一个小范围的路由，并负责存储一小部分数据，从而实现整个DHT网络的寻址和存储。使用支持该技术的BT下载软件，用户无需连上Tracker就可以下载，因为软件会在DHT网络中寻找下载同一文件的其他用户并与之通讯，开始下载任务。</p>
-<p>DHT采用的算法为Kademlia。Kademlia(简称Kda)属于一种典型的结构化P2P覆盖网络(Structured P2P OverlayNetwork)，以分布式的应用层全网方式来进行信息的存储和检索是其尝试解决的主要问题。在Kademlia网络中，所有信息均以哈希表条目形式加以存储，这些条目被分散地存储在各个节点上，从而以全网方式构成一张巨大的分布式哈希表。我们可以形象地把这张哈希大表看成是一本字典：只要知道了信息索引的key，我们便可以通过Kademlia协议来查询其所对应的value信息，而不管这个value信息究竟是存储在哪一个节点之上。在eMule、BitTorrent等P2P文件交换系统中，Kademlia主要充当了文件信息检索协议这一关键角色。<br><a href="www.jinjiakarl.com">个人网站</a><br><a href="https://github.com/jinjiaKarl" target="_blank" rel="noopener">github地址</a></p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/alipay.png">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/wechat.jpeg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">IPFS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hyperledger</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">fabric</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/03/12/常见共识算法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          常见共识算法
-        
-      </div>
-    </a>
   
   
-    <a href="/2018/03/07/ISO七层模型/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">ISO七层模型</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
- 
-  <!-- 来必力City版安装代码 -->
-<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTgyNy8xMjM2Mw==">
-	<script type="text/javascript">
-   (function(d, s) {
-       var j, e = d.getElementsByTagName(s)[0];
-
-       if (typeof LivereTower === 'function') { return; }
-
-       j = d.createElement(s);
-       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-       j.async = true;
-
-       e.parentNode.insertBefore(j, e);
-   })(document, 'script');
-	</script>
-<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
-</div>
-<!-- City版安装代码已完成 -->
+    </div></section>
   
 
-
-  
-  
-  
-
-  
-
-  
-
-  
-
-
+    
 
 
           </div>
@@ -363,9 +236,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

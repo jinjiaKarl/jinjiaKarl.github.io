@@ -71,6 +71,10 @@
     			
             
     			
+    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
+    			
+            
+    			
     			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
     			
             
@@ -150,6 +154,123 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-bgp详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/09/bgp详解/">bgp详解</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/09/bgp详解/" class="archive-article-date">
+  	<time datetime="2018-05-09T14:29:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-09</time>
+</a>
+        
+      </header>
+
+
+
+
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.名称：边界网关协议，是路径矢量路由协议<br>需要非常丰富的选路策略用bgp</p>
+<p>2.bgp的消息和表<br>1）open：只发一次，建立邻居关系，bgp的邻居关系(peer对等体关系)是人工指定的，不需要发现<br>keepalive：维护对等体关系，间隔60s发送，有老化时间180s<br>update：包括NLRI(网络层可达信息，路径信息)、目标网络、更新源、属性13个(bgp的选路依据)<br>notification：对等体关系非正常时出现<br>2）邻接表：所有形成对等体关系的邻居信息<br>bgp转发表：一条条NLRI（更新路由条目）<br>bgp路由表：路由代码B（AS内：200，AS外：20）</p>
+<p>3.bgp的peer关系分类<br>IBGP peer：内部bgp对等体关系   AS内建立<br>EBGP peer：外部bgp对等体关系 AS间建立<br>bgp收集消息、扩散消息</p>
+<p>4.bgp open跳数<br> open跳数控制了消息传递的范围<br>IBGP open跳数为255，IBGP可跨设备建立peer<br>EBGP open跳数为1，直连建立<br>EBGP多跳：把open跳数变大</p>
+<p>5.bgp peer关系的建立过程<br>首先A、B为idle空闲状态，3~5s后进入connect状态（尝试建立TCP，目标端口179），若成功，进入opensent，open已发送，等待对方openconfirm。若不成功，进入actiive，重新建立TCP连接，若成功进入opensent，若3次不成功进入idle状态。openconfirm状态等待keepalive，进入established状态，发送update消息。</p>
+<p>6.bgp的标识<br>1）AS号：1~65535，1~64511为公有，64512~65535为私有<br>2）RID</p>
+<p>7.bgp的标准配置<br>router bgp <as-id><br>bgp router-id <a.b.c.d>  //必须是真实的ip地址，与eigrp、ospf不同<br>neighbor <peer-address>(对方的物理接口地址或loopback地址)  remote-as <peer-as-id> //指定peer关系<br>neighbor <peer-address> update-source <local-interface> //指定更新源</local-interface></peer-address></peer-as-id></peer-address></a.b.c.d></as-id></p>
+<p>peer地址建议采用对端环回口地址，因为更加稳定，所以路由层面上必须抵达对方的loopback地址，不然tcp连接无法成功。<br>更新源往往也建议采用本地loopback口网络，更加稳定。</p>
+<p>neighbor <peer-address> ebgp-mutihop <1~255> //设置ebgp的多跳<br>network <a.b.c.d> mask &lt;掩码&gt;  //使用network 命令发布路由信息，把路由手工加进BGP路由，此网络必须在路由表中，或者使用重分布技术把路由宣告进bgp</a.b.c.d></1~255></peer-address></p>
+<p>show ip bgp neighbor/summary</p>
+<p>8.bgp配置中的自动汇总<br>1）bgp的auto-summary：控制了宣告的形式<br>a.精确宣告：no auto-summary<br>被宣告目标网络和掩码与路由表中的网络必须一模一样<br>b.若为auto-summary，对外部路由自动汇聚成主网</p>
+<p>9.bgp的同步原则：默认同步关闭<br>当前设备从IBGP peer学习路由时才考虑同步问题，如果同步被关闭，则不考虑。<br>1）什么是同步<br>指同一个路由被当前设备的bgp与底层协议(rip/eigrp/ospf)同时学习，为了避免路由可不达问题。</p>
+<p>3）为什么要关闭同步<br>为了避免不必要的选路问题<br>同步必然被关闭，所以路由黑洞和路由不可达问题不是bgp关系的。</p>
+<p>11.路由黑洞和黑洞路由<br>1）路由黑洞</p>
+<p>   路由黑洞一般是在网络边界做汇总回程路由的时候产生的一种不太愿意出现的现象，就是汇总的时候有时会有一些网段并不在内网中存在，但是又包含在汇总后的网段中，如果在这个汇总的边界设备上同时还配置了缺省路由，就可能出现一些问题。这时，如果有数据包发向那些不在内网出现的网段（但是又包含在汇总网段）所在的路由器，根据最长匹配原则，并没有找到对应的路由，只能根据默认路由又回到原来的路由器，这就形成了环路，直到TTL值超时，丢弃。</p>
+<p>2）黑洞路由</p>
+<p>　　上面的路由黑洞是我们不愿意看到的场景，所以要有解决这个问题的方案，就是黑洞路由啦，其实就是一条特殊的静态路由，下一跳指向null 0口，一个不存在的口，结果就是将匹配这条路由的数据包丢弃。</p>
+<p>　　所以说，如果是精确汇总的话，就不会出现路由黑洞。举个例子</p>
+<p> <img src="https://img-blog.csdn.net/20160730180442366?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
+<p>   R1上有172.16.0.0/24、172.16.1.0/24、172.16.2.0/24三个网段，现对其进行了汇总：172.16.0.0/22。这就出现了问题：并没有172.16.3.0/24这个网段，但是汇总后就出现了，并通告了给了R2。并且在R1上配置了一条默认路由：当有未知目的地址的数据包时，转发到R2。</p>
+<p>  现在，R2收到一个目的地址在172.16.3.0/24网段的数据包，根据路由表172.16.0.0/22—&gt;R1 ，将该数据包转发到了R1，因为R1上并没有这个172.16.3.0/24网段，根据默认路由又发回了R2，形成了环路，直到TTL为0，才会被丢弃，这同时也耗费了这两个路由器的系统资源。</p>
+<p>　　解决方法：在对路由器R1做汇总路由时加一条指向null0的路由（黑洞路由）：172.16.0.0/22 –&gt; null0。即表示当R1收到目的地址指向自己的数据包将被直接丢弃。</p>
+<p>10.bgp的路由更新属性<br>1）公认必选：默认所以的厂商都支持<br>a.next-hop-address：更新源<br>若为0.0.0.0 ，代表下一跳为本地<br>b.as-path：as的路径信息，路由更新在ebgp间时才有，经过的as号会被记录<br>c.originate-code：起源代码，描述路由进入bgp的方式<br>i-&gt;IGP被network宣告<br>?-&gt;外部路由，通过重分布代入bgp<br>e-&gt;EGP</p>
+<p>2）公认可选<br>a.LP：本地优先，路由更新在IBGP间被传递时，LP才会被赋值，在EBGP之间会为空。<br>默认为100，遵从“越大越优”<br>影响自身成为IBGP peer出站路径的抉择。<br>b.atomic-aggregate：原子聚合。bgp边界自动汇总和手动汇总出现时才会出现。<br>警告属性，用来设置提醒更新接受者可能丢失属性。</p>
+<p>3）任选可传递：并非所有厂商支持，但是会被传递  ？？？？？？<br>a.aggregated：被汇总属性，被汇总后的路由起源代码也是i。<br>b.communicate：团体属性flag，拥有相同标志的一组路由<br>公认团体属性：厂商定义，一定会被传递<br>自定义团体属性：管理员自定<br>公认团体属性的标志（控制更新传递的范围）：</p>
+<ul>
+<li>internet：共享给IBGP、EBGP</li>
+<li>no-export：共享给IBGP、不共享给EBGP</li>
+<li>no-advertise：不共享给IBGP、EBGP</li>
+<li>local-as（联盟内）：不共享给任何的EBGP、共享给IBGP</li>
+</ul>
+<p>4）任选非可传递   ??????<br>a.MED多出口距离：路由更新在EBGP之间传递时才有MED值<br>默认为0，遵从“越小越优”<br>影响自身成为EBGP peer入站路径的决择。<br>b.originate-ID：起源ID<br>c.cluster-ID：簇ID</p>
+<p>11.BGP环路避免机制</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bgp</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/09/bgp详解/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
   
     <article id="post-Hyperledger-Fabric的ChainCode开发" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -921,94 +1042,6 @@
 
 
   
-    <article id="post-快速利用hyperledger-composer部署区块链应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/16/快速利用hyperledger-composer部署区块链应用/">快速利用hyperledger composer部署区块链应用</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/16/快速利用hyperledger-composer部署区块链应用/" class="archive-article-date">
-  	<time datetime="2018-04-16T03:31:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-16</time>
-</a>
-        
-      </header>
-
-
-
-
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><hr>
-<p>本次教程我们通过建立一个网络，定义资产、参与者、交易，并且通过建立一些参与者、资产、提交交易（改变资产的所有者）来测试我们的网络。<br>
-        
-          <a class="article-more-a" href="/2018/04/16/快速利用hyperledger-composer部署区块链应用/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hyperledger</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">区块链</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/16/快速利用hyperledger-composer部署区块链应用/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1074,17 +1107,25 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
       
     
+      
+      
+      
+    
     
 
     <ul style="width: 70%">
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
+      
+        
+      
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -1125,10 +1166,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IPFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
@@ -1141,11 +1178,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">RIP协议</a>
+                <a href="javascript:void(0)" class="js-tag color5">IPFS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">go语言</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">RIP协议</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">bgp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1161,11 +1206,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内网穿透</a>
+                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
+                <a href="javascript:void(0)" class="js-tag color5">内网穿透</a>
               </li>
             
             <div class="clearfix"></div>
@@ -1211,6 +1256,138 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     	</section>
     
 
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="/硬" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>0</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/件" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>1</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/爱" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>2</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/好" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>3</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/者" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>4</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/：" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>5</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/h" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>6</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/t" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>7</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/t" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>8</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/p" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>9</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/:" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>10</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>11</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>12</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/w" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>13</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/w" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>14</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/w" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>15</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/." target="_blank" class="search-title"><i class="icon-quo-left icon"></i>16</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/w" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>17</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/e" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>18</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/n" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>19</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/z" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>20</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/h" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>21</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/e" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>22</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/n" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>23</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/g" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>24</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/." target="_blank" class="search-title"><i class="icon-quo-left icon"></i>25</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/c" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>26</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/l" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>27</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/u" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>28</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/b" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>29</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>30</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
     
 
     

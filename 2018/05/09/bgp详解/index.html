@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="www.jinjiaKarl.com">
   <title>bgp详解 | 陌离</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.名称：边界网关协议，是路径矢量路由协议需要非常丰富的选路策略用bgp 2.bgp的消息和表1）open：只发一次，建立邻居关系，bgp的邻居关系(peer对等体关系)是人工指定的，不需要发现keepalive：维护对等体关系，间隔60s发送，有老化时间180supdate：包括NLRI(网络层可达信息，路径信息)、目标网络、更新源、属性13个(bgp的选路依据)notification：对等体">
+  <meta name="description" content="1.名称：边界网关协议，是路径矢量路由协议需要非常丰富的选路策略用bgp">
 <meta name="keywords" content="计算机网络,bgp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="bgp详解">
 <meta property="og:url" content="www.jinjiaKarl.com/2018/05/09/bgp详解/index.html">
 <meta property="og:site_name" content="陌离">
-<meta property="og:description" content="1.名称：边界网关协议，是路径矢量路由协议需要非常丰富的选路策略用bgp 2.bgp的消息和表1）open：只发一次，建立邻居关系，bgp的邻居关系(peer对等体关系)是人工指定的，不需要发现keepalive：维护对等体关系，间隔60s发送，有老化时间180supdate：包括NLRI(网络层可达信息，路径信息)、目标网络、更新源、属性13个(bgp的选路依据)notification：对等体">
+<meta property="og:description" content="1.名称：边界网关协议，是路径矢量路由协议需要非常丰富的选路策略用bgp">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://img-blog.csdn.net/20160730180442366?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
-<meta property="og:updated_time" content="2018-05-10T05:23:53.000Z">
+<meta property="og:updated_time" content="2018-05-13T02:44:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bgp详解">
-<meta name="twitter:description" content="1.名称：边界网关协议，是路径矢量路由协议需要非常丰富的选路策略用bgp 2.bgp的消息和表1）open：只发一次，建立邻居关系，bgp的邻居关系(peer对等体关系)是人工指定的，不需要发现keepalive：维护对等体关系，间隔60s发送，有老化时间180supdate：包括NLRI(网络层可达信息，路径信息)、目标网络、更新源、属性13个(bgp的选路依据)notification：对等体">
+<meta name="twitter:description" content="1.名称：边界网关协议，是路径矢量路由协议需要非常丰富的选路策略用bgp">
 <meta name="twitter:image" content="https://img-blog.csdn.net/20160730180442366?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
   
     <link rel="alternative" href="/atom.xml" title="陌离" type="application/atom+xml">
@@ -187,6 +187,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>1.名称：边界网关协议，是路径矢量路由协议<br>需要非常丰富的选路策略用bgp</p>
+<a id="more"></a>
 <p>2.bgp的消息和表<br>1）open：只发一次，建立邻居关系，bgp的邻居关系(peer对等体关系)是人工指定的，不需要发现<br>keepalive：维护对等体关系，间隔60s发送，有老化时间180s<br>update：包括NLRI(网络层可达信息，路径信息)、目标网络、更新源、属性13个(bgp的选路依据)<br>notification：对等体关系非正常时出现<br>2）邻接表：所有形成对等体关系的邻居信息<br>bgp转发表：一条条NLRI（更新路由条目）<br>bgp路由表：路由代码B（AS内：200，AS外：20）</p>
 <p>3.bgp的peer关系分类<br>IBGP peer：内部bgp对等体关系   AS内建立<br>EBGP peer：外部bgp对等体关系 AS间建立<br>bgp收集消息、扩散消息</p>
 <p>4.bgp open跳数<br> open跳数控制了消息传递的范围<br>IBGP open跳数为255，IBGP可跨设备建立peer<br>EBGP open跳数为1，直连建立<br>EBGP多跳：把open跳数变大</p>
@@ -217,8 +218,29 @@
 <li>no-advertise：不共享给IBGP、EBGP</li>
 <li>local-as（联盟内）：不共享给任何的EBGP、共享给IBGP</li>
 </ul>
-<p>4）任选非可传递   ??????<br>a.MED多出口距离：路由更新在EBGP之间传递时才有MED值<br>默认为0，遵从“越小越优”<br>影响自身成为EBGP peer入站路径的决择。<br>b.originate-ID：起源ID<br>c.cluster-ID：簇ID</p>
-<p>11.BGP环路避免机制</p>
+<p>4）任选非可传递   ??????<br>a.MED多出口距离：路由更新在EBGP之间传递时才有MED值<br>默认为0，遵从“越小越优”<br>影响自身成为EBGP peer入站路径的决择。<br>b.originate-ID：起源ID，路由反射器会附加到这个属性上，它携带本AS源路由器的路由器ID，用以防止环路。<br>c.cluster-ID：簇ID，此属性显示了采用的反射路径。</p>
+<p>11.BGP环路避免机制<br>1）IBGP避环机制：IBGP的水平分割<br>路由更新来自于IBGP绝对不发给其他IBGP对等体<br>2）EBGP避环机制<br>当前设备从EBGP peer接收路由更新，会检查as-path信息中有没有当前包含当前设备所处的as号，如果有，更新被忽略。</p>
+<p>12.bgp路由更新下一跳判断<br>1）路由起源于as外，被IBGP peer通告，下一跳是起源，此时下一跳可能不可达。<br>2）路由起源于as外，被EBGP peer通告，下一跳是通告者。<br>3）路由起源于as内，被IBGP peer通告，下一跳是通告者。</p>
+<p>13.bgp转发表的查看方式与状态符号的解释<br>show ip bgp<br>*&gt;： 星号代表可用、有效，&gt;含义是best，可用网络的最佳路径信息<br>若无&gt;，不会被当成更新发送</p>
+<p>14.next-hop-self和next-hop-unchange<br>1）next-hop-self作用<br>将起源于as外的路由通告给IBGP peer时，下一跳该成自己，解决的下一跳不可达的问题<br>2）next-hop-unchange作用<br>它是针对于EBGP peer起效，不改变下一跳</p>
+<p>15.bgp的选路原则：基于路由更新属性<br>有13步，按照顺序每一步都依次进行评估直到找到一条最佳路径为止。<br>1）路径的权重值（cisco私有）weight，在in的方向上<br>设置对等体共享的路由更新权重值，越大路径越优<br>且只对配置该参数的<strong>本地路由器有效，不能传递</strong>。缺省条件下，本地始发的路径具有相同的WEIGHT值（32768），所有其它的路径的WEIGHT值为0。<br>想让某条路由在自己的路由表中优先，妄图直接修改weight的话 就在neighbour 加入一条neighbour xxxx weight 100 那么这个邻居传过来的路由直接改了，这样就可以直接保证它的优先级。<br>只影响自己，不影响别人<br>2）路径的LP值：in/out方向<br>3）目标网络起源于本地最优<br>4）路径as-path信息长短，越短越优<br>5）比较路径起源代码，i优于e优于？  in/out方向<br>6）路径的MED值 in/out方向<br>7）EBGP路由优于IBGP路由<br>8）优先最佳的IGP路径<br>9） 如果配置了maximum-paths[ibgp]n,  n在2－6之间，并且存在多条等价成本的路径，那么BGP会在IP路由选择表中插入最多n条接收到的路径。这就激活了BGP多路径负载分担特性。如果没有使用可选关键字ibgp，则多路径特性就仅仅应用于ebgp路径。当不激活这一选项时，它的缺省值为1。<br>10）优选最先得到的EBGP路由路径<br>11）优选最小BGP RID设备提供的路由路径<br>12）优选拥有最短cluster-id对应的路由路径<br>13）优选拥有最小的邻接地址的路径路径<br><a href="https://blog.csdn.net/blakegao/article/details/14524179" target="_blank" rel="noopener">参考</a></p>
+<p>16.分发列表（用acl来放行或者拒绝）<br><a href="https://blog.csdn.net/ningmeng_bumeng/article/details/78614362" target="_blank" rel="noopener">ACL访问控制列表详解</a></p>
+<p>先用acl来放行或者拒绝</p>
+<p>router rip<br>distribute-list <acl编号> in/out</acl编号></p>
+<p>17.路由策略route-map（配合acl，用acl/prefix-list来抓取流量，route-map决定是放行还是拒绝）<br>在两种协议之间做重分布的时候，有的时候我们需要把一些不必要的路由信息重分布进去，当然我们也可以用控制分发列表来做，但是我们还可以用另一种方法就是 Route-map 来将我们需要的路由信息挑选出来，在重分布的时候将他们分布进去。 Route-map 挑选出来的信息如果是 permit 则分布进去，否则不分布进去。<br>route-map的执行也是有顺序的，由permit/deny后的数字决定，数字越小越先执行。<br>route-map &lt;名字&gt;  [permit/deny]  [编号，默认为10]<br>match ip address  <acl数字>  //引用acl来匹配特定网络<br>//match ip address prefix-list &lt;名字&gt;</acl数字></p>
+<p><strong>route-map切记要写一个空条目来放行所有<br>route-map &lt;名字&gt; permit [编号]</strong></p>
+<p>//带入rip时，使用route-map，一个重分发只能套用一个route-map<br>router rip<br>redistribute connect metric 1 route-map &lt;名字&gt;</p>
+<p>18.偏移列表（只能用于距离矢量路由选择协议rip/eigrp）<br>先用acl来抓取流量</p>
+<p>router rip<br>offset-list <acl编号> in/out <metric需要加的数值></metric需要加的数值></acl编号></p>
+<p>19.重分发<br>redistribute ospf 1 /connect/static metric 1 //带入rip<br>redistribute ospf 1 metric 10000 100 255 1 1500  //带入eigrp,必须指定5K,带宽、可靠性、延迟、负载、MTU最大传输单元<br>redistribute eigrp 1 subnets //带入ospf,必须包含subnets</p>
+<p>配置说明：<br> 1）在配置重分发为RIP或EIGRP的路由时，必须设置metric参数，而OSPF不需要，因为它有默认值（20）。</p>
+<p>2）为了重分发子网路由，OSPF须在redistribute命令中包括subnets参数，而RIP或EIGRP须包括no auto-summary命令。</p>
+<p> 3）redistribute命令只重分发路由器当前路由表中的路由。需要注意的是，该命令也会取直连的路由重分发。</p>
+<p> <strong>设置重分发路由的metric信息</strong></p>
+<p>Cisco IOS提供了三种方法来设置重分发路由的metric（按优先级排序）：</p>
+<p>1）在redistribute命令下调用路由映射命令，使用路由映射的set metric命令来设置metric。该方法可以对不同路由设置不同metric。</p>
+<p>2）使用redistribute命令的metric选项。这对redistribute命令控制的所有路由设置相同metric。</p>
+<p>3）使用router命令下的default-metric命令设置，它可对所有未采用1）和2）方法设置的路由设置默认metric。</p>
 
       
 
@@ -285,6 +307,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/05/10/全球著名的十大证劵交易所/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          全球著名的十大证劵交易所
+        
+      </div>
+    </a>
   
   
     <a href="/2018/05/09/Hyperledger-Fabric的ChainCode开发/" id="article-nav-older" class="article-nav-link-wrap">
@@ -466,7 +497,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color5">IPFS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -474,11 +505,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SDN</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IPFS</a>
+                <a href="javascript:void(0)" class="js-tag color4">bgp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -490,10 +525,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bgp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vmv</a>
               </li>
              
@@ -502,7 +533,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">证券交易所</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">以太坊</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">交易所</a>
               </li>
              
               <li class="article-tag-list-item">

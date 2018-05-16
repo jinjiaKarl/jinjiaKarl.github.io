@@ -6,20 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="www.jinjiaKarl.com">
-  <title>go语言的异常处理[转] | 陌离</title>
+  <title>Tag: 并发编程 | 陌离</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Go语言追求简洁优雅，所以，Go语言不支持传统的 try…catch…finally 这种异常，因为Go语言的设计者们认为，将异常与控制结构混在一起会很容易使得代码变得混乱。因为开发者很容易滥用异常，甚至一个小小的错误都抛出一个异常。在Go语言中，使用多值返回来返回错误。不要用异常代替错误，更不要用来控制流程。在极个别的情况下，也就是说，遇到真正的异常的情况下（比如除数为0了）。才使用Go中引入的">
-<meta name="keywords" content="go语言">
-<meta property="og:type" content="article">
-<meta property="og:title" content="go语言的异常处理[转]">
-<meta property="og:url" content="www.jinjiaKarl.com/2018/05/08/go语言的异常处理/index.html">
+  <meta name="description" content="这是我的博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="陌离">
+<meta property="og:url" content="www.jinjiaKarl.com/tags/并发编程/index.html">
 <meta property="og:site_name" content="陌离">
-<meta property="og:description" content="Go语言追求简洁优雅，所以，Go语言不支持传统的 try…catch…finally 这种异常，因为Go语言的设计者们认为，将异常与控制结构混在一起会很容易使得代码变得混乱。因为开发者很容易滥用异常，甚至一个小小的错误都抛出一个异常。在Go语言中，使用多值返回来返回错误。不要用异常代替错误，更不要用来控制流程。在极个别的情况下，也就是说，遇到真正的异常的情况下（比如除数为0了）。才使用Go中引入的">
+<meta property="og:description" content="这是我的博客">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-08T14:00:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="go语言的异常处理[转]">
-<meta name="twitter:description" content="Go语言追求简洁优雅，所以，Go语言不支持传统的 try…catch…finally 这种异常，因为Go语言的设计者们认为，将异常与控制结构混在一起会很容易使得代码变得混乱。因为开发者很容易滥用异常，甚至一个小小的错误都抛出一个异常。在Go语言中，使用多值返回来返回错误。不要用异常代替错误，更不要用来控制流程。在极个别的情况下，也就是说，遇到真正的异常的情况下（比如除数为0了）。才使用Go中引入的">
+<meta name="twitter:title" content="陌离">
+<meta name="twitter:description" content="这是我的博客">
   
     <link rel="alternative" href="/atom.xml" title="陌离" type="application/atom+xml">
   
@@ -155,195 +153,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-go语言的异常处理" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      go语言的异常处理[转]
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/05/16/并发编程中的几个概念/" class="archive-article-date">
+  	<time datetime="2018-05-16T02:13:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-16</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/05/16/并发编程中的几个概念/">并发编程中的几个概念</a>
     </h1>
   
 
-        
-        <a href="/2018/05/08/go语言的异常处理/" class="archive-article-date">
-  	<time datetime="2018-05-08T12:52:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
-</a>
-        
-      </header>
-
-
-
-    <span class="archive-article-date">
-      阅读量 <span id="busuanzi_value_page_pv"></span>
-    </span>
-
-
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Go语言追求简洁优雅，所以，Go语言不支持传统的 try…catch…finally 这种异常，因为Go语言的设计者们认为，将异常与控制结构混在一起会很容易使得代码变得混乱。因为开发者很容易滥用异常，甚至一个小小的错误都抛出一个异常。在Go语言中，使用多值返回来返回错误。不要用异常代替错误，更不要用来控制流程。在极个别的情况下，也就是说，遇到真正的异常的情况下（比如除数为0了）。才使用Go中引入的Exception处理：defer, panic, recover。</p>
-<a id="more"></a>
-<p>这几个异常的使用场景可以这么简单描述：Go中可以抛出一个panic的异常，然后在defer中通过recover捕获这个异常，然后正常处理。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main()&#123;</span><br><span class="line"></span><br><span class="line">    defer func()&#123; // 必须要先声明defer，否则不能捕获到panic异常</span><br><span class="line"></span><br><span class="line">        fmt.Println(&quot;c&quot;)</span><br><span class="line"></span><br><span class="line">        if err:=recover();err!=nil&#123;</span><br><span class="line"></span><br><span class="line">            fmt.Println(err) // 这里的err其实就是panic传入的内容，55</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        fmt.Println(&quot;d&quot;)</span><br><span class="line"></span><br><span class="line">    &#125;()</span><br><span class="line"></span><br><span class="line">    f()</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func f()&#123;</span><br><span class="line"></span><br><span class="line">    fmt.Println(&quot;a&quot;)</span><br><span class="line"></span><br><span class="line">    panic(55)</span><br><span class="line"></span><br><span class="line">    fmt.Println(&quot;b&quot;)</span><br><span class="line"></span><br><span class="line">    fmt.Println(&quot;f&quot;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line"></span><br><span class="line">a</span><br><span class="line">c</span><br><span class="line">55</span><br><span class="line">d</span><br></pre></td></tr></table></figure>
-<h2 id="defer"><a href="#defer" class="headerlink" title="defer"></a>defer</h2><p>defer 英文原意： vi. 推迟；延期；服从   vt. 使推迟；使延期。</p>
-<p>defer的思想类似于C++中的析构函数，不过Go语言中“析构”的不是对象，而是函数，defer就是用来添加函数结束时执行的语句。注意这里强调的是添加，而不是指定，因为不同于C++中的析构函数是静态的，Go中的defer是动态的。</p>
-<p><code>func</code> <code>f() (result int) {</code></p>
-<p><code>defer func() {</code></p>
-<p><code>result++</code></p>
-<p><code>}()</code></p>
-<p><code>return 0</code></p>
-<p><code>}</code><br>上面函数返回1，因为defer中添加了一个函数，在函数返回前改变了命名返回值的值。是不是很好用呢。但是，要注意的是，如果我们的defer语句没有执行，那么defer的函数就不会添加，如果把上面的程序改成这样：<br><code>func</code> <code>f() (result int) {</code></p>
-<p><code>return 0</code></p>
-<p><code>defer func () {</code></p>
-<p><code>result++</code></p>
-<p><code>}()</code></p>
-<p><code>return0</code></p>
-<p><code>}</code><br>上面的函数就返回0了，因为还没来得及添加defer的东西，函数就返回了。</p>
-<p>另外值得一提的是，defer可以多次，这样形成一个defer栈，后defer的语句在函数返回时将先被调用。</p>
-<h2 id="panic"><a href="#panic" class="headerlink" title="panic"></a>panic</h2><p>panic 英文原意：n. 恐慌，惊慌；大恐慌  adj. 恐慌的；没有理由的  vt. 使恐慌  vi. 十分惊慌</p>
-<p>panic 是用来表示非常严重的不可恢复的错误的。在Go语言中这是一个内置函数，接收一个interface{}类型的值（也就是任何值了）作为参数。panic的作用就像我们平常接触的异常。不过Go可没有try…catch，所以，panic一般会导致程序挂掉（除非recover）。所以，Go语言中的异常，那真的是异常了。你可以试试，调用panic看看，程序立马挂掉，然后Go运行时会打印出调用栈。<br>但是，关键的一点是，即使函数执行的时候panic了，函数不往下走了，运行时并不是立刻向上传递panic，而是到defer那，等defer的东西都跑完了，panic再向上传递。所以这时候 defer 有点类似 try-catch-finally 中的 finally。<br>panic就是这么简单。抛出个真正意义上的异常。</p>
-<h2 id="recover"><a href="#recover" class="headerlink" title="recover"></a>recover</h2><p>recover 英文原意： vt. 恢复；弥补；重新获得   vi. 恢复；胜诉；重新得球   n. 还原至预备姿势</p>
-<p>上面说到，panic的函数并不会立刻返回，而是先defer，再返回。这时候（defer的时候），如果有办法将panic捕获到，并阻止panic传递，那就异常的处理机制就完善了。</p>
-<p>Go语言提供了recover内置函数，前面提到，一旦panic，逻辑就会走到defer那，那我们就在defer那等着，调用recover函数将会捕获到当前的panic（如果有的话），被捕获到的panic就不会向上传递了，于是，世界恢复了和平。你可以干你想干的事情了。</p>
-<p>不过要注意的是，recover之后，逻辑并不会恢复到panic那个点去，函数还是会在defer之后返回。</p>
-<p>用Go实现类似 try catch 的异常处理有个例子在：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1.  package main  </span><br><span class="line"></span><br><span class="line">3.  //实现 try catch 例子  </span><br><span class="line">4.  func Try(fun func(), handler func(interface&#123;&#125;)) &#123;  </span><br><span class="line">5.  defer func() &#123;  </span><br><span class="line">6.  if err := recover(); err != nil &#123;  </span><br><span class="line">7.  handler(err)  </span><br><span class="line">8.  &#125;  </span><br><span class="line">9.  &#125;()  </span><br><span class="line">10.  fun()  </span><br><span class="line">11.  &#125;  </span><br><span class="line"></span><br><span class="line">13.  func main() &#123;  </span><br><span class="line">14.  Try(func() &#123;  </span><br><span class="line">15.  panic(&quot;foo&quot;)  </span><br><span class="line">16.  &#125;, func(e interface&#123;&#125;) &#123;  </span><br><span class="line">17.  print(e)  </span><br><span class="line">18.  &#125;)  </span><br><span class="line">19.  &#125;</span><br></pre></td></tr></table></figure></p>
-<p>结论：<br>Go对待异常（准确的说是panic）的态度就是这样，没有全面否定异常的存在，同时极力不鼓励多用异常。<br><a href="http://www.cnblogs.com/ghj1976/archive/2013/02/11/2910114.html" target="_blank" rel="noopener">转载</a></p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/alipay.png">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/wechat.jpeg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">go语言</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">并发编程</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/05/08/使用nvm管理node/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          使用nvm管理node
-        
-      </div>
-    </a>
   
   
-    <a href="/2018/05/07/HTTP中GET-POST请求/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">HTTP中GET/POST请求</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
- 
-  <!-- 来必力City版安装代码 -->
-<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTgyNy8xMjM2Mw==">
-	<script type="text/javascript">
-   (function(d, s) {
-       var j, e = d.getElementsByTagName(s)[0];
-
-       if (typeof LivereTower === 'function') { return; }
-
-       j = d.createElement(s);
-       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-       j.async = true;
-
-       e.parentNode.insertBefore(j, e);
-   })(document, 'script');
-	</script>
-<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
-</div>
-<!-- City版安装代码已完成 -->
+    </div></section>
   
 
-
-  
-  
-  
-
-  
-
-  
-
-  
-
-
+    
 
 
           </div>
@@ -373,9 +236,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

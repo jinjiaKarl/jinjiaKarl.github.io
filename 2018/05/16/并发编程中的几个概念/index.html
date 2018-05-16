@@ -6,20 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="www.jinjiaKarl.com">
-  <title>go语言的异常处理[转] | 陌离</title>
+  <title>并发编程中的几个概念 | 陌离</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Go语言追求简洁优雅，所以，Go语言不支持传统的 try…catch…finally 这种异常，因为Go语言的设计者们认为，将异常与控制结构混在一起会很容易使得代码变得混乱。因为开发者很容易滥用异常，甚至一个小小的错误都抛出一个异常。在Go语言中，使用多值返回来返回错误。不要用异常代替错误，更不要用来控制流程。在极个别的情况下，也就是说，遇到真正的异常的情况下（比如除数为0了）。才使用Go中引入的">
-<meta name="keywords" content="go语言">
+  <meta name="description" content="一、同步与异步 介绍：同步和异步通常来形容一次方法调用。 解释一：同步方法调用一旦开始，调用者必须等到方法的调用返回后，才能继续后续的行为。异步方法调用更像一个消息传递，一旦开始，方法调用就会立即返回，调用者可以继续后续的操作。">
+<meta name="keywords" content="并发编程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="go语言的异常处理[转]">
-<meta property="og:url" content="www.jinjiaKarl.com/2018/05/08/go语言的异常处理/index.html">
+<meta property="og:title" content="并发编程中的几个概念">
+<meta property="og:url" content="www.jinjiaKarl.com/2018/05/16/并发编程中的几个概念/index.html">
 <meta property="og:site_name" content="陌离">
-<meta property="og:description" content="Go语言追求简洁优雅，所以，Go语言不支持传统的 try…catch…finally 这种异常，因为Go语言的设计者们认为，将异常与控制结构混在一起会很容易使得代码变得混乱。因为开发者很容易滥用异常，甚至一个小小的错误都抛出一个异常。在Go语言中，使用多值返回来返回错误。不要用异常代替错误，更不要用来控制流程。在极个别的情况下，也就是说，遇到真正的异常的情况下（比如除数为0了）。才使用Go中引入的">
+<meta property="og:description" content="一、同步与异步 介绍：同步和异步通常来形容一次方法调用。 解释一：同步方法调用一旦开始，调用者必须等到方法的调用返回后，才能继续后续的行为。异步方法调用更像一个消息传递，一旦开始，方法调用就会立即返回，调用者可以继续后续的操作。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-08T14:00:03.000Z">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/926638/201705/926638-20170515145106838-729520272.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/926638/201705/926638-20170515160414260-1075841882.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/926638/201705/926638-20170515170551088-1407106786.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/926638/201705/926638-20170515170808963-719889017.png">
+<meta property="og:updated_time" content="2018-05-16T02:29:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="go语言的异常处理[转]">
-<meta name="twitter:description" content="Go语言追求简洁优雅，所以，Go语言不支持传统的 try…catch…finally 这种异常，因为Go语言的设计者们认为，将异常与控制结构混在一起会很容易使得代码变得混乱。因为开发者很容易滥用异常，甚至一个小小的错误都抛出一个异常。在Go语言中，使用多值返回来返回错误。不要用异常代替错误，更不要用来控制流程。在极个别的情况下，也就是说，遇到真正的异常的情况下（比如除数为0了）。才使用Go中引入的">
+<meta name="twitter:title" content="并发编程中的几个概念">
+<meta name="twitter:description" content="一、同步与异步 介绍：同步和异步通常来形容一次方法调用。 解释一：同步方法调用一旦开始，调用者必须等到方法的调用返回后，才能继续后续的行为。异步方法调用更像一个消息传递，一旦开始，方法调用就会立即返回，调用者可以继续后续的操作。">
+<meta name="twitter:image" content="https://images2015.cnblogs.com/blog/926638/201705/926638-20170515145106838-729520272.png">
   
     <link rel="alternative" href="/atom.xml" title="陌离" type="application/atom+xml">
   
@@ -155,20 +160,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-go语言的异常处理" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-并发编程中的几个概念" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      go语言的异常处理[转]
+      并发编程中的几个概念
     </h1>
   
 
         
-        <a href="/2018/05/08/go语言的异常处理/" class="archive-article-date">
-  	<time datetime="2018-05-08T12:52:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
+        <a href="/2018/05/16/并发编程中的几个概念/" class="archive-article-date">
+  	<time datetime="2018-05-16T02:13:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-16</time>
 </a>
         
       </header>
@@ -184,33 +189,45 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Go语言追求简洁优雅，所以，Go语言不支持传统的 try…catch…finally 这种异常，因为Go语言的设计者们认为，将异常与控制结构混在一起会很容易使得代码变得混乱。因为开发者很容易滥用异常，甚至一个小小的错误都抛出一个异常。在Go语言中，使用多值返回来返回错误。不要用异常代替错误，更不要用来控制流程。在极个别的情况下，也就是说，遇到真正的异常的情况下（比如除数为0了）。才使用Go中引入的Exception处理：defer, panic, recover。</p>
+        <h2 id="一、同步与异步"><a href="#一、同步与异步" class="headerlink" title="一、同步与异步"></a>一、同步与异步</h2><hr>
+<h3 id="介绍："><a href="#介绍：" class="headerlink" title="介绍："></a>介绍：</h3><p>同步和异步通常来形容一次方法调用。</p>
+<p>解释一：同步方法调用一旦开始，调用者必须等到方法的调用返回后，才能继续后续的行为。异步方法调用更像一个消息传递，一旦开始，方法调用就会立即返回，调用者可以继续后续的操作。</p>
 <a id="more"></a>
-<p>这几个异常的使用场景可以这么简单描述：Go中可以抛出一个panic的异常，然后在defer中通过recover捕获这个异常，然后正常处理。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main()&#123;</span><br><span class="line"></span><br><span class="line">    defer func()&#123; // 必须要先声明defer，否则不能捕获到panic异常</span><br><span class="line"></span><br><span class="line">        fmt.Println(&quot;c&quot;)</span><br><span class="line"></span><br><span class="line">        if err:=recover();err!=nil&#123;</span><br><span class="line"></span><br><span class="line">            fmt.Println(err) // 这里的err其实就是panic传入的内容，55</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        fmt.Println(&quot;d&quot;)</span><br><span class="line"></span><br><span class="line">    &#125;()</span><br><span class="line"></span><br><span class="line">    f()</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func f()&#123;</span><br><span class="line"></span><br><span class="line">    fmt.Println(&quot;a&quot;)</span><br><span class="line"></span><br><span class="line">    panic(55)</span><br><span class="line"></span><br><span class="line">    fmt.Println(&quot;b&quot;)</span><br><span class="line"></span><br><span class="line">    fmt.Println(&quot;f&quot;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line"></span><br><span class="line">a</span><br><span class="line">c</span><br><span class="line">55</span><br><span class="line">d</span><br></pre></td></tr></table></figure>
-<h2 id="defer"><a href="#defer" class="headerlink" title="defer"></a>defer</h2><p>defer 英文原意： vi. 推迟；延期；服从   vt. 使推迟；使延期。</p>
-<p>defer的思想类似于C++中的析构函数，不过Go语言中“析构”的不是对象，而是函数，defer就是用来添加函数结束时执行的语句。注意这里强调的是添加，而不是指定，因为不同于C++中的析构函数是静态的，Go中的defer是动态的。</p>
-<p><code>func</code> <code>f() (result int) {</code></p>
-<p><code>defer func() {</code></p>
-<p><code>result++</code></p>
-<p><code>}()</code></p>
-<p><code>return 0</code></p>
-<p><code>}</code><br>上面函数返回1，因为defer中添加了一个函数，在函数返回前改变了命名返回值的值。是不是很好用呢。但是，要注意的是，如果我们的defer语句没有执行，那么defer的函数就不会添加，如果把上面的程序改成这样：<br><code>func</code> <code>f() (result int) {</code></p>
-<p><code>return 0</code></p>
-<p><code>defer func () {</code></p>
-<p><code>result++</code></p>
-<p><code>}()</code></p>
-<p><code>return0</code></p>
-<p><code>}</code><br>上面的函数就返回0了，因为还没来得及添加defer的东西，函数就返回了。</p>
-<p>另外值得一提的是，defer可以多次，这样形成一个defer栈，后defer的语句在函数返回时将先被调用。</p>
-<h2 id="panic"><a href="#panic" class="headerlink" title="panic"></a>panic</h2><p>panic 英文原意：n. 恐慌，惊慌；大恐慌  adj. 恐慌的；没有理由的  vt. 使恐慌  vi. 十分惊慌</p>
-<p>panic 是用来表示非常严重的不可恢复的错误的。在Go语言中这是一个内置函数，接收一个interface{}类型的值（也就是任何值了）作为参数。panic的作用就像我们平常接触的异常。不过Go可没有try…catch，所以，panic一般会导致程序挂掉（除非recover）。所以，Go语言中的异常，那真的是异常了。你可以试试，调用panic看看，程序立马挂掉，然后Go运行时会打印出调用栈。<br>但是，关键的一点是，即使函数执行的时候panic了，函数不往下走了，运行时并不是立刻向上传递panic，而是到defer那，等defer的东西都跑完了，panic再向上传递。所以这时候 defer 有点类似 try-catch-finally 中的 finally。<br>panic就是这么简单。抛出个真正意义上的异常。</p>
-<h2 id="recover"><a href="#recover" class="headerlink" title="recover"></a>recover</h2><p>recover 英文原意： vt. 恢复；弥补；重新获得   vi. 恢复；胜诉；重新得球   n. 还原至预备姿势</p>
-<p>上面说到，panic的函数并不会立刻返回，而是先defer，再返回。这时候（defer的时候），如果有办法将panic捕获到，并阻止panic传递，那就异常的处理机制就完善了。</p>
-<p>Go语言提供了recover内置函数，前面提到，一旦panic，逻辑就会走到defer那，那我们就在defer那等着，调用recover函数将会捕获到当前的panic（如果有的话），被捕获到的panic就不会向上传递了，于是，世界恢复了和平。你可以干你想干的事情了。</p>
-<p>不过要注意的是，recover之后，逻辑并不会恢复到panic那个点去，函数还是会在defer之后返回。</p>
-<p>用Go实现类似 try catch 的异常处理有个例子在：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1.  package main  </span><br><span class="line"></span><br><span class="line">3.  //实现 try catch 例子  </span><br><span class="line">4.  func Try(fun func(), handler func(interface&#123;&#125;)) &#123;  </span><br><span class="line">5.  defer func() &#123;  </span><br><span class="line">6.  if err := recover(); err != nil &#123;  </span><br><span class="line">7.  handler(err)  </span><br><span class="line">8.  &#125;  </span><br><span class="line">9.  &#125;()  </span><br><span class="line">10.  fun()  </span><br><span class="line">11.  &#125;  </span><br><span class="line"></span><br><span class="line">13.  func main() &#123;  </span><br><span class="line">14.  Try(func() &#123;  </span><br><span class="line">15.  panic(&quot;foo&quot;)  </span><br><span class="line">16.  &#125;, func(e interface&#123;&#125;) &#123;  </span><br><span class="line">17.  print(e)  </span><br><span class="line">18.  &#125;)  </span><br><span class="line">19.  &#125;</span><br></pre></td></tr></table></figure></p>
-<p>结论：<br>Go对待异常（准确的说是panic）的态度就是这样，没有全面否定异常的存在，同时极力不鼓励多用异常。<br><a href="http://www.cnblogs.com/ghj1976/archive/2013/02/11/2910114.html" target="_blank" rel="noopener">转载</a></p>
+<p>解释二：同步就是指一个进程在执行某个请求的时候，若该请求需要一段时间才能返回信息，那么这个进程将会一直等待下去，直到收到返回信息才继续执行下去。异步是指进程不需要一直等下去，而是继续执行下面的操作，不管其他进程的状态。当有消息返回时系统会通知进程进行处理，这样可以提高执行的效率。</p>
+<h3 id="画图解释："><a href="#画图解释：" class="headerlink" title="画图解释："></a>画图解释：</h3><p><img src="https://images2015.cnblogs.com/blog/926638/201705/926638-20170515145106838-729520272.png" alt=""></p>
+<h3 id="现实场景"><a href="#现实场景" class="headerlink" title="现实场景"></a>现实场景</h3><p>毕业季，需要写毕业论文，中午到饭点了，我们需要补充能量吃饭，怎么解决呢？这时有两个选择：</p>
+<p>1. 出门就餐：出门去食堂或者去快餐店就餐，这时你可能需要点餐，等师父烹饪，等服务员上菜，然后就餐，等你吃完之后你才可以回去继续毕业论文的书写。</p>
+<p>2. 点卖外：通过外卖平台订购外卖，在等外卖送来的过程中，你可以继续书写论文或做其他的事。</p>
+<p> 出宿舍就餐就是一个同步方法的过程，两件事的执行时间是顺序连着的；点外卖就是一个异步的过程，两件事的执行时间是并行异步的。</p>
+<h2 id="二、并发和并行"><a href="#二、并发和并行" class="headerlink" title="二、并发和并行"></a>二、并发和并行</h2><hr>
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>解释一：并行是指两个或者多个事件在同一时刻发生；而并发是指两个或多个事件在同一时间间隔发生。</p>
+<p>解释二：并行是在不同实体上的多个事件，并发是在同一实体上的多个事件<strong>。</strong></p>
+<p>解释三：在一台处理器上“同时”处理多个任务，在多台处理器上同时处理多个任务。如hadoop分布式集群</p>
+<p>并发偏重于多个任务交替执行，而多个任务之间有可能还是串行的。而并行是真正意义上的“同时执行”。</p>
+<p>严格意义上来说，并行的多个任务是真实的同时执行的，而对于并发来说，这个过程只是交替的，一会儿执行A，一会儿执行B，系统会不停的在两者之间切换。但对于外部观察者来说，即使多个任务之间是串行并发的，也会造成多任务间是并行执行的错觉。</p>
+<p>实际上，如果系统内只有一个CPU，而使用多进程或者多线程任务，那么真实环境中这些任务不可能是真实并行的，毕竟一个CPU一次只能执行一条指令，这种情况下多进程或者多线程就是并发，而不是并行（操作系统会不停切换多个任务）。真实的并行也只可能出现在拥有多个CPU的系统中（比如多核CPU）。</p>
+<h3 id="画图解释：-1"><a href="#画图解释：-1" class="headerlink" title="画图解释："></a>画图解释：</h3><p><img src="https://images2015.cnblogs.com/blog/926638/201705/926638-20170515160414260-1075841882.png" alt=""></p>
+<h3 id="现实场景-1"><a href="#现实场景-1" class="headerlink" title="现实场景"></a>现实场景</h3><p>爬山，国内一般在相对较高的名山，为照顾游客都会提供两种方式登山：一种是游客自己凭借双腿，另一种就是借助缆车。</p>
+<p>1. 游客自己凭借双腿登山：游客自己凭双腿登山的时候，一般都是走走停停，一是为了歇息，还有就是停下来看风景，因为不停下来，是没有办法专心看风景的，登山的过程中，需要注意脚下、注意安全。登山和看风景是交替并发执行的。这就是一个并发的过程。</p>
+<p>2. 借助缆车：游客花点钱，坐缆车游玩登山，这时我们可以不必走走停停，也不需要关注脚下。我们可以一边往山顶移动，一边欣赏沿途的风景。登山和看风景是两件同时进行的事情。这就是一个并行的过程。</p>
+<h2 id="三、临界区"><a href="#三、临界区" class="headerlink" title="三、临界区"></a>三、临界区</h2><h3 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h3><p>临界区用来表示一种公共资源或者说是共享数据，可以被多个线程使用。但是每一次只能有一个线程使用它，一旦临界区资源被占用，其他线程要想使用这个资源，就必须等待。</p>
+<h3 id="画图解释"><a href="#画图解释" class="headerlink" title="画图解释"></a>画图解释</h3><p><img src="https://images2015.cnblogs.com/blog/926638/201705/926638-20170515170551088-1407106786.png" alt=""></p>
+<h3 id="现实场景-2"><a href="#现实场景-2" class="headerlink" title="现实场景"></a>现实场景</h3><p>打印机，我们工作的时候肯定会经常用到打印机，打印机就是一个临界区的最好例子。一台打印机一次只能执行一个任务，如果 A 和 B 同时需要打印文件，很显然，如果 A 先发下打印的任务，打印机就开始打印 A 的文件。B 的任务就只能等待 A 打印结束之后才能打印。</p>
+<h2 id="四、阻塞和非阻塞"><a href="#四、阻塞和非阻塞" class="headerlink" title="四、阻塞和非阻塞"></a>四、阻塞和非阻塞</h2><p>阻塞和非阻塞通常形容多线程之间的相互影响。比如一个线程占用了临界区资源，那么其他所有需要这个资源的线程就必须在这个临界区中进行等待。等待会导致线程挂起，这种情况就是阻塞。此时，如果占用资源的线程一直不愿意释放资源，那么其他所有阻塞在这个临界区上的线程都不能工作。</p>
+<p>当我们使用synchronized关键字，或者重入锁时（后续会有文章详细的介绍Java中锁的分类），我们得到的就是阻塞的线程。无论是synchronized或者重入锁，都会试图在执行后续代码前，得到临界区的锁，如果得不到，线程就会被挂起等待，直到占有了所需资源为止。</p>
+<p>非阻塞允许多个线程同时进入临界区 。</p>
+<h2 id="五、死锁，饥饿，活锁"><a href="#五、死锁，饥饿，活锁" class="headerlink" title="五、死锁，饥饿，活锁"></a>五、死锁，饥饿，活锁</h2><p>死锁，饥饿和活锁都属于多线程的活跃性问题。如果发现上述几种情况，那么相关线程可能就不再活跃，也就说它可能很难再继续往下执行了。</p>
+<p><strong>死锁：</strong>所谓死锁，是指两个或两个以上的进程在执行过程中，由于竞争资源或者由于彼此通信而造成的一种阻塞的现象，若无外力作用，它们都将无法推进下去。此时称系统处于死锁状态或系统产生了死锁，这些永远在互相等待的进程称为死锁进程。</p>
+<p>例如，如果线程1锁住了A，然后尝试对B进行加锁，同时线程2已经锁住了B，接着尝试对A进行加锁，这时死锁就发生了。线程1永远得不到B，线程2也永远得不到A，并且它们永远也不会知道发生了这样的事情。为了得到彼此的对象（A和B），它们将永远阻塞下去。这种情况就是一个死锁。</p>
+<p>借助《实战Java高并发程序设计》中的图：</p>
+<p><img src="https://images2015.cnblogs.com/blog/926638/201705/926638-20170515170808963-719889017.png" alt=""></p>
+<p>A、B、C、D四辆小车在这种情况下都无法继续行驶了。他们彼此之间相互占用了其他车辆的车道，如果大家都不愿意释放自己的车道，那么这个状态将永远的维持下去，谁都不可能通过。</p>
+<p><strong>饥饿： </strong>饥饿是指某一个或者多个线程因为种种原因无法获得所<strong><strong>需要的资源，</strong></strong>导致一直无法执行。 </p>
+<p>产生这种情况的原因是多种的，可能是它的线程优先级太低，而高优先级的线程不抢占它需要的资源，导致低优先级线程无法工作。也可能是某个线程一直占着关键资源不放，导致其他需要这个资源的线程无法正常执行。</p>
+<p><strong>活锁：</strong>活锁指的是任务或者执行者没有被阻塞，由于某些条件没有满足，导致一直重复尝试，失败，尝试，失败。</p>
+<p>活锁可以认为是一种特殊的饥饿。</p>
+<p>列举现实生活中的一个例子：一条狭窄的道路，A 和 B 迎面相遇了，缘分使然，A绅士的想让出道路让B先过，这时B也保持良好的淑女形象想让出道路让A先过，导致两人都避让了；两人尴尬一笑，之后A想着B既然让了，就准备先过，巧的是，这时B心里也想着，A既然让了，不如先过，两人又撞上了；然后又开始礼貌性的相互避让，避让之后各自又想先走结果又撞上了，结果两人都没过去。这种情况就是活锁。</p>
+<p>线程都秉承着”谦让”的原则，主动将资源释放给他人使用，那么就会出现资源不断在两个线程之间跳动，而没有一个线程可以同时拿到所有资源而正常执行。</p>
 
       
 
@@ -255,7 +272,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">go语言</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">并发编程</a>
         		</li>
       		
 		</ul>
@@ -274,18 +291,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/05/08/使用nvm管理node/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/05/16/docker入门/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          使用nvm管理node
+          docker入门
         
       </div>
     </a>
   
   
-    <a href="/2018/05/07/HTTP中GET-POST请求/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">HTTP中GET/POST请求</div>
+    <a href="/2018/05/14/中心化交易所和去中心化交易所流程对比/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">中心化交易所和去中心化交易所流程对比[转]</div>
       <i class="icon-circle-right"></i>
     </a>
   

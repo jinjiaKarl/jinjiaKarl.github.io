@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="www.jinjiaKarl.com">
   <title>bgp详解 | 陌离</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.名称：边界网关协议，是路径矢量路由协议需要非常丰富的选路策略用bgp">
+  <meta name="description" content="1.名称：边界网关路由选择协议，是路径矢量路由协议1）有非常丰富的选路策略（13条选路依据）2）任何一个IGP协议支持上千条路由条目，而BGP支持上万条3）支持MPLS VPN，传递客户路由 企业连接ISP的几种方式：1）单宿，只连接一个ISP并且只有一条线路2）双宿，只连接一个ISP但有两条以上线路3）多宿，连接多个ISP并且每个ISP只有一条线路4）双多宿，连接多个ISP并且每个ISP有多条线">
 <meta name="keywords" content="计算机网络,bgp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="bgp详解">
 <meta property="og:url" content="www.jinjiaKarl.com/2018/05/09/bgp详解/index.html">
 <meta property="og:site_name" content="陌离">
-<meta property="og:description" content="1.名称：边界网关协议，是路径矢量路由协议需要非常丰富的选路策略用bgp">
+<meta property="og:description" content="1.名称：边界网关路由选择协议，是路径矢量路由协议1）有非常丰富的选路策略（13条选路依据）2）任何一个IGP协议支持上千条路由条目，而BGP支持上万条3）支持MPLS VPN，传递客户路由 企业连接ISP的几种方式：1）单宿，只连接一个ISP并且只有一条线路2）双宿，只连接一个ISP但有两条以上线路3）多宿，连接多个ISP并且每个ISP只有一条线路4）双多宿，连接多个ISP并且每个ISP有多条线">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://img-blog.csdn.net/20160730180442366?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
-<meta property="og:updated_time" content="2018-05-13T02:44:31.000Z">
+<meta property="og:updated_time" content="2018-05-20T05:47:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bgp详解">
-<meta name="twitter:description" content="1.名称：边界网关协议，是路径矢量路由协议需要非常丰富的选路策略用bgp">
+<meta name="twitter:description" content="1.名称：边界网关路由选择协议，是路径矢量路由协议1）有非常丰富的选路策略（13条选路依据）2）任何一个IGP协议支持上千条路由条目，而BGP支持上万条3）支持MPLS VPN，传递客户路由 企业连接ISP的几种方式：1）单宿，只连接一个ISP并且只有一条线路2）双宿，只连接一个ISP但有两条以上线路3）多宿，连接多个ISP并且每个ISP只有一条线路4）双多宿，连接多个ISP并且每个ISP有多条线">
 <meta name="twitter:image" content="https://img-blog.csdn.net/20160730180442366?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
   
     <link rel="alternative" href="/atom.xml" title="陌离" type="application/atom+xml">
@@ -186,22 +186,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.名称：边界网关协议，是路径矢量路由协议<br>需要非常丰富的选路策略用bgp</p>
+        <p>1.名称：边界网关路由选择协议，是路径矢量路由协议<br>1）有非常丰富的选路策略（13条选路依据）<br>2）任何一个IGP协议支持上千条路由条目，而BGP支持上万条<br>3）支持MPLS VPN，传递客户路由</p>
+<p>企业连接ISP的几种方式：<br>1）单宿，只连接一个ISP并且只有一条线路<br>2）双宿，只连接一个ISP但有两条以上线路<br>3）多宿，连接多个ISP并且每个ISP只有一条线路<br>4）双多宿，连接多个ISP并且每个ISP有多条线路</p>
 <a id="more"></a>
-<p>2.bgp的消息和表<br>1）open：只发一次，建立邻居关系，bgp的邻居关系(peer对等体关系)是人工指定的，不需要发现<br>keepalive：维护对等体关系，间隔60s发送，有老化时间180s<br>update：包括NLRI(网络层可达信息，路径信息)、目标网络、更新源、属性13个(bgp的选路依据)<br>notification：对等体关系非正常时出现<br>2）邻接表：所有形成对等体关系的邻居信息<br>bgp转发表：一条条NLRI（更新路由条目）<br>bgp路由表：路由代码B（AS内：200，AS外：20）</p>
-<p>3.bgp的peer关系分类<br>IBGP peer：内部bgp对等体关系   AS内建立<br>EBGP peer：外部bgp对等体关系 AS间建立<br>bgp收集消息、扩散消息</p>
-<p>4.bgp open跳数<br> open跳数控制了消息传递的范围<br>IBGP open跳数为255，IBGP可跨设备建立peer<br>EBGP open跳数为1，直连建立<br>EBGP多跳：把open跳数变大</p>
-<p>5.bgp peer关系的建立过程<br>首先A、B为idle空闲状态，3~5s后进入connect状态（尝试建立TCP，目标端口179），若成功，进入opensent，open已发送，等待对方openconfirm。若不成功，进入actiive，重新建立TCP连接，若成功进入opensent，若3次不成功进入idle状态。openconfirm状态等待keepalive，进入established状态，发送update消息。</p>
-<p>6.bgp的标识<br>1）AS号：1~65535，1~64511为公有，64512~65535为私有<br>2）RID</p>
-<p>7.bgp的标准配置<br>router bgp <as-id><br>bgp router-id <a.b.c.d>  //必须是真实的ip地址，与eigrp、ospf不同<br>neighbor <peer-address>(对方的物理接口地址或loopback地址)  remote-as <peer-as-id> //指定peer关系<br>neighbor <peer-address> update-source <local-interface> //指定更新源</local-interface></peer-address></peer-as-id></peer-address></a.b.c.d></as-id></p>
+<p>2.bgp的消息和表<br>1）open：只发一次，建立邻居关系，bgp的邻居关系(peer对等体关系)是人工指定的，不需要发现<br>keepalive：维护对等体关系，间隔60s发送，有老化时间180s<br>update：包括NLRI(网络层可达信息，路径信息)、目标网络、更新源、属性13个(bgp的选路依据)，触发更新（有变化才发）和增量更新（只发变化的）<br>notification：对等体关系非正常时出现，错误通告</p>
+<p>2）邻接表：所有形成对等体关系的邻居信息（TCP，端口号179，邻居必须手动指定）<br>bgp转发表：一条条NLRI（更新路由条目）<br>bgp路由表：路由代码B（AS内：200，AS外：20）</p>
+<p>3.bgp的peer关系分类（bgp中，一台路由器只能属于一个AS）<br>IBGP peer：内部bgp对等体关系   AS内建立<br>EBGP peer：外部bgp对等体关系 AS间建立<br>bgp收集消息、扩散消息</p>
+<p>4.bgp open跳数<br> open跳数控制了消息传递的范围<br>IBGP open跳数为255，IBGP可跨设备建立peer<br>EBGP open跳数为1，直连建立<br>EBGP多跳：把open跳数变大，默认为1</p>
+<p>5.bgp peer关系的建立过程<br>首先A、B为idle空闲状态，3~5s后进入connect状态（尝试建立TCP，目标端口179），若成功，进入opensent，open已发送，等待对方openconfirm。若不成功，进入actiive，重新建立TCP连接，若成功进入opensent，若3次不成功进入idle状态。openconfirm状态等待keepalive，进入established状态，发送update消息。<br>在connect状态，发送tcp，等待恢回复，倒计时，60s、120s、240s、480s（有4次机会，依次增加）<br>6.bgp的标识<br>1）AS号：1~65535，1~64511为公有，64512~65535为私有<br>2）RID</p>
+<p>7.bgp的标准配置<br>router bgp <as-id><br>bgp router-id <a.b.c.d>  //必须是真实的ip地址，与eigrp、ospf不同<br>neighbor <peer-address>(对方的物理接口地址或loopback地址)  remote-as <peer-as-id>(对端的as号) //指定peer关系n<br>neighbor <peer-address> update-source <local-interface> //指定更新源，本地的哪个接口与对方建立，当peer-address为直连接口，不必敲这个命令，若为环回口，Local-interface为loopback 0</local-interface></peer-address></peer-as-id></peer-address></a.b.c.d></as-id></p>
 <p>peer地址建议采用对端环回口地址，因为更加稳定，所以路由层面上必须抵达对方的loopback地址，不然tcp连接无法成功。<br>更新源往往也建议采用本地loopback口网络，更加稳定。</p>
-<p>neighbor <peer-address> ebgp-mutihop <1~255> //设置ebgp的多跳<br>network <a.b.c.d> mask &lt;掩码&gt;  //使用network 命令发布路由信息，把路由手工加进BGP路由，此网络必须在路由表中，或者使用重分布技术把路由宣告进bgp</a.b.c.d></1~255></peer-address></p>
-<p>show ip bgp neighbor/summary</p>
+<p>neighbor <peer-address> ebgp-mutihop <1~255> //设置ebgp的多跳<br>network <a.b.c.d> mask &lt;掩码&gt;  //使用network 命令发布路由信息，把路由手工加进BGP路由，此网络必须在路由表中（不管是不是本地的网络），或者使用重分布技术把路由宣告进bgp<br>neighbor <peer-address> next-hop-self //下一跳改成自己<br>show ip bgp neighbor/summary //查看bgp邻居关系</peer-address></a.b.c.d></1~255></peer-address></p>
+<p>neighbor <peer-address> route-reflector-client  //将自己收到的bgp路由反射给peer-address</peer-address></p>
+<p>neighbor &lt;对等体组名字&gt; peer-group //创建对等体组<br>neighbor &lt;对等体组名字&gt; remote-as <as-id><br>nighbor <peer-address> peer-group &lt;对等体组名字&gt; //至少指定1个参数后，才能将nei加入对等体组</peer-address></as-id></p>
+<p>bgp路由传递规则：<br>1）bgp只会将本地正在使用的条目传递给对等体。bgp表中所标识的下一跳，如若不可达，bgp路由器不会将其选为最优路径，不会去采用，也不会传递给其他对等体。<br>2）EBGP路由在IBGP传递时，是原封不动的传递，此时下一跳可能不可达。在EBGP传递时，会根据AS出口IP进行相应下一跳的变更。<br>3）IBGP中路由最多只能传递一跳。（解决办法：路由反射器）</p>
 <p>8.bgp配置中的自动汇总<br>1）bgp的auto-summary：控制了宣告的形式<br>a.精确宣告：no auto-summary<br>被宣告目标网络和掩码与路由表中的网络必须一模一样<br>b.若为auto-summary，对外部路由自动汇聚成主网</p>
 <p>9.bgp的同步原则：默认同步关闭<br>当前设备从IBGP peer学习路由时才考虑同步问题，如果同步被关闭，则不考虑。<br>1）什么是同步<br>指同一个路由被当前设备的bgp与底层协议(rip/eigrp/ospf)同时学习，为了避免路由可不达问题。</p>
 <p>3）为什么要关闭同步<br>为了避免不必要的选路问题<br>同步必然被关闭，所以路由黑洞和路由不可达问题不是bgp关系的。</p>
 <p>11.路由黑洞和黑洞路由<br>1）路由黑洞</p>
 <p>   路由黑洞一般是在网络边界做汇总回程路由的时候产生的一种不太愿意出现的现象，就是汇总的时候有时会有一些网段并不在内网中存在，但是又包含在汇总后的网段中，如果在这个汇总的边界设备上同时还配置了缺省路由，就可能出现一些问题。这时，如果有数据包发向那些不在内网出现的网段（但是又包含在汇总网段）所在的路由器，根据最长匹配原则，并没有找到对应的路由，只能根据默认路由又回到原来的路由器，这就形成了环路，直到TTL值超时，丢弃。</p>
+<p>解决方式：重分发或者全互联网络拓扑</p>
 <p>2）黑洞路由</p>
 <p>　　上面的路由黑洞是我们不愿意看到的场景，所以要有解决这个问题的方案，就是黑洞路由啦，其实就是一条特殊的静态路由，下一跳指向null 0口，一个不存在的口，结果就是将匹配这条路由的数据包丢弃。</p>
 <p>　　所以说，如果是精确汇总的话，就不会出现路由黑洞。举个例子</p>
@@ -209,8 +213,8 @@
 <p>   R1上有172.16.0.0/24、172.16.1.0/24、172.16.2.0/24三个网段，现对其进行了汇总：172.16.0.0/22。这就出现了问题：并没有172.16.3.0/24这个网段，但是汇总后就出现了，并通告了给了R2。并且在R1上配置了一条默认路由：当有未知目的地址的数据包时，转发到R2。</p>
 <p>  现在，R2收到一个目的地址在172.16.3.0/24网段的数据包，根据路由表172.16.0.0/22—&gt;R1 ，将该数据包转发到了R1，因为R1上并没有这个172.16.3.0/24网段，根据默认路由又发回了R2，形成了环路，直到TTL为0，才会被丢弃，这同时也耗费了这两个路由器的系统资源。</p>
 <p>　　解决方法：在对路由器R1做汇总路由时加一条指向null0的路由（黑洞路由）：172.16.0.0/22 –&gt; null0。即表示当R1收到目的地址指向自己的数据包将被直接丢弃。</p>
-<p>10.bgp的路由更新属性<br>1）公认必选：默认所以的厂商都支持<br>a.next-hop-address：更新源<br>若为0.0.0.0 ，代表下一跳为本地<br>b.as-path：as的路径信息，路由更新在ebgp间时才有，经过的as号会被记录<br>c.originate-code：起源代码，描述路由进入bgp的方式<br>i-&gt;IGP被network宣告<br>?-&gt;外部路由，通过重分布代入bgp<br>e-&gt;EGP</p>
-<p>2）公认可选<br>a.LP：本地优先，路由更新在IBGP间被传递时，LP才会被赋值，在EBGP之间会为空。<br>默认为100，遵从“越大越优”<br>影响自身成为IBGP peer出站路径的抉择。<br>b.atomic-aggregate：原子聚合。bgp边界自动汇总和手动汇总出现时才会出现。<br>警告属性，用来设置提醒更新接受者可能丢失属性。</p>
+<p>10.bgp的路由更新属性<br>1）公认必选：默认所以的厂商都支持<br>a.next-hop-address：更新源<br>若为0.0.0.0 ，代表下一跳为本地<br>b.as-path：as的路径信息，路由更新在ebgp间时才有，经过的as号会被记录<br>c.originate-code：起源代码，描述路由进入bgp的方式<br>i-&gt;IGP被network宣告<br>?-&gt;外部路由，通过重分发代入bgp<br>e-&gt;EGP</p>
+<p>2）公认可选<br>a.LP：本地优先，路由更新在IBGP间被传递时，LP才会被赋值，在EBGP之间会为空。<br>默认为100，遵从“越大越优”<br>影响自身成为IBGP peer出站路径的抉择。<br>bgp default local-preference <lp值><br>b.atomic-aggregate：原子聚合。bgp边界自动汇总和手动汇总出现时才会出现。<br>警告属性，用来设置提醒更新接受者可能丢失属性。</lp值></p>
 <p>3）任选可传递：并非所有厂商支持，但是会被传递  ？？？？？？<br>a.aggregated：被汇总属性，被汇总后的路由起源代码也是i。<br>b.communicate：团体属性flag，拥有相同标志的一组路由<br>公认团体属性：厂商定义，一定会被传递<br>自定义团体属性：管理员自定<br>公认团体属性的标志（控制更新传递的范围）：</p>
 <ul>
 <li>internet：共享给IBGP、EBGP</li>
@@ -223,7 +227,8 @@
 <p>12.bgp路由更新下一跳判断<br>1）路由起源于as外，被IBGP peer通告，下一跳是起源，此时下一跳可能不可达。<br>2）路由起源于as外，被EBGP peer通告，下一跳是通告者。<br>3）路由起源于as内，被IBGP peer通告，下一跳是通告者。</p>
 <p>13.bgp转发表的查看方式与状态符号的解释<br>show ip bgp<br>*&gt;： 星号代表可用、有效，&gt;含义是best，可用网络的最佳路径信息<br>若无&gt;，不会被当成更新发送</p>
 <p>14.next-hop-self和next-hop-unchange<br>1）next-hop-self作用<br>将起源于as外的路由通告给IBGP peer时，下一跳该成自己，解决的下一跳不可达的问题<br>2）next-hop-unchange作用<br>它是针对于EBGP peer起效，不改变下一跳</p>
-<p>15.bgp的选路原则：基于路由更新属性<br>有13步，按照顺序每一步都依次进行评估直到找到一条最佳路径为止。<br>1）路径的权重值（cisco私有）weight，在in的方向上<br>设置对等体共享的路由更新权重值，越大路径越优<br>且只对配置该参数的<strong>本地路由器有效，不能传递</strong>。缺省条件下，本地始发的路径具有相同的WEIGHT值（32768），所有其它的路径的WEIGHT值为0。<br>想让某条路由在自己的路由表中优先，妄图直接修改weight的话 就在neighbour 加入一条neighbour xxxx weight 100 那么这个邻居传过来的路由直接改了，这样就可以直接保证它的优先级。<br>只影响自己，不影响别人<br>2）路径的LP值：in/out方向<br>3）目标网络起源于本地最优<br>4）路径as-path信息长短，越短越优<br>5）比较路径起源代码，i优于e优于？  in/out方向<br>6）路径的MED值 in/out方向<br>7）EBGP路由优于IBGP路由<br>8）优先最佳的IGP路径<br>9） 如果配置了maximum-paths[ibgp]n,  n在2－6之间，并且存在多条等价成本的路径，那么BGP会在IP路由选择表中插入最多n条接收到的路径。这就激活了BGP多路径负载分担特性。如果没有使用可选关键字ibgp，则多路径特性就仅仅应用于ebgp路径。当不激活这一选项时，它的缺省值为1。<br>10）优选最先得到的EBGP路由路径<br>11）优选最小BGP RID设备提供的路由路径<br>12）优选拥有最短cluster-id对应的路由路径<br>13）优选拥有最小的邻接地址的路径路径<br><a href="https://blog.csdn.net/blakegao/article/details/14524179" target="_blank" rel="noopener">参考</a></p>
+<p>15.bgp的选路原则：基于路由更新属性<br>有13步，按照顺序每一步都依次进行评估直到找到一条最佳路径为止。<br>1）路径的权重值（cisco私有）weight，在in的方向上<br>设置对等体共享的路由更新权重值，越大路径越优<br>且只对配置该参数的<strong>本地路由器有效，不能传递</strong>。缺省条件下，本地路由器宣告、重分发、汇总的路径具有相同的WEIGHT值（32768），学习到的路径的WEIGHT值为0。<br>想让某条路由在自己的路由表中优先，妄图直接修改weight的话 就在neighbour 加入一条neighbour xxxx weight 100 那么这个邻居传过来的路由直接改了，这样就可以直接保证它的优先级。<br>只影响自己，不影响别人<br>2）路径的LP值：in/out方向<br>只在IBGP中传递，影响IBGP内部选路，大优，默认情况下优先级为100<br>3）目标网络起源于本地最优<br>next-hop为0.0.0.0为起源为本地，而在思科设备上，起源于本地的weight为32768大于学习到路由weight100<br>4）路径as-path信息长短（3、2、1，此路由先经过as1 ，再到as2，再到as3）<br>越短越优，更改时只能加不能减，只能在EBGP的peer之间进行<br>5）比较路径起源代码，i优于e优于？  in/out方向<br>6）路径的MED值（即metric）<br>小优，用于影响邻居AS到本AS的流量从哪个接口进来，这是通过相邻AS的EBGP邻居发送具有不同MED值的路由条目来实现的。（一般在EBGP邻居的OUT方向的做）</p>
+<p>7）EBGP路由优于IBGP路由<br>8）优先最佳的IGP路径<br>9） 如果配置了maximum-paths[ibgp]n,  n在2－6之间，并且存在多条等价成本的路径，那么BGP会在IP路由选择表中插入最多n条接收到的路径。这就激活了BGP多路径负载分担特性。如果没有使用可选关键字ibgp，则多路径特性就仅仅应用于ebgp路径。当不激活这一选项时，它的缺省值为1。<br>10）优选最先得到的EBGP路由路径<br>11）优选最小BGP RID设备提供的路由路径<br>12）优选拥有最短cluster-id对应的路由路径<br>13）优选拥有最小的邻接地址的路径路径<br><a href="https://blog.csdn.net/blakegao/article/details/14524179" target="_blank" rel="noopener">参考</a></p>
 <p>16.分发列表（用acl来放行或者拒绝）<br><a href="https://blog.csdn.net/ningmeng_bumeng/article/details/78614362" target="_blank" rel="noopener">ACL访问控制列表详解</a></p>
 <p>先用acl来放行或者拒绝</p>
 <p>router rip<br>distribute-list <acl编号> in/out</acl编号></p>
@@ -485,6 +490,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">go</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
              
@@ -497,7 +506,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SDN</a>
+                <a href="javascript:void(0)" class="js-tag color5">IPFS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -505,11 +514,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">RIP协议</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IPFS</a>
+                <a href="javascript:void(0)" class="js-tag color4">SDN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -517,7 +522,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">go语言</a>
+                <a href="javascript:void(0)" class="js-tag color5">OSPF</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">RIP协议</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -525,7 +534,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">OSPF</a>
+                <a href="javascript:void(0)" class="js-tag color5">go语言</a>
               </li>
              
               <li class="article-tag-list-item">

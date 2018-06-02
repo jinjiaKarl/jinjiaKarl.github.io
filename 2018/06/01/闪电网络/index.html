@@ -6,26 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="www.jinjiaKarl.com">
-  <title>以太坊智能合约入门 | 陌离</title>
+  <title>闪电网络 | 陌离</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Hello World智能合约实例 内容大纲 完整的智能合约例示 合约语言：Solidity 部署语言：Web3.js系统和环境 mac os 10.12.6 geth首先从搭建的私有网络中创建2个账户，进行挖矿，将第一个账户挖矿得到的以太币转账部分给第二个账户进行部署智能合约（搭建私有网络详看上一篇文章），接下来进行详细步骤。">
-<meta name="keywords" content="以太坊">
+  <meta name="description" content="闪电网络的技术是革命性的，将实现即时0手续费的小金额支付。第一步是解决扩容问题，第二步就是解决共通性问题，利用原子交换协议和不同链条的状态通道结合，进行不同公有链原生币兑换，例如实时兑换莱特币到比特币，以太坊到莱特币等。智能合约升级到可以使用状态通道可以解决资源共享问题。">
+<meta name="keywords" content="区块链,闪电网络">
 <meta property="og:type" content="article">
-<meta property="og:title" content="以太坊智能合约入门">
-<meta property="og:url" content="www.jinjiaKarl.com/2018/03/05/以太坊智能合约入门/index.html">
+<meta property="og:title" content="闪电网络">
+<meta property="og:url" content="www.jinjiaKarl.com/2018/06/01/闪电网络/index.html">
 <meta property="og:site_name" content="陌离">
-<meta property="og:description" content="Hello World智能合约实例 内容大纲 完整的智能合约例示 合约语言：Solidity 部署语言：Web3.js系统和环境 mac os 10.12.6 geth首先从搭建的私有网络中创建2个账户，进行挖矿，将第一个账户挖矿得到的以太币转账部分给第二个账户进行部署智能合约（搭建私有网络详看上一篇文章），接下来进行详细步骤。">
+<meta property="og:description" content="闪电网络的技术是革命性的，将实现即时0手续费的小金额支付。第一步是解决扩容问题，第二步就是解决共通性问题，利用原子交换协议和不同链条的状态通道结合，进行不同公有链原生币兑换，例如实时兑换莱特币到比特币，以太坊到莱特币等。智能合约升级到可以使用状态通道可以解决资源共享问题。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/31.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/32.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/33.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/34.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/35.png">
-<meta property="og:updated_time" content="2018-03-05T11:21:07.000Z">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/47685/201803/47685-20180321163939675-878000489.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/47685/201803/47685-20180321164005836-1255620832.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/47685/201803/47685-20180321164103003-1525723640.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/47685/201803/47685-20180321164125002-909073168.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/47685/201803/47685-20180321164204687-973306775.png">
+<meta property="og:updated_time" content="2018-06-02T01:15:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="以太坊智能合约入门">
-<meta name="twitter:description" content="Hello World智能合约实例 内容大纲 完整的智能合约例示 合约语言：Solidity 部署语言：Web3.js系统和环境 mac os 10.12.6 geth首先从搭建的私有网络中创建2个账户，进行挖矿，将第一个账户挖矿得到的以太币转账部分给第二个账户进行部署智能合约（搭建私有网络详看上一篇文章），接下来进行详细步骤。">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/31.png">
+<meta name="twitter:title" content="闪电网络">
+<meta name="twitter:description" content="闪电网络的技术是革命性的，将实现即时0手续费的小金额支付。第一步是解决扩容问题，第二步就是解决共通性问题，利用原子交换协议和不同链条的状态通道结合，进行不同公有链原生币兑换，例如实时兑换莱特币到比特币，以太坊到莱特币等。智能合约升级到可以使用状态通道可以解决资源共享问题。">
+<meta name="twitter:image" content="https://images2018.cnblogs.com/blog/47685/201803/47685-20180321163939675-878000489.png">
   
     <link rel="alternative" href="/atom.xml" title="陌离" type="application/atom+xml">
   
@@ -161,20 +161,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-以太坊智能合约入门" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-闪电网络" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      以太坊智能合约入门
+      闪电网络
     </h1>
   
 
         
-        <a href="/2018/03/05/以太坊智能合约入门/" class="archive-article-date">
-  	<time datetime="2018-03-05T04:43:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-05</time>
+        <a href="/2018/06/01/闪电网络/" class="archive-article-date">
+  	<time datetime="2018-06-01T14:37:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-01</time>
 </a>
         
       </header>
@@ -190,22 +190,32 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Hello-World智能合约实例"><a href="#Hello-World智能合约实例" class="headerlink" title="Hello World智能合约实例"></a>Hello World智能合约实例</h2><hr>
-<h3 id="内容大纲"><a href="#内容大纲" class="headerlink" title="内容大纲"></a>内容大纲</h3><ul>
-<li>完整的智能合约例示</li>
-<li>合约语言：Solidity</li>
-<li>部署语言：Web3.js<h3 id="系统和环境"><a href="#系统和环境" class="headerlink" title="系统和环境"></a>系统和环境</h3></li>
-<li>mac os 10.12.6</li>
-<li>geth<h3 id="首先从搭建的私有网络中创建2个账户，进行挖矿，将第一个账户挖矿得到的以太币转账部分给第二个账户进行部署智能合约（搭建私有网络详看上一篇文章），接下来进行详细步骤。"><a href="#首先从搭建的私有网络中创建2个账户，进行挖矿，将第一个账户挖矿得到的以太币转账部分给第二个账户进行部署智能合约（搭建私有网络详看上一篇文章），接下来进行详细步骤。" class="headerlink" title="首先从搭建的私有网络中创建2个账户，进行挖矿，将第一个账户挖矿得到的以太币转账部分给第二个账户进行部署智能合约（搭建私有网络详看上一篇文章），接下来进行详细步骤。"></a>首先从搭建的私有网络中创建2个账户，进行挖矿，将第一个账户挖矿得到的以太币转账部分给第二个账户进行部署智能合约（搭建私有网络详看上一篇文章），接下来进行详细步骤。</h3><a id="more"></a>
-</li>
-</ul>
-<hr>
-<p>通过转账我们查看账户1的余额为4以太币<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/31.png" alt=""><br>首先查看源码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">pramgma solidity ^0.4.0</span><br><span class="line">contract Greeter</span><br><span class="line">&#123;</span><br><span class="line">    address creator;</span><br><span class="line">    string greeting;</span><br><span class="line"></span><br><span class="line">    function Greeter(string _greeting) public payable</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        creator = msg.sender;</span><br><span class="line"></span><br><span class="line">        greeting = _greeting;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function greet()</span><br><span class="line"></span><br><span class="line">    constant returns (string)  </span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        return greeting;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function getBlockNumber() constant returns(uint)</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        return block.number;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function setGreeting(string _newgreeting)</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        greeting = _newgreeting;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function kill()</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        if (msg.sender == creator)</span><br><span class="line"></span><br><span class="line">            suicide(creator);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>此处我们不解释源码的具体含义，将此复制到<a href="http://remix.ethereum.org/" target="_blank" rel="noopener">Remix Solidity</a><br>进行编译，然后点击detail，找到WEB3DEPLOY，创建delopyGreeting.js文件（由第二个账户向合约地址转账1个以太币），将其代码复制到其中，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">var _greeting = “Hello,World!&quot;;</span><br><span class="line">var greeterContract = web3.eth.contract([&#123;&quot;constant&quot;:false,&quot;inputs&quot;:[],&quot;name&quot;:&quot;kill&quot;,&quot;outputs&quot;:[],&quot;payable&quot;:false,&quot;stateMutability&quot;:&quot;nonpayable&quot;,&quot;type&quot;:&quot;function&quot;&#125;,&#123;&quot;constant&quot;:true,&quot;inputs&quot;:[],&quot;name&quot;:&quot;getBlockNumber&quot;,&quot;outputs&quot;:[&#123;&quot;name&quot;:&quot;&quot;,&quot;type&quot;:&quot;uint256&quot;&#125;],&quot;payable&quot;:false,&quot;stateMutability&quot;:&quot;view&quot;,&quot;type&quot;:&quot;function&quot;&#125;,&#123;&quot;constant&quot;:false,&quot;inputs&quot;:[&#123;&quot;name&quot;:&quot;_newgreeting&quot;,&quot;type&quot;:&quot;string&quot;&#125;],&quot;name&quot;:&quot;setGreeting&quot;,&quot;outputs&quot;:[],&quot;payable&quot;:false,&quot;stateMutability&quot;:&quot;nonpayable&quot;,&quot;type&quot;:&quot;function&quot;&#125;,&#123;&quot;constant&quot;:true,&quot;inputs&quot;:[],&quot;name&quot;:&quot;greet&quot;,&quot;outputs&quot;:[&#123;&quot;name&quot;:&quot;&quot;,&quot;type&quot;:&quot;string&quot;&#125;],&quot;payable&quot;:false,&quot;stateMutability&quot;:&quot;view&quot;,&quot;type&quot;:&quot;function&quot;&#125;,&#123;&quot;inputs&quot;:[&#123;&quot;name&quot;:&quot;_greeting&quot;,&quot;type&quot;:&quot;string&quot;&#125;],&quot;payable&quot;:true,&quot;stateMutability&quot;:&quot;payable&quot;,&quot;type&quot;:&quot;constructor&quot;&#125;]);</span><br><span class="line"></span><br><span class="line">var greeter = greeterContract.new(</span><br><span class="line"></span><br><span class="line">   _greeting,</span><br><span class="line"></span><br><span class="line">   &#123;</span><br><span class="line"></span><br><span class="line">     from: web3.eth.accounts[1],</span><br><span class="line"></span><br><span class="line">     value:web3.toWei(&quot;1&quot;,”ether”),</span><br><span class="line"></span><br><span class="line">     data: &apos;0x606060405260405161050138038061050183398101604052808051820191905050336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550806001908051906020019061007692919061007d565b5050610122565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106100be57805160ff19168380011785556100ec565b828001600101855582156100ec579182015b828111156100eb5782518255916020019190600101906100d0565b5b5090506100f991906100fd565b5090565b61011f91905b8082111561011b576000816000905550600101610103565b5090565b90565b6103d0806101316000396000f300606060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806341c0e1b51461006757806342cbb15c1461007c578063a4136862146100a5578063cfae321714610102575b600080fd5b341561007257600080fd5b61007a610190565b005b341561008757600080fd5b61008f610221565b6040518082815260200191505060405180910390f35b34156100b057600080fd5b610100600480803590602001908201803590602001908080601f01602080910402602001604051908101604052809392919081815260200183838082843782019150505050505091905050610229565b005b341561010d57600080fd5b610115610243565b6040518080602001828103825283818151815260200191508051906020019080838360005b8381101561015557808201518184015260208101905061013a565b50505050905090810190601f1680156101825780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141561021f576000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16ff5b565b600043905090565b806001908051906020019061023f9291906102eb565b5050565b61024b61036b565b60018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156102e15780601f106102b6576101008083540402835291602001916102e1565b820191906000526020600020905b8154815290600101906020018083116102c457829003601f168201915b5050505050905090565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061032c57805160ff191683800117855561035a565b8280016001018555821561035a579182015b8281111561035957825182559160200191906001019061033e565b5b509050610367919061037f565b5090565b602060405190810160405280600081525090565b6103a191905b8082111561039d576000816000905550600101610385565b5090565b905600a165627a7a723058206728295a85eb706e079944ba392ac99fc9ba1bdf6e3a45fdd0bec5b4d9ab8d490029&apos;,</span><br><span class="line"></span><br><span class="line">     gas: &apos;4700000&apos;</span><br><span class="line"></span><br><span class="line">   &#125;, function (e, contract)&#123;</span><br><span class="line"></span><br><span class="line">    console.log(e, contract);</span><br><span class="line"></span><br><span class="line">    if (typeof contract.address !== &apos;undefined&apos;) &#123;</span><br><span class="line"></span><br><span class="line">         console.log(&apos;Contract mined! address: &apos; + contract.address + &apos; transactionHash: &apos; + contract.transactionHash);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>首先解锁第二个账户，然后将delopyGreeting.js文件中的内容直接复制到geth客户端上，将然后挖矿将其打包进区块中，就部署成功。<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/32.png" alt=""><br>记住合约的地址0x9d748b7767a1b65aa017a7bdcf025bdb03e94d86<br>查看交易信息（此处的input就是合约代码信息）：<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/33.png" alt=""><br>然后执行如下代码（queeryGreeting.js），即可看到hello world的信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var _greeting = &quot;Hello,World!&quot;;</span><br><span class="line">var greeterContract = web3.eth.contract([&#123;&quot;constant&quot;:false,&quot;inputs&quot;:[],&quot;name&quot;:&quot;kill&quot;,&quot;outputs&quot;:[],&quot;payable&quot;:false,&quot;stateMutability&quot;:&quot;nonpayable&quot;,&quot;type&quot;:&quot;function&quot;&#125;,&#123;&quot;constant&quot;:true,&quot;inputs&quot;:[],&quot;name&quot;:&quot;getBlockNumber&quot;,&quot;outputs&quot;:[&#123;&quot;name&quot;:&quot;&quot;,&quot;type&quot;:&quot;uint256&quot;&#125;],&quot;payable&quot;:false,&quot;stateMutability&quot;:&quot;view&quot;,&quot;type&quot;:&quot;function&quot;&#125;,&#123;&quot;constant&quot;:false,&quot;inputs&quot;:[&#123;&quot;name&quot;:&quot;_newgreeting&quot;,&quot;type&quot;:&quot;string&quot;&#125;],&quot;name&quot;:&quot;setGreeting&quot;,&quot;outputs&quot;:[],&quot;payable&quot;:false,&quot;stateMutability&quot;:&quot;nonpayable&quot;,&quot;type&quot;:&quot;function&quot;&#125;,&#123;&quot;constant&quot;:true,&quot;inputs&quot;:[],&quot;name&quot;:&quot;greet&quot;,&quot;outputs&quot;:[&#123;&quot;name&quot;:&quot;&quot;,&quot;type&quot;:&quot;string&quot;&#125;],&quot;payable&quot;:false,&quot;stateMutability&quot;:&quot;view&quot;,&quot;type&quot;:&quot;function&quot;&#125;,&#123;&quot;inputs&quot;:[&#123;&quot;name&quot;:&quot;_greeting&quot;,&quot;type&quot;:&quot;string&quot;&#125;],&quot;payable&quot;:true,&quot;stateMutability&quot;:&quot;payable&quot;,&quot;type&quot;:&quot;constructor&quot;&#125;]);</span><br><span class="line">var myContractInstance = greeterContract.at(&quot;0x9d748b7767a1b65aa017a7bdcf025bdb03e94d86&quot;);//此处为合约的地址信息</span><br><span class="line">var result = myContractInstance.getBlockNumber(&#123;from:web3.eth.accounts[1]&#125;);</span><br><span class="line">console.log(result);</span><br><span class="line">var result = myContractInstance.greet(&#123;from:web3.eth.accounts[1]&#125;);</span><br><span class="line">console.log(result);</span><br></pre></td></tr></table></figure></p>
-<p>输出helloworld<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/34.png" alt=""><br>输出（setGreeting.js）this is a new world<br><figure class="highlight plain"><figcaption><span>_greeting </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var greeterContract = web3.eth.contract([&#123;&quot;constant&quot;:false,&quot;inputs&quot;:[],&quot;name&quot;:&quot;kill&quot;,&quot;outputs&quot;:[],&quot;payable&quot;:false,&quot;stateMutability&quot;:&quot;nonpayable&quot;,&quot;type&quot;:&quot;function&quot;&#125;,&#123;&quot;constant&quot;:true,&quot;inputs&quot;:[],&quot;name&quot;:&quot;getBlockNumber&quot;,&quot;outputs&quot;:[&#123;&quot;name&quot;:&quot;&quot;,&quot;type&quot;:&quot;uint256&quot;&#125;],&quot;payable&quot;:false,&quot;stateMutability&quot;:&quot;view&quot;,&quot;type&quot;:&quot;function&quot;&#125;,&#123;&quot;constant&quot;:false,&quot;inputs&quot;:[&#123;&quot;name&quot;:&quot;_newgreeting&quot;,&quot;type&quot;:&quot;string&quot;&#125;],&quot;name&quot;:&quot;setGreeting&quot;,&quot;outputs&quot;:[],&quot;payable&quot;:false,&quot;stateMutability&quot;:&quot;nonpayable&quot;,&quot;type&quot;:&quot;function&quot;&#125;,&#123;&quot;constant&quot;:true,&quot;inputs&quot;:[],&quot;name&quot;:&quot;greet&quot;,&quot;outputs&quot;:[&#123;&quot;name&quot;:&quot;&quot;,&quot;type&quot;:&quot;string&quot;&#125;],&quot;payable&quot;:false,&quot;stateMutability&quot;:&quot;view&quot;,&quot;type&quot;:&quot;function&quot;&#125;,&#123;&quot;inputs&quot;:[&#123;&quot;name&quot;:&quot;_greeting&quot;,&quot;type&quot;:&quot;string&quot;&#125;],&quot;payable&quot;:true,&quot;stateMutability&quot;:&quot;payable&quot;,&quot;type&quot;:&quot;constructor&quot;&#125;]);</span><br><span class="line">var myContractInstance = greeterContract.at(&quot;0x9d748b7767a1b65aa017a7bdcf025bdb03e94d86&quot;);</span><br><span class="line">var result = myContractInstance.setGreeting(&quot; This is a new world!&quot;,&#123;from:web3.eth.accounts[1]&#125;);</span><br><span class="line">console.log(result);</span><br><span class="line">var result = myContractInstance.greet(&#123;from:web3.eth.accounts[1]&#125;);</span><br><span class="line">console.log(result);</span><br></pre></td></tr></table></figure></p>
-<p>挖矿后，将交易写入区块后，再执行queeryGreeting.js文件中的内容，即可看到this is a new world<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/35.png" alt=""><br>最后删除这个合约(killGreeting)<br><figure class="highlight plain"><figcaption><span>_greeting </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var greeterContract = web3.eth.contract([&#123;&quot;constant&quot;:false,&quot;inputs&quot;:[],&quot;name&quot;:&quot;kill&quot;,&quot;outputs&quot;:[],&quot;payable&quot;:false,&quot;stateMutability&quot;:&quot;nonpayable&quot;,&quot;type&quot;:&quot;function&quot;&#125;,&#123;&quot;constant&quot;:true,&quot;inputs&quot;:[],&quot;name&quot;:&quot;getBlockNumber&quot;,&quot;outputs&quot;:[&#123;&quot;name&quot;:&quot;&quot;,&quot;type&quot;:&quot;uint256&quot;&#125;],&quot;payable&quot;:false,&quot;stateMutability&quot;:&quot;view&quot;,&quot;type&quot;:&quot;function&quot;&#125;,&#123;&quot;constant&quot;:false,&quot;inputs&quot;:[&#123;&quot;name&quot;:&quot;_newgreeting&quot;,&quot;type&quot;:&quot;string&quot;&#125;],&quot;name&quot;:&quot;setGreeting&quot;,&quot;outputs&quot;:[],&quot;payable&quot;:false,&quot;stateMutability&quot;:&quot;nonpayable&quot;,&quot;type&quot;:&quot;function&quot;&#125;,&#123;&quot;constant&quot;:true,&quot;inputs&quot;:[],&quot;name&quot;:&quot;greet&quot;,&quot;outputs&quot;:[&#123;&quot;name&quot;:&quot;&quot;,&quot;type&quot;:&quot;string&quot;&#125;],&quot;payable&quot;:false,&quot;stateMutability&quot;:&quot;view&quot;,&quot;type&quot;:&quot;function&quot;&#125;,&#123;&quot;inputs&quot;:[&#123;&quot;name&quot;:&quot;_greeting&quot;,&quot;type&quot;:&quot;string&quot;&#125;],&quot;payable&quot;:true,&quot;stateMutability&quot;:&quot;payable&quot;,&quot;type&quot;:&quot;constructor&quot;&#125;]);</span><br><span class="line">var myContractInstance = greeterContract.at(&quot;0x9d748b7767a1b65aa017a7bdcf025bdb03e94d86&quot;);</span><br><span class="line">web3.personal.unlockAccount(web3.eth.accounts[1],&quot;123456&quot;);</span><br><span class="line">var result = myContractInstance.kill(&#123;from:web3.eth.accounts[1]&#125;);</span><br><span class="line">console.log(result);</span><br></pre></td></tr></table></figure></p>
-<p><a href="www.jinjiakarl.com">个人网站</a><br><a href="https://github.com/jinjiaKarl" target="_blank" rel="noopener">github地址</a></p>
+        <p>闪电网络的技术是革命性的，将实现即时0手续费的小金额支付。第一步是解决扩容问题，第二步就是解决共通性问题，利用原子交换协议和不同链条的状态通道结合，进行不同公有链原生币兑换，例如实时兑换莱特币到比特币，以太坊到莱特币等。智能合约升级到可以使用状态通道可以解决资源共享问题。<br><a id="more"></a><br>闪电网络的主要思路十分简单 – 将大量高频小额交易放到比特币区块链之外进行。</p>
+<p>核心的概念主要有两个：RSMC（Recoverable Sequence Maturity Contract）和 HTLC（Hashed Timelock Contract）。前者解决了链下交易的确认问题，后者解决了支付通道的问题。</p>
+<p>下面我们通过例子来看闪电网络是怎么工作的。<br>假设小明经常给小红转账，小红可能是街边的卖煎饼果子的，每天早上小明都去买一个煎饼果子，假设一个煎饼果子0.0001个比特币。连续去了3天之后，小明很郁闷，每次给小红转账0.0001个比特币手续费就够再买好几个了，所以小明跑去跟小红商量。</p>
+<p>小明：<br>红姐，你这边这个煎饼果子我真是喜欢，能不能在你这边挂个帐，然后我月底跟您结算？我不是没钱，我有钱，就是这个手续费和等待时间太长，太麻烦了。<br>挂账不行，你一旦跑了怎么办，我这是小本买卖，给你开了个头，其他客人都要挂账了，那我怎么做生意？</p>
+<p>小红：<br>要不你预付吧，钱先给我。</p>
+<p>小明：<br>也不行，我也担心你跑了呢？你这边是个路边摊啊。</p>
+<p>后来他俩想了个办法，他们找了一个透明的箱子，然后上面有两把锁，小明把1个比特币放在里面，这样双方都能看到有一个固定金额的比特币已经锁定在这个箱子里了，然后这里有2把钥匙，需要他们双方才能打开，里面的比特币才能拿出来。</p>
+<p><img src="https://images2018.cnblogs.com/blog/47685/201803/47685-20180321163939675-878000489.png" alt=""></p>
+<p>这样大家都放心，以后小明的所有消费也都记录在一个独立的账本上，每次消费双方签个字就可以完成交易，最后只有结算的时候，双方才打开这个箱子并算总账。只要箱子里的钱还够，小明可以这样消费很久，1个比特币的话，够他吃一年的煎饼果子。</p>
+<p><img src="https://images2018.cnblogs.com/blog/47685/201803/47685-20180321164005836-1255620832.png" alt=""></p>
+<p>根据这个例子，其实小明和小红之间创建了一个支付通道，创建的时候小明需要把一定金额的比特币锁定到一个多签名钱包，就相当于这个透明的箱子，这个钱包需要双方的秘钥才能打开。</p>
+<p>在通道建立好了之后，双方发生的所有交易，可以是单向的也可以是双向的，全部是链下进行。这些交易可以进行无数次，只要他俩的账上总额等于锁定的总额就行可以，小明和小红之间可以转来转去而不消耗任何链上资源，所有交易都是链下完成，免费，即时的。</p>
+<p>到了最后通道关闭的时候，也就是任意一方说“我现在想要结算了”，那么系统会核实双方的最终余额情况，  我这里的例子是小明还有0.7BTC，小红有0.3BTC， 这一条信息会广播到比特币的公链上，然后锁定的1个比特币，0.3个发放给小红，0.7个发放给小明。</p>
+<p>也就是说，在使用支付通道的情况下，只有2条信息是广播到公链上的。第一条创建通道和锁币的信息，以及最后一条关闭通道并确认最终余额。我刚刚的例子是单向的，如果交易关系是双向的话，也就是小明和小红需要经常双向来回转账，前期在锁定的时候，小明和小红可以各锁定1个比特币，然后按照同样的逻辑建立支付通道。</p>
+<p>闪电网络基本概念就是这样利用链下的支付通道解决链上的交易问题。那么看到这里可能你会说，很多时候我转账可能给某个人也就是发生一次关系，这种时候如果每次都要建立一个通道的话，其实也没解决什么问题。的确，<strong>所以闪电网络最厉害的地方是在于如果利用状态通道，让没有建立关系的两个人可以相互转账</strong>。</p>
+<p><img src="https://images2018.cnblogs.com/blog/47685/201803/47685-20180321164103003-1525723640.png" alt=""></p>
+<p>现在我们看到3个人，小明，小红和小黑。小明和小红有支付通道，小红和小黑有支付通道。这样小明就可以利用小红的通道支付给小黑了，就不需要单独跟小黑建立支付通道。但是中间又存在了一些信任的问题，如果小明把钱给了小红，他如何保证小红会把钱给小黑呢？有可能小红拿着钱就走了。</p>
+<p>所以这里加入了一个暗号，这个暗号只有小明这个发款人知道。</p>
+<p><img src="https://images2018.cnblogs.com/blog/47685/201803/47685-20180321164125002-909073168.png" alt=""></p>
+<p>例如：<br>例如小明现在要转0.1个比特币给小黑，暗号是天王盖地虎，然后小明把这个含有0.1比特币的箱子发给了小红，小红一看上面写着天王盖地虎暗号，知道这个钱她自己永远提不了，并箱子里有0.1个比特币最终目的地是小黑。</p>
+<p>小红到自己和小黑的通道里面给小黑也发了一个0.1比特币的箱子，暗号天王盖地虎。小黑收到小红的箱子后，小明就收到了提示，因为他查看交易记录发现箱子的确已经到了小黑那边，就告诉小黑，口令是小鸡炖蘑菇。</p>
+<p>小黑输入口令箱子打开，就从和小红的支付通道内拿走了0.1个比特币并把口令告诉了小红，小红得到暗号后，输入小鸡炖蘑菇，就可以打开小明当初的箱子同时拿回0.1个比特币。</p>
+<p>用同样的逻辑，我们可以跳转很多个不同的通道从而达到自己的目的地，当闪电网络建立起来之后，理论上来说我们可以通过不同的节点和任何人建立付款关系。</p>
+<p><img src="https://images2018.cnblogs.com/blog/47685/201803/47685-20180321164204687-973306775.png" alt=""></p>
+<p>像这张图一样，闪电网络应用后，相信交易所将会变成最大的中转节点，因为很多人可能会愿意去锁定一定的BTC和交易所建立通道，这样通过交易所跳转，这个网络就会铺的很广，很大。</p>
+<p>闪电网络有利有弊，有人看好有人看衰，不可否认两点是：链下节点会相对中心化；比特币交易速度会有大幅提升，交易费也会显著降低。</p>
 
       
 
@@ -250,7 +260,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">以太坊</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">区块链</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">闪电网络</a>
         		</li>
       		
 		</ul>
@@ -269,18 +283,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/03/06/区块链核心概念/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/06/01/隔离见证/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          区块链核心概念
+          隔离见证
         
       </div>
     </a>
   
   
-    <a href="/2018/03/04/搭建以太坊私有链进行挖矿和转账/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">搭建以太坊私有链进行挖矿和转账</div>
+    <a href="/2018/06/01/DAG/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">DAG</div>
       <i class="icon-circle-right"></i>
     </a>
   

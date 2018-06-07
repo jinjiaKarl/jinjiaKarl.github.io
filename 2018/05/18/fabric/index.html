@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="www.jinjiaKarl.com">
   <title>fabric | 陌离</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="完全去中心化：验证机可以任意加入，节点平等多中心化：验证机受管理机构的限制，只有通过授权的节点才能加入，授权的节点可以享有不同的权益，以相对平等换取一定的效率有效去中心化：在信息的共享、读取、写入等权限进行个性化设计 不同的机构之间构成一个信任的平台（朋友圈的概念） 特点：开源、高度模块化/可配置（例如bsscp模块、国密）、通用编程语言、准入许可（拉朋友进行，n/2+1个节点同意）、可插拔的共识">
+  <meta name="description" content="完全去中心化：验证机可以任意加入，节点平等多中心化：验证机受管理机构的限制，只有通过授权的节点才能加入，授权的节点可以享有不同的权益，以相对平等换取一定的效率有效去中心化：在信息的共享、读取、写入等权限进行个性化设计">
 <meta property="og:type" content="article">
 <meta property="og:title" content="fabric">
 <meta property="og:url" content="www.jinjiaKarl.com/2018/05/18/fabric/index.html">
 <meta property="og:site_name" content="陌离">
-<meta property="og:description" content="完全去中心化：验证机可以任意加入，节点平等多中心化：验证机受管理机构的限制，只有通过授权的节点才能加入，授权的节点可以享有不同的权益，以相对平等换取一定的效率有效去中心化：在信息的共享、读取、写入等权限进行个性化设计 不同的机构之间构成一个信任的平台（朋友圈的概念） 特点：开源、高度模块化/可配置（例如bsscp模块、国密）、通用编程语言、准入许可（拉朋友进行，n/2+1个节点同意）、可插拔的共识">
+<meta property="og:description" content="完全去中心化：验证机可以任意加入，节点平等多中心化：验证机受管理机构的限制，只有通过授权的节点才能加入，授权的节点可以享有不同的权益，以相对平等换取一定的效率有效去中心化：在信息的共享、读取、写入等权限进行个性化设计">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-18T12:27:29.000Z">
+<meta property="og:updated_time" content="2018-06-07T08:16:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="fabric">
-<meta name="twitter:description" content="完全去中心化：验证机可以任意加入，节点平等多中心化：验证机受管理机构的限制，只有通过授权的节点才能加入，授权的节点可以享有不同的权益，以相对平等换取一定的效率有效去中心化：在信息的共享、读取、写入等权限进行个性化设计 不同的机构之间构成一个信任的平台（朋友圈的概念） 特点：开源、高度模块化/可配置（例如bsscp模块、国密）、通用编程语言、准入许可（拉朋友进行，n/2+1个节点同意）、可插拔的共识">
+<meta name="twitter:description" content="完全去中心化：验证机可以任意加入，节点平等多中心化：验证机受管理机构的限制，只有通过授权的节点才能加入，授权的节点可以享有不同的权益，以相对平等换取一定的效率有效去中心化：在信息的共享、读取、写入等权限进行个性化设计">
   
     <link rel="alternative" href="/atom.xml" title="陌离" type="application/atom+xml">
   
@@ -184,6 +184,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>完全去中心化：验证机可以任意加入，节点平等<br>多中心化：验证机受管理机构的限制，只有通过授权的节点才能加入，授权的节点可以享有不同的权益，以相对平等换取一定的效率<br>有效去中心化：在信息的共享、读取、写入等权限进行个性化设计</p>
+<a id="more"></a>
 <p>不同的机构之间构成一个信任的平台（朋友圈的概念）</p>
 <p>特点：<br>开源、高度模块化/可配置（例如bsscp模块、国密）、通用编程语言、准入许可（拉朋友进行，n/2+1个节点同意）、可插拔的共识协议（solo、kafka的CFT模式）、不需要原生的加密货币、性能相对较好（950TPS）</p>
 <p>架构解析：<br>容器状态机：规定好每次执行步骤<br>网络层：节点（背书、提交落账）、排序者（根据大小、时间进行切块）、客户端（配置管理、发送交易）、成员身份管理（CA）、Gossip协议（在一个channel中，同步区块）<br>共识机制：背书（客户端指定背书策略）、排序服务（切块、广播）、验证过程（交易背书是否完整、MVCC校验读写集）<br>权限管理相关组件：MSP、组织（同一个根CA）、联盟、身份证书（根据证书有不同权限）<br>业务层：交易（查询也是）、区块、链码、通道（order的一个广播通道，客户端目录上可以区分不同通道）、链结构、账本（有效、无效的交易）<br>gPRC消息协议：远程调用系统。跨语言、服务定义、同步&amp;异步。客户端访问peer节点，客户端、peer节点访问order节点，多节点之间的操作</p>
@@ -416,6 +417,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">共识算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
@@ -432,14 +445,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">共识算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">hyperledger</a>
               </li>
              
@@ -448,7 +453,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">IPFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">json</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -468,11 +481,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+                <a href="javascript:void(0)" class="js-tag color5">curl</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">go语言</a>
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -480,11 +493,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">go语言</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">交易所</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IPFS</a>
+                <a href="javascript:void(0)" class="js-tag color4">以太坊</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -496,11 +513,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">证券交易所</a>
+                <a href="javascript:void(0)" class="js-tag color5">内网穿透</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">以太坊</a>
+                <a href="javascript:void(0)" class="js-tag color1">证券交易所</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -508,15 +525,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内网穿透</a>
+                <a href="javascript:void(0)" class="js-tag color5">闪电网络</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">隔离见证</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">闪电网络</a>
               </li>
             
             <div class="clearfix"></div>

@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="www.jinjiaKarl.com">
-  <title>Tag: 计算机网络 | 陌离</title>
+  <title>比特币的区块 | 陌离</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是我的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="陌离">
-<meta property="og:url" content="www.jinjiaKarl.com/tags/计算机网络/index.html">
+  <meta name="description" content="解析比特币中区块信息">
+<meta name="keywords" content="区块链,比特币">
+<meta property="og:type" content="article">
+<meta property="og:title" content="比特币的区块">
+<meta property="og:url" content="www.jinjiaKarl.com/2018/06/14/比特币的区块/index.html">
 <meta property="og:site_name" content="陌离">
-<meta property="og:description" content="这是我的博客">
+<meta property="og:description" content="解析比特币中区块信息">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-14T03:00:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="陌离">
-<meta name="twitter:description" content="这是我的博客">
+<meta name="twitter:title" content="比特币的区块">
+<meta name="twitter:description" content="解析比特币中区块信息">
   
     <link rel="alternative" href="/atom.xml" title="陌离" type="application/atom+xml">
   
@@ -153,232 +155,260 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-比特币的区块" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      比特币的区块
+    </h1>
+  
+
+        
+        <a href="/2018/06/14/比特币的区块/" class="archive-article-date">
+  	<time datetime="2018-06-14T02:57:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-14</time>
+</a>
+        
+      </header>
+
+
+
+    <span class="archive-article-date">
+      阅读量 <span id="busuanzi_value_page_pv"></span>
+    </span>
+
+
+
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>解析比特币中区块信息<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">区块头部信息，并没有当前区块的哈希值，是被临时计算保存在数据库中的。</span><br><span class="line">header int32_t nVersion; //版本 uint256 hashPrevBlock; //上一个区块的hash uint256 hashMerkleRoot; //包含交易信息的Merkle树根 uint32_t nTime; //时间戳 uint32_t nBits; //工作量证明(POW)的难度 uint32_t nNonce; //要找的符合POW的随机</span><br></pre></td></tr></table></figure></p>
+<h1 id="区块结构分析"><a href="#区块结构分析" class="headerlink" title="区块结构分析"></a>区块结构分析</h1><p>区块是通过前后链接构成区块链的一种容器数据结构。它由描述区块主要信息的区块头和包含若干交易数据的区块共同组成。区块头是80字节，而平均每个交易至少是250字节，而且平均每个区块至少包含超过500个交易。所以，一个区块是比区块头大好多的数据体。这也是比特币验证交易是否存在采用Merkcle树的原因。</p>
+<h3 id="整体结构"><a href="#整体结构" class="headerlink" title="整体结构"></a>整体结构</h3><table>
+<thead>
+<tr>
+<th>数据项</th>
+<th>大小(Byte)</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Block Size</td>
+<td>4</td>
+<td>区块大小</td>
+</tr>
+<tr>
+<td>Block Header</td>
+<td>80</td>
+<td>区块头信息大小</td>
+</tr>
+<tr>
+<td>Transactions</td>
+<td>m*n(n&gt;=250)</td>
+<td>所有交易的列表</td>
+</tr>
+<tr>
+<td>Transactions Counter</td>
+<td>1-9</td>
+<td>交易数额</td>
+</tr>
+</tbody>
+</table>
+<p>比特币的区块大小目前被严格限制在1MB以内。4字节的区块大小字段不包含在此内!</p>
+<h3 id="区块头"><a href="#区块头" class="headerlink" title="区块头"></a>区块头</h3><table>
+<thead>
+<tr>
+<th>数据项</th>
+<th>大小(Byte)</th>
+<th>存储方式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Version</td>
+<td>4</td>
+<td>小端</td>
+<td><a href="https://link.jianshu.com?t=https%3A%2F%2Fbitcoin.org%2Fen%2Fdeveloper-reference%23block-versions" target="_blank" rel="noopener">区块版本</a>，规定了区块遵守的验证规则</td>
+</tr>
+<tr>
+<td>Previous Block Hash</td>
+<td>32</td>
+<td>内部字节顺序</td>
+<td>上一个区块哈希值(SHA256 (SHA256(Block Header)))</td>
+</tr>
+<tr>
+<td>Merkle Root</td>
+<td>32</td>
+<td>内部字节顺序</td>
+<td><a href="https://link.jianshu.com?t=https%3A%2F%2Fbitcoin.org%2Fen%2Fdeveloper-reference%23merkle-trees" target="_blank" rel="noopener">Merkle</a>树根，包含了所有交易的哈希</td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>4</td>
+<td>小端</td>
+<td>区块产生时间戳，大于前11个区块时间戳的平均值，全节点会拒绝时间戳超出自己2小时的区块</td>
+</tr>
+<tr>
+<td>nBitS</td>
+<td>4</td>
+<td>小端</td>
+<td>工作量证明(POW)的目标难度值，当前区块难度值需要经过<a href="https://link.jianshu.com?t=https%3A%2F%2Fbitcoin.org%2Fen%2Fdeveloper-reference%23merkle-trees" target="_blank" rel="noopener">Target nBits编码</a>才能转化为目标哈希值</td>
+</tr>
+<tr>
+<td>Nonce</td>
+<td>4</td>
+<td>小端</td>
+<td>用于POW的一个随机数，随着算力增大可能会导致Nonce位数不够 协议规定时间戳和CoinbaseTransaction信息可修改用于扩展Nonce位数</td>
+</tr>
+</tbody>
+</table>
+<h3 id="区块标识符"><a href="#区块标识符" class="headerlink" title="区块标识符"></a>区块标识符</h3><ul>
+<li><p><strong>BlockHash</strong> 区块哈希值，是通过SHA256算法对区块头信息进行哈希得到的，这个值必须满足POW的DifficultyTarget，该区块才被认为有效。同时，也是区块的唯一标识符。</p>
+</li>
+<li><p><strong>BlockHeight</strong> 区块高度，是用来标示区块在区块链中的位置。创世区块高度为0，每一个加在后面的区块，区块高度递增1。可以通过bitcoin-cli根据高度查询区块哈希值(文章开头我们就使用过)</p>
+</li>
+</ul>
+<h5 id="注：BlockHeight并不是唯一标识符，当区块链出现临时分叉时，会有两个区块的高度值相同的情况。"><a href="#注：BlockHeight并不是唯一标识符，当区块链出现临时分叉时，会有两个区块的高度值相同的情况。" class="headerlink" title="注：BlockHeight并不是唯一标识符，当区块链出现临时分叉时，会有两个区块的高度值相同的情况。"></a>注：BlockHeight并不是唯一标识符，当区块链出现临时分叉时，会有两个区块的高度值相同的情况。</h5>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/wechat.jpeg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/09/bgp详解/" class="archive-article-date">
-  	<time datetime="2018-05-09T14:29:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/09/bgp详解/">bgp详解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">区块链</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bgp</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">比特币</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/24/stp协议/" class="archive-article-date">
-  	<time datetime="2018-04-24T12:32:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-24</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/06/14/以太坊介绍/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          以太坊介绍
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/06/13/比特币入门/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">比特币入门</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/24/stp协议/">stp协议</a>
-    </h1>
+        
+        
+    </div>
+</aside>
+
+
+
+
+ 
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTgyNy8xMjM2Mw==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/21/OSPF详解/" class="archive-article-date">
-  	<time datetime="2018-04-21T01:44:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-21</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/21/OSPF详解/">OSPF详解</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">OSPF</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/18/内网穿透/" class="archive-article-date">
-  	<time datetime="2018-04-18T00:14:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/18/内网穿透/">内网穿透</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网穿透</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/17/SDN概述/" class="archive-article-date">
-  	<time datetime="2018-04-17T15:09:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/17/SDN概述/">SDN概述</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SDN</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/tags/计算机网络/page/2/">2</a><a class="extend next" rel="next" href="/tags/计算机网络/page/2/">Next &raquo;</a>
-    </nav>
-  
+
 
 
           </div>
@@ -408,9 +438,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

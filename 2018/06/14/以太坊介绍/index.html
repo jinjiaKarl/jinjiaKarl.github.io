@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="陌离">
 <meta property="og:description" content="1.以太坊的四个阶段Frontier（前沿）：2015年7月30日，主要面向开发者，没有图形化界面Homestead（家园）：2016年3月14日，普通用户也可以很好的体验以太坊Metropolis（大都会）：2017年10月16日，引入新特性，并且引入PoW和PoS的混合链模式，逐步进行Serenity（宁静）：2019年，将从POW过渡到POS">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-14T13:07:33.000Z">
+<meta property="og:updated_time" content="2018-06-15T08:50:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="以太坊介绍">
 <meta name="twitter:description" content="1.以太坊的四个阶段Frontier（前沿）：2015年7月30日，主要面向开发者，没有图形化界面Homestead（家园）：2016年3月14日，普通用户也可以很好的体验以太坊Metropolis（大都会）：2017年10月16日，引入新特性，并且引入PoW和PoS的混合链模式，逐步进行Serenity（宁静）：2019年，将从POW过渡到POS">
@@ -214,6 +214,12 @@
 </ul>
 <p>7.Gaslimit和GasPrice<br>在以太坊中，当你要调用智能合约的时候，整个网络上的矿工会分别执行你调用的智能合约，每执行一条合约指令会消耗固定的gas即GasPrice。Gas limit代表了这个交易在执行过程中最会被允许消耗的gas数量。<br>交易费最大值 = gaslimit * gasprice<br>如果在实际交易执行过程中，消耗的gas大于交易费最大值 （可以自己设定的），会出现“gas不足的错误，交易会被终止执行，交易之前的所有修改的状态会被回滚，同时在交易执行过程中所消耗的gas是不会被退回给发送交易者的。</p>
 <p>8.智能合约运行环境<br>以太坊采用以太坊虚拟机EVM作为智能合约的运行环境。以太坊虚拟机是一个隔离的轻量级虚拟机环境，运作在其中的智能合约代码无法访问本地网络、文件系统或者其他进程。</p>
+<p>9.在区块头中，保存了三个不同Merkle trie结构的根节点的Hash，包括：</p>
+<ul>
+<li>状态树</li>
+<li>交易树</li>
+<li>收据树</li>
+</ul>
 
       
 
@@ -450,11 +456,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">共识算法</a>
+                <a href="javascript:void(0)" class="js-tag color1">EIGRP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -466,15 +472,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">EIGRP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">共识算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -486,11 +492,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">json</a>
+                <a href="javascript:void(0)" class="js-tag color5">IPFS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IPFS</a>
+                <a href="javascript:void(0)" class="js-tag color5">json</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -498,11 +504,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color2">RESTful API</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">RESTful API</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -530,7 +536,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">go语言</a>
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -538,7 +544,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -546,7 +552,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
+                <a href="javascript:void(0)" class="js-tag color5">go语言</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -554,11 +560,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vmv</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">证券交易所</a>
+                <a href="javascript:void(0)" class="js-tag color5">内网穿透</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -566,7 +568,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">交易所</a>
+                <a href="javascript:void(0)" class="js-tag color1">证券交易所</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -574,11 +576,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">交易所</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">并发编程</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内网穿透</a>
+                <a href="javascript:void(0)" class="js-tag color4">vmv</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -590,11 +596,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">隔离见证</a>
+                <a href="javascript:void(0)" class="js-tag color5">闪电网络</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">闪电网络</a>
+                <a href="javascript:void(0)" class="js-tag color5">隔离见证</a>
               </li>
             
             <div class="clearfix"></div>

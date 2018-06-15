@@ -6,25 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="www.jinjiaKarl.com">
-  <title>docker入门 | 陌离</title>
+  <title>以太坊中的叔块 | 陌离</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="docker的组成 Docker由下面几样东西组成，先简单认识一下吧 Docker Client : Docker提供给用户的客户端。Docker Client提供给用户一个终端，用户输入Docker提供的命令来管理本地或者远程的服务器。">
-<meta name="keywords" content="docker">
+  <meta name="description" content="孤块(orphan block)在比特币协议中，最长的链被认为是绝对的正确。如果一个块不是最长链的一部分，那么它被称为是“孤块”。一个孤立的块是一个块，它也是合法的，但是发现的稍晚，或者是网络传输稍慢，而没有能成为最长的链的一部分。在比特币中，孤块没有意义，随后将被抛弃，发现这个孤块的矿工也拿不到采矿相关的奖励。">
+<meta name="keywords" content="区块链,以太坊">
 <meta property="og:type" content="article">
-<meta property="og:title" content="docker入门">
-<meta property="og:url" content="www.jinjiaKarl.com/2018/05/16/docker入门/index.html">
+<meta property="og:title" content="以太坊中的叔块">
+<meta property="og:url" content="www.jinjiaKarl.com/2018/06/15/以太坊中的叔块/index.html">
 <meta property="og:site_name" content="陌离">
-<meta property="og:description" content="docker的组成 Docker由下面几样东西组成，先简单认识一下吧 Docker Client : Docker提供给用户的客户端。Docker Client提供给用户一个终端，用户输入Docker提供的命令来管理本地或者远程的服务器。">
+<meta property="og:description" content="孤块(orphan block)在比特币协议中，最长的链被认为是绝对的正确。如果一个块不是最长链的一部分，那么它被称为是“孤块”。一个孤立的块是一个块，它也是合法的，但是发现的稍晚，或者是网络传输稍慢，而没有能成为最长的链的一部分。在比特币中，孤块没有意义，随后将被抛弃，发现这个孤块的矿工也拿不到采矿相关的奖励。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ata2-img.cn-hangzhou.img-pub.aliyun-inc.com/5d04473994d0b4730f9d03f63f617058.png">
-<meta property="og:image" content="http://ata2-img.cn-hangzhou.img-pub.aliyun-inc.com/680a3453e1df50aed9f09503f616f92a.png">
-<meta property="og:image" content="http://ata2-img.cn-hangzhou.img-pub.aliyun-inc.com/ba6d92b3ee037c9ed576f47ae5edf091.jpg">
-<meta property="og:image" content="http://ata2-img.cn-hangzhou.img-pub.aliyun-inc.com/5d71055942788cafa62df85fc271968b.png">
-<meta property="og:updated_time" content="2018-05-16T15:08:54.000Z">
+<meta property="og:updated_time" content="2018-06-15T09:01:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="docker入门">
-<meta name="twitter:description" content="docker的组成 Docker由下面几样东西组成，先简单认识一下吧 Docker Client : Docker提供给用户的客户端。Docker Client提供给用户一个终端，用户输入Docker提供的命令来管理本地或者远程的服务器。">
-<meta name="twitter:image" content="http://ata2-img.cn-hangzhou.img-pub.aliyun-inc.com/5d04473994d0b4730f9d03f63f617058.png">
+<meta name="twitter:title" content="以太坊中的叔块">
+<meta name="twitter:description" content="孤块(orphan block)在比特币协议中，最长的链被认为是绝对的正确。如果一个块不是最长链的一部分，那么它被称为是“孤块”。一个孤立的块是一个块，它也是合法的，但是发现的稍晚，或者是网络传输稍慢，而没有能成为最长的链的一部分。在比特币中，孤块没有意义，随后将被抛弃，发现这个孤块的矿工也拿不到采矿相关的奖励。">
   
     <link rel="alternative" href="/atom.xml" title="陌离" type="application/atom+xml">
   
@@ -160,20 +155,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-docker入门" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-以太坊中的叔块" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      docker入门
+      以太坊中的叔块
     </h1>
   
 
         
-        <a href="/2018/05/16/docker入门/" class="archive-article-date">
-  	<time datetime="2018-05-16T15:03:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-16</time>
+        <a href="/2018/06/15/以太坊中的叔块/" class="archive-article-date">
+  	<time datetime="2018-06-15T08:59:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-15</time>
 </a>
         
       </header>
@@ -189,90 +184,65 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="docker的组成"><a href="#docker的组成" class="headerlink" title="docker的组成"></a>docker的组成</h2><hr>
-<h5 id="Docker由下面几样东西组成，先简单认识一下吧"><a href="#Docker由下面几样东西组成，先简单认识一下吧" class="headerlink" title="Docker由下面几样东西组成，先简单认识一下吧"></a>Docker由下面几样东西组成，先简单认识一下吧</h5><ul>
-<li><strong>Docker Client</strong> : Docker提供给用户的客户端。Docker Client提供给用户一个终端，用户输入Docker提供的命令来管理本地或者远程的服务器。<a id="more"></a></li>
-<li><strong>Docker Daemon</strong> : Docker服务的守护进程。每台服务器（物理机或虚机）上只要安装了Docker的环境，基本上就跑了一个后台程序Docker Daemon，Docker Daemon会接收Docker Client发过来的指令,并对服务器的进行具体操作。</li>
-<li><strong>Docker Images</strong> : 俗称Docker的镜像，这个可难懂了。你暂时可以认为这个就像我们要给电脑装系统用的系统CD盘，里面有操作系统的程序，并且还有一些CD盘在系统的基础上安装了必要的软件，做成的一张 <strong>“只读”</strong> 的CD。</li>
-<li><strong>Docker Registry</strong> : 这个可认为是Docker Images的仓库，就像git的仓库一样，用来管理Docker镜像的，提供了Docker镜像的上传、下载和浏览等功能，并且提供安全的账号管理可以管理只有自己可见的私人image。就像git的仓库一样，docker也提供了官方的Registry，叫做Dock Hub(<a href="https://yq.aliyun.com/articles/63035?spm=a2c4e.11153940.blogcont63517.15.12553a6cHDHc2V" target="_blank" rel="noopener">http://hub.Docker.com)</a></li>
-<li><strong>Docker Container</strong> : 俗称Docker的容器，这个是最关键的东西了。Docker Container是真正跑项目程序、消耗机器资源、提供服务的地方，Docker Container通过Docker Images启动，在Docker Images的基础上运行你需要的代码。 <strong>你可以认为Docker Container提供了系统硬件环境，然后使用了Docker Images这些制作好的系统盘，再加上你的项目代码，跑起来就可以提供服务了。</strong> 听到这里，可能你会觉得是不是有点像一个VM利用保存的备份或者快照跑起来环境一样，其实是挺像的，但是实际上是有本质的区别，后面我会细说。</li>
+        <h3 id="孤块-orphan-block"><a href="#孤块-orphan-block" class="headerlink" title="孤块(orphan block)"></a>孤块(orphan block)</h3><p>在比特币协议中，最长的链被认为是绝对的正确。如果一个块不是最长链的一部分，那么它被称为是“孤块”。一个孤立的块是一个块，它也是合法的，但是发现的稍晚，或者是网络传输稍慢，而没有能成为最长的链的一部分。在比特币中，孤块没有意义，随后将被抛弃，发现这个孤块的矿工也拿不到采矿相关的奖励。</p>
+<a id="more"></a>
+<h3 id="最重的链-heaviest"><a href="#最重的链-heaviest" class="headerlink" title="最重的链(heaviest)"></a>最重的链(heaviest)</h3><p>Ethereum的GHOST协议，不认为孤块没有价值，而是会给与发现孤块的矿工以回报。在以太坊中，孤块被称为“叔块”(uncle block)，它们可以为主链的安全作出贡献。</p>
+<p>相对来说，比特币有很长的块间隔时间。在比特币区块中，平均约10分钟可以得到一个确认(也就是发现一个新的后续区块)。但是自从比特币成立以来，大量关于块链技术的研究已经发展起来。这些研究表明，更短的块间隔确实是可能的，而且在很多应用场景下是需要的。然而，随着拥有更快的出块速度，孤块的增加而带来的昂贵的成本和浪费也随之增加。</p>
+<p>GHOST协议支付报酬给叔块，这激励了矿工在新发现的块中去引用叔块。引用叔块使主链更重。在比特币，最长的链是主链。在以太坊中，主链是指最重的链。</p>
+<h3 id="叔块的好处"><a href="#叔块的好处" class="headerlink" title="叔块的好处"></a>叔块的好处</h3><p>解决了两个问题：<br>1. 以太坊十几秒的出块间隔，大大增加了孤块的产生，并且降低了安全性。通过鼓励引用叔块，使引用主链获得更多的安全保证(因为孤块本身也是合法的)<br>2. 比特币中，采矿中心化(大量的集中矿池)成为一个问题。给与叔块报酬，可以一定程度上缓解这个问题。</p>
+<h3 id="叔块的引用"><a href="#叔块的引用" class="headerlink" title="叔块的引用"></a>叔块的引用</h3><ul>
+<li>区块可以不引用，或者最多引用两个叔块</li>
+<li>叔块必须是区块的前2层~前7层的祖先的直接的子块</li>
+<li>被引用过的叔块不能重复引用</li>
+<li>引用叔块的区块，可以获得挖矿报酬的1/32，也就是5<em>1/32=0.15625 Ether。最多获得2</em>0.15625=0.3125 Ether</li>
+<li>被引用的叔块，其矿工的报酬和叔块与区块之间的间隔层数有关系。</li>
 </ul>
-<p><img src="http://ata2-img.cn-hangzhou.img-pub.aliyun-inc.com/5d04473994d0b4730f9d03f63f617058.png" alt="" title="screenshot.png"></p>
-<h3 id="Docker是怎么玩的？"><a href="#Docker是怎么玩的？" class="headerlink" title="Docker是怎么玩的？"></a>Docker是怎么玩的？</h3><hr>
-<p>一下接触这么多东西肯定有一点点晕了吧，没关系，我们把这些串起来走一遍就会好了。</p>
-<ol>
-<li>首先你得安装一下docker的环境，这个我在这里就不说了，针对你的系统看一下docker的官网( <a href="http://www.docker.com/products/docker" target="_blank" rel="noopener">http://www.docker.com/products/docker</a> ) 吧。</li>
-<li>安装好后，我们在terminal中就有了docker的命令了，这个命令就是Docker Client啦。所有的操作都是通过docker命令完成的。比如: <code>docker version</code></li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">ruideMacBook-Pro:~ ruihuang$ docker version</span><br><span class="line">Client:</span><br><span class="line"> Version:      1.12.1</span><br><span class="line"> API version:  1.24</span><br><span class="line"> Go version:   go1.7.1</span><br><span class="line"> Git commit:   6f9534c</span><br><span class="line"> Built:        Thu Sep  8 10:31:18 2016</span><br><span class="line"> OS/Arch:      darwin/amd64</span><br><span class="line">Server:</span><br><span class="line"> Version:      1.12.1</span><br><span class="line"> API version:  1.24</span><br><span class="line"> Go version:   go1.6.3</span><br><span class="line"> Git commit:   23cf638</span><br><span class="line"> Built:        Thu Aug 18 17:52:38 2016</span><br><span class="line"> OS/Arch:      linux/amd64</span><br></pre></td></tr></table></figure>
-<ol>
-<li>查看一下我们拥有了哪些images吧,命令：<code>docker images</code></li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ruideMacBook-Pro:~ ruihuang$ docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED</span><br><span class="line">job1                latest              de714ebe3a54        29 hours ago</span><br><span class="line">ubuntu              latest              f753707788c5        3 weeks ago</span><br><span class="line">busybox             latest              e02e811dd08f        4 weeks ago</span><br></pre></td></tr></table></figure>
-<p>可以看到我们拥有3个images，其中ubuntu大家都知道，busybox是一个linux下的大工具箱，它集成压缩了 Linux 的许多工具和命令，而job1则是我自己基于busybox创建的一个image，可以通过busybox的工具进行一些命令的执行，比如 echo ‘hello world’。</p>
-<ol>
-<li>再查看一下我们有哪些Docker Container吧,命令：<code>docker ps</code></li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ruideMacBook-Pro:~ ruihuang$ docker ps</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED</span><br><span class="line">2c08ddb62c77        ubuntu              &quot;/bin/bash&quot;         28 hours ago</span><br><span class="line">5aa853bdb033        ubuntu              &quot;/bin/bash&quot;         28 hours ago</span><br></pre></td></tr></table></figure>
-<p>这里看到的都是正在运行的Container,如果要查看所有的Container就使用<code>docker ps -a</code></p>
-<ol>
-<li>下面我们从Docker hub的Registry下载一个Image，命令:<code>docker pull image-name</code></li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ruideMacBook-Pro:~ ruihuang$ docker pull hello-world</span><br><span class="line">Using default tag: latest</span><br><span class="line">latest: Pulling from library/hello-world</span><br><span class="line">c04b14da8d14: Pull complete</span><br><span class="line">Digest: sha256:0256e8a36e2070f7bf2d0b0763dbabdd67798512411de4cdcf9431a1feb60fd9</span><br><span class="line">Status: Downloaded newer image for hello-world:latest</span><br></pre></td></tr></table></figure>
-<p>再看一下现在images,命令：<code>docker images</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ruideMacBook-Pro:~ ruihuang$ docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED</span><br><span class="line">job1                latest              de714ebe3a54        30 hours ago</span><br><span class="line">ubuntu              latest              f753707788c5        3 weeks ago</span><br><span class="line">busybox             latest              e02e811dd08f        4 weeks ago</span><br><span class="line">hello-world         latest              c54a2cc56cbb        4 months ago</span><br></pre></td></tr></table></figure>
-<p>我们看到刚才我们从docker hub上面下载了一个docker官方已经制作好的叫做hello-world的image，下载完成后，就在本地可以查看到这个image了。</p>
-<ol>
-<li>我们把hello-world的image，放到一个docker container里面让他跑起来吧。命令 <code>docker run image-name</code></li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ruideMacBook-Pro:~ ruihuang$ docker run hello-world</span><br><span class="line">Hello from Docker!</span><br><span class="line">This message shows that your installation appears to be working correctly.</span><br><span class="line">To generate this message, Docker took the following steps:</span><br><span class="line"> 1. The Docker client contacted the Docker daemon.</span><br><span class="line"> 2. The Docker daemon pulled the &quot;hello-world&quot; image from the Docker Hub.</span><br><span class="line"> 3. The Docker daemon created a new container from that image which runs the executable that produces the output you are currently reading.</span><br><span class="line"> 4. The Docker daemon streamed that output to the Docker client, which sent it  to your terminal.</span><br></pre></td></tr></table></figure>
-<p>这个image运行后很简单，就是打印了这段话。告诉了我们，我们已经成功的让docker daemon从docker hub上拉了一个”hello-world”的image,并且通过这个image创建了一个container，并且通过daemon将输出的内容传回了docker client，也就是我们现在看到的这段话。</p>
-<ol>
-<li>我们最后再看一下是否真的创建了docker container,命令<code>docker ps -a</code></li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ruideMacBook-Pro:~ ruihuang$ docker ps -a</span><br><span class="line">CONTAINER ID  IMAGE        COMMAND    CREATED            STATUS</span><br><span class="line">3d9b24449cb3  hello-world  &quot;/hello&quot;  9 minutes ago     Exited (0) 9 minutes ago</span><br><span class="line">c08ddb62c77    ubuntu  &quot;/bin/bash&quot;  28 hours ago       Up 28 hours</span><br></pre></td></tr></table></figure>
-<p>首先看到，确实已经创建了docker container了，可见 <code>docker run</code> 的命令实际上是create 和 start的结合命令，基于hello-world的image创建并启动了container。container启动后执行了打印的程序，打印完上面我们看到的那句话，程序执行完成，container也跟着关闭了。从STATUS可以看出，在9分钟前hello-world的这个container已经exited了。</p>
-<h3 id="不一样的Docker"><a href="#不一样的Docker" class="headerlink" title="不一样的Docker"></a>不一样的Docker</h3><p>简单的列一下目前这个阶段我们很容易发现的几点：</p>
-<ul>
-<li><p>docker image的体积非常的小，注意看下之前我们用到的几个image的size，一个完整功能的ubuntu才100多mb。docker image如此小的体积，让我们可以方便的在网络上传输和分享，对于公司来说就提供了对大量image的管理和分发的可能。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ruideMacBook-Pro:~ ruihuang$ docker images</span><br><span class="line">REPOSITORY          TAG               SIZE</span><br><span class="line">job1                latest            1.093 MB</span><br><span class="line">ubuntu              latest            127.2 MB</span><br><span class="line">busybox             latest            1.093 MB</span><br><span class="line">hello-world         latest            1.848 kB</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>docker的系统启动的耗时为0。昨天如果自己也尝试启动hello-world的同学可能会知道，<code>docker run hello-world</code>的命令是瞬间完成的，你并没有感觉到加载image，启动系统的耗时，命令完成就直接输出了结果。程序执行完后container也跟着关闭，也并没有保存镜像的时间，但下次再运行还是会保留你处理过的状态。</p>
-</li>
-<li>docker系统占用资源极少，我们知道如果我们开启了一个vm的系统，不论是linux的或者windows，就算什么都不运行都会占用一部分内存，但是docker container启动后如果不运行程序，你是看不到系统资源被占用的。</li>
-</ul>
-<p>这些特点是不是完全和vm不同呢？并且有了这些特点，是不是很多之前没有的应用场景就会产生？比如我们可以把一个项目build成一个image，然后方便分发出去，别人拿到后也不用关心你的项目需要什么环境或者依赖，只要docker run一下就能运行。。而且速度很快，甚至在一台开发机都可以管理成百上千的container，没有业务处理的时候也不会占用你的系统资源。。。</p>
-<p><img src="http://ata2-img.cn-hangzhou.img-pub.aliyun-inc.com/680a3453e1df50aed9f09503f616f92a.png" alt="serversholdvmholdcontainers.png" title="serversholdvmholdcontainers.png"><br>到这里可能你已经感受到docker的一些厉害之处了吧。。。那么是不是也很好奇docker到底是怎么做到的？那么我们继续往下。</p>
-<h3 id="Docker是如何做到的"><a href="#Docker是如何做到的" class="headerlink" title="Docker是如何做到的"></a>Docker是如何做到的</h3><p>我们先思考一下，一台服务器给我们开发的项目到底提供了哪些能力让他运行起来呢？cpu、内存、硬盘、网络、操作系统、工具软件还有项目的运行环境（jre等）。当具备了这些能力的机器，我们会说这台机器给项目提供了可以运行的环境。<br>我们知道VM技术可以将一台物理机器部署为多台虚拟机器，解决了很多物力资源的浪费以及方便的管理能力。那么VM是怎么做到的呢？关键词：Hypervisor，VM在物理机器的操作系统上建立了一个中间软件层Hypervisor，Hypervisor利用物理机器的资源，虚拟出多个新虚拟的硬件环境，这些硬件环境可以共享宿主机的资源。这些新的虚拟的硬件环境，安装操作系统和相应的软件后便形成了一台台的虚拟机器。<br>那么Docker有什么不同呢？Docker很聪明的利用linux的一些技术走了一条捷径：Docker选择了和虚拟化完全不同的思路，并不去虚拟化任何硬件，而是对硬件资源在不同的docker container之间做了 <strong>“隔离”</strong> 。隔离使每个docker container之间拥有了不同的环境（硬盘空间、网络、系统的工具包），并且又可以共享需要的硬件资源（cpu、内存、系统内核），达到了和虚拟机能提供的同样的功能。</p>
-<p><img src="http://ata2-img.cn-hangzhou.img-pub.aliyun-inc.com/ba6d92b3ee037c9ed576f47ae5edf091.jpg" alt="MJHfm1c.jpg" title="MJHfm1c.jpg"></p>
-<p>Docker使用的Linux核心的组建如下：(截取自<a href="https://joshhu.gitbooks.io/docker_theory_install/content/DockerBible/docker_linux.html" target="_blank" rel="noopener">Docker的元件– Linux核心部分</a>)</p>
-<ul>
-<li>AUFS(chroot) – 用来建立不同的操作系统和隔离运行时的硬盘空间</li>
-<li>Namespace – 用来隔离Container的执行空间</li>
-<li>Cgroup – 分配不同的硬件资源</li>
-<li>SELinux – 用来保护linux的网络安全</li>
-<li>Netlink – 用来让不同的Container之间的进程保持通信</li>
-<li>Netfilter – 建立Container埠為基礎的網路防火牆封包過濾</li>
-<li>AppArmor – 保護Container的網路及執行安全</li>
-<li>Linux Bridge – 讓不同Container或不同主機上的Container能溝通</li>
-<li>。。。</li>
-</ul>
-<p>这里面的每一项技术当然都值得我们去理解，这里我只拿其中最具代表性的AUFS来展开一下，让大家理解一下docker隔离的思路。 <em>（除了AUFS的技术请大家自己研究吧，后面我也会整理一些资源发出来）</em><br>AUFS -&gt; Another Union File System，AUFS的技术可以让多个文件目录union成一个新的目录，并且可以对这个新的目录进行读写操作。<br>那这有什么用呢？如果你有一张只读的cd数据盘，但是你却想编辑里面的内容，你通常的做法是不是把内容拷贝到本地硬盘，然后再编辑。但如果你可以利用AUFS技术，你就可以将硬盘中的一个空目录和你的cd数据盘进行union形成一个新的目录，接着你对这个目录读取，会得到的cd盘内的数据，当你对这个目录的内容进行编辑，编辑的内容AUFS会自动讲修改内容保存在你union的那个空目录内，当你再次读区的时候，AUFS也会将你硬盘中记录的改动内容优先于CD数据盘中的内容读取出来，这样对你来说这就完全是一个可编辑的目录内容了。</p>
-<p><img src="http://ata2-img.cn-hangzhou.img-pub.aliyun-inc.com/5d71055942788cafa62df85fc271968b.png" alt="docker-filesystems-busyboxrw.png" title="docker-filesystems-busyboxrw.png"><br>AUFS虽然看起来思路很简单，但是docker却利用这个技术做出了大文章。我们可以想象一下docker的Image，其实也就是一个事先制作好的只读的文件目录，当我们要使用这个系统功能的时候，docker为我们开辟了一个新的文件夹和这个image做了union，提供给docker container做为系统运行的存储，这个image里面已经包含了系统程序、工具软件、以及程序，当系统启动后产生的运行时文件（如logs、临时目录等）或新安装的软件都在这个新的文件夹内。这样我们在启动一个container的时候，其实并没有加载镜像的过程，也不会像vm一样需要安装一个系统这么负责，只是做了一次unoin，一切就和安装过系统的虚拟机同样使用了。另外docker还提供了一个<code>docker commit</code>命令，这个命令可以随时将你现在的运行中的cantainer构建成一个新的image。</p>
-<ol>
-<li>查看当前的container列表<br>命令：<code>docker ps -a</code></li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ruideMacBook-Pro:~ ruihuang$ docker ps -a</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             STATUS</span><br><span class="line">78bd49d9b73e        ubuntu              &quot;bash&quot;         Exited (0) 17 hours ago</span><br></pre></td></tr></table></figure>
-<ol>
-<li><p>通过一个ubuntu的container生成一个新的image，这个image内包含了在这次container中的改动<br>命令：<code>docker commit container-id</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ruideMacBook-Pro:~ ruihuang$ docker commit 78bd49d9b73e job2</span><br><span class="line">sha256:e0c0d617d96cafedf008e3f276f35a2b95d15f1ed7535b58d19c8db8b18f8fb2</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看现在是不是有了一个新的container了<br>命令：<code>docker images</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ruideMacBook-Pro:~ ruihuang$ docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID             SIZE</span><br><span class="line">job2                latest              e0c0d617d96c          127.2 MB</span><br><span class="line">job1                latest              de714ebe3a54          1.093 MB</span><br><span class="line">ubuntu              latest              f753707788c5          127.2 MB</span><br><span class="line">busybox             latest              e02e811dd08f          1.093 MB</span><br><span class="line">hello-world         latest              c54a2cc56cbb          1.848 kB</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>看到这里是不是大致的理解了docker container和docker images之间的联系了。</p>
-<h3 id="小结一下"><a href="#小结一下" class="headerlink" title="小结一下"></a>小结一下</h3><p>Dcoker通过很多的所谓 <strong>隔离</strong> 的方式，让多个docker container之间共享了同一台机器上的资源，但又是相互隔离的（比如container1 和 container2 用的是完全不同的硬盘空间、网络地址等），这样就让docker container成为了我们项目理想的开发、测试、发布的环境。非常的轻量，简单，易于分发和管理。这也就是docker的目标:Build, Ship and Run Any App, Anywhere!</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">间隔层数</th>
+<th style="text-align:center">报酬比例</th>
+<th style="text-align:center">报酬(ether)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">7/8</td>
+<td style="text-align:center">4.375</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">6/8</td>
+<td style="text-align:center">3.75</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">5/8</td>
+<td style="text-align:center">3.125</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">4/8</td>
+<td style="text-align:center">2.5</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">3/8</td>
+<td style="text-align:center">1.875</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">2/8</td>
+<td style="text-align:center">1.25</td>
+</tr>
+</tbody>
+</table>
+<h3 id="GHOST协议"><a href="#GHOST协议" class="headerlink" title="GHOST协议"></a>GHOST协议</h3><p>为了确定哪个路径才是最有效的以及防止多条链的产生，以太坊使用了一个叫做<strong>“GHOST协议(GHOST protocol.)”</strong>的数学机制。</p>
+<blockquote>
+<p><strong> GHOST</strong> = <strong>Greedy Heaviest Observed Subtree</strong></p>
+</blockquote>
+<p>简单来说，GHOST协议就是让我们必须选择一个在其上完成计算最多的路径。一个方法确定路径就是使用最近一个区块（叶子区块）的区块号，区块号代表着当前路径上总的区块数（不包含创世纪区块）。区块号越大，路径就会越长，就说明越多的挖矿算力被消耗在此路径上以达到叶子区块。使用这种推理就可以允许我们赞同当前状态的权威版本。</p>
 
       
 
@@ -317,7 +287,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">区块链</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">以太坊</a>
         		</li>
       		
 		</ul>
@@ -336,18 +310,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/05/18/fabric/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          fabric
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/05/16/并发编程中的几个概念/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">并发编程中的几个概念</div>
+    <a href="/2018/06/15/字符编码/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">字符编码</div>
       <i class="icon-circle-right"></i>
     </a>
   

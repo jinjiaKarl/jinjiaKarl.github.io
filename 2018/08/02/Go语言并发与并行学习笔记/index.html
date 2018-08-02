@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="www.jinjiaKarl.com">
-  <title>Promise的基础用法 | 陌离</title>
+  <title>Go语言并发与并行学习笔记 | 陌离</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Promise 的含义Promise 是异步编程的一种解决方案，比传统的解决方案–回调函数和事件－－更合理和更强大。它由社区最早提出和实现，ES6将其写进了语言标准，统一了语法，原生提供了Promise">
-<meta name="keywords" content="promise">
+  <meta name="description" content="入门go语言的goruntine和channel深入go语言">
+<meta name="keywords" content="go">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Promise的基础用法">
-<meta property="og:url" content="www.jinjiaKarl.com/2018/06/07/Promise的基础用法/index.html">
+<meta property="og:title" content="Go语言并发与并行学习笔记">
+<meta property="og:url" content="www.jinjiaKarl.com/2018/08/02/Go语言并发与并行学习笔记/index.html">
 <meta property="og:site_name" content="陌离">
-<meta property="og:description" content="Promise 的含义Promise 是异步编程的一种解决方案，比传统的解决方案–回调函数和事件－－更合理和更强大。它由社区最早提出和实现，ES6将其写进了语言标准，统一了语法，原生提供了Promise">
+<meta property="og:description" content="入门go语言的goruntine和channel深入go语言">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-07T15:18:00.000Z">
+<meta property="og:updated_time" content="2018-08-02T05:18:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Promise的基础用法">
-<meta name="twitter:description" content="Promise 的含义Promise 是异步编程的一种解决方案，比传统的解决方案–回调函数和事件－－更合理和更强大。它由社区最早提出和实现，ES6将其写进了语言标准，统一了语法，原生提供了Promise">
+<meta name="twitter:title" content="Go语言并发与并行学习笔记">
+<meta name="twitter:description" content="入门go语言的goruntine和channel深入go语言">
   
     <link rel="alternative" href="/atom.xml" title="陌离" type="application/atom+xml">
   
@@ -155,20 +155,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Promise的基础用法" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Go语言并发与并行学习笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Promise的基础用法
+      Go语言并发与并行学习笔记
     </h1>
   
 
         
-        <a href="/2018/06/07/Promise的基础用法/" class="archive-article-date">
-  	<time datetime="2018-06-07T15:16:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-07</time>
+        <a href="/2018/08/02/Go语言并发与并行学习笔记/" class="archive-article-date">
+  	<time datetime="2018-08-02T04:02:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
 </a>
         
       </header>
@@ -184,29 +184,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Promise-的含义"><a href="#Promise-的含义" class="headerlink" title="Promise 的含义"></a>Promise 的含义</h3><p>Promise 是异步编程的一种解决方案，比传统的解决方案–回调函数和事件－－更合理和更强大。它由社区最早提出和实现，ES6将其写进了语言标准，统一了语法，原生提供了Promise</p>
-<a id="more"></a>
-<p>所谓Promise ，简单说就是一个容器，里面保存着某个未来才回结束的事件(通常是一个异步操作）的结果。从语法上说，Promise是一个对象，从它可以获取异步操作的消息。<br>Promise 对象的状态不受外界影响</p>
-<p>三种状态:</p>
-<ul>
-<li>pending：进行中</li>
-<li>fulfilled :已经成功</li>
-<li>rejected 已经失败</li>
-</ul>
-<p>状态改变：<br>Promise对象的状态改变，只有两种可能：</p>
-<ul>
-<li>从pending变为fulfilled</li>
-<li>从pending变为rejected。</li>
-</ul>
-<p>这两种情况只要发生，状态就凝固了，不会再变了，这时就称为resolved（已定型）</p>
-<h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p>ES6规定，Promise对象是一个构造函数，用来生成Promise实例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const promist = new Promise(function(resolve,reject)&#123;</span><br><span class="line">    if(/*异步操作成功*/)&#123;</span><br><span class="line">        resolve(value);</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        reject(error);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p><code>resolve</code>函数的作用是，将Promise对象的状态从“未完成”变为“成功”（即从 <code>pending</code> 变为 <code>resolved</code>），在异步操作成功时调用，并将异步操作的结果，作为参数传递出去；<br><code>reject</code>函数的作用是，将Promise对象的状态从“未完成”变为“失败”（即从 <code>pending</code> 变为 <code>rejected</code>），在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。</p>
-<p>Promise 实例生成以后，可以用then 方法分别指定resolved状态和rejected状态的回调函数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">promise.then(function(value)&#123;</span><br><span class="line">//success</span><br><span class="line">&#125;,function(error)&#123;</span><br><span class="line">//failure</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>例子:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function timeout(ms)&#123;</span><br><span class="line">    return new Promise((resolve,reject)=&gt;&#123;</span><br><span class="line">        setTimeout(resolve,ms,&apos;done&apos;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">timeout(100).then((value)=&gt;&#123;</span><br><span class="line">    console.log(value);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">let promise = new Promise(function(resolve,reject)&#123;</span><br><span class="line">    console.log(&apos;Promise&apos;);</span><br><span class="line">    resolve();</span><br><span class="line">&#125;);</span><br><span class="line">promise.then(function()&#123;</span><br><span class="line">    console.log(&apos;resolved&apos;);</span><br><span class="line">&#125;);</span><br><span class="line">console.log(&apos;Hi!&apos;);</span><br><span class="line"></span><br><span class="line">//Promise</span><br><span class="line">//Hi!</span><br><span class="line">//resolved</span><br></pre></td></tr></table></figure>
+        <p><a href="https://blog.csdn.net/kjfcpua/article/details/18265441" target="_blank" rel="noopener">入门go语言的goruntine和channel</a><br><a href="http://colobu.com/2016/06/15/dive-into-go-1/" target="_blank" rel="noopener">深入go语言</a></p>
 
       
 
@@ -251,7 +229,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">promise</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">go</a>
         		</li>
       		
 		</ul>
@@ -270,18 +248,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/06/08/nodejs中间件/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/08/02/go命令行参数解析/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          nodejs中间件
+          (no title)
         
       </div>
     </a>
   
   
-    <a href="/2018/06/07/package-json文件中dependencies和devDependencies的区别/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">package.json文件中dependencies和devDependencies的区别</div>
+    <a href="/2018/08/01/Golang之bytes-buffer/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Golang之bytes.buffer</div>
       <i class="icon-circle-right"></i>
     </a>
   

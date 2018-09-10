@@ -16,10 +16,12 @@
 <meta property="og:site_name" content="陌离">
 <meta property="og:description" content="大小写敏感类名：首字母应该大写方法名：所有的方法名都应该以小写字母开头。如果方法名含有若干单词，则后面的每个单词首字母大写。源文件名：源文件名必须和类名相同。主方法入口：所有的Java 程序由public static void main(String []args)方法开始执行。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-08T10:27:55.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/106.png">
+<meta property="og:updated_time" content="2018-09-09T10:49:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java学习笔记">
 <meta name="twitter:description" content="大小写敏感类名：首字母应该大写方法名：所有的方法名都应该以小写字母开头。如果方法名含有若干单词，则后面的每个单词首字母大写。源文件名：源文件名必须和类名相同。主方法入口：所有的Java 程序由public static void main(String []args)方法开始执行。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/106.png">
   
     <link rel="alternative" href="/atom.xml" title="陌离" type="application/atom+xml">
   
@@ -190,7 +192,16 @@
 <p>内置数据类型：byte、short(16)、int(32)、long(64)、float、double、boolean、char<br>引用类型：数组、对象。默认值都是null</p>
 <p>在 Java 中使用 final 关键字来修饰常量，通常使用大写字母表示常量。<br>final double PI = 3.1415927;</p>
 <p>静态变量、实例变量、局部变量</p>
-<p>访问控制修饰符：<br>default (即缺省，什么也不写）: 在同一包内可见，不使用任何修饰符。使用对象：类、接口、变量、方法。<br>private : 在同一类内可见。使用对象：变量、方法。 注意：不能修饰类（外部类）<br>public : 对所有类可见。使用对象：类、接口、变量、方法<br>protected : 对同一包内的类和所有子类可见。使用对象：变量、方法。 注意：不能修饰类（外部类）。<br>非访问控制修饰符：<br>static 修饰符，用来修饰类方法和类变量。<br>final 修饰符，用来修饰类、方法和变量，final 修饰的类不能够被继承，修饰的方法不能被继承类重新定义，修饰的变量为常量，是不可修改的。<br>abstract 修饰符，用来创建抽象类和抽象方法。<br>synchronized 和 volatile 修饰符，主要用于线程的编程。</p>
+<p>访问控制修饰符：<br>default(即缺省，什么也不写）: 在同一包内可见，不使用任何修饰符。使用对象：类、接口、变量、方法。<br>private : 在同一类内可见。使用对象：变量、方法。 注意：不能修饰类（外部类）<br>public : 对所有类可见。使用对象：类、接口、变量、方法<br>protected : 对同一包内的类和所有子类可见。使用对象：变量、方法。 注意：不能修饰类（外部类）。<br>非访问控制修饰符：<br>static 修饰符，用来修饰类方法和类变量。<br>final 修饰符，用来修饰类、方法和变量，final 修饰的类不能够被继承，修饰的方法不能被继承类重新定义，修饰的变量为常量，是不可修改的。<br>abstract 修饰符，用来创建抽象类和抽象方法。<br>synchronized 和 volatile 修饰符，主要用于线程的编程。</p>
+<p>所有的包装类（Integer、Long、Byte、Double、Float、Short）都是抽象类 Number 的子类。<br>Character 类用于对单个字符进行操作。Character 类在对象中包装一个基本类型 char 的值。<br>在 Java 中字符串属于对象，Java 提供了 String 类来创建和操作字符串。<br>注意:String 类是不可改变的，所以你一旦创建了 String 对象，那它的值就无法改变了。<br>如果需要对字符串做很多修改，那么应该选择使用 StringBuffer &amp; StringBuilder 类。</p>
+<p>声明数组 double[]  mylist;<br>创建数组 mylist = new double[10];<br>foreach 循环能在不使用下标的情况下遍历数组</p>
+<p>Arrays 类<br>java.util.Arrays 类能方便地操作数组，它提供的所有方法都是静态的。<br>具有以下功能：<br>给数组赋值：通过 fill 方法。<br>对数组排序：通过 sort 方法,按升序。<br>比较数组：通过 equals 方法比较数组中元素值是否相等。<br>查找数组元素：通过 binarySearch 方法能对排序好的数组进行二分查找法操作。</p>
+<p>Java的控制台输入由 System.in 完成。为了获得一个绑定到控制台的字符流，你可以把 System.in 包装在一个 BufferedReader 对象中来创建一个字符流。<br>下面是创建 BufferedReader 的基本语法：<br>BufferedReader br = new BufferedReader(new InputStreamReader(System.in));</p>
+<p>java.util.Scanner 是 Java5 的新特征，我们可以通过 Scanner 类来获取用户的输入。(一般用这个获取用户的输入，不用System.in)</p>
+<p>FileInputStream该流用于从文件读取数据。<br>FileOutputStream该类用来创建一个文件并向文件中写数据。</p>
+<p>Java不支持多继承(一个类同时继承多个类)，但支持多重继承。<br>在 Java 中，类的继承是单一继承，也就是说，一个子类只能拥有一个父类，所以 extends 只能继承一个类。<br>使用 implements关键字可以变相的使java具有多继承的特性，使用范围为类继承接口的情况，可以同时继承多个接口（接口跟接口之间采用逗号分隔）。<br>super关键字：我们可以通过super关键字来实现对父类成员的访问，用来引用当前对象的父类。<br>this关键字：指向自己的引用。<br>final 关键字声明类可以把类定义为不能继承的，即最终类；或者用于修饰方法，该方法不能被子类重写<br>java的重写(重写是子类对父类的允许访问的方法的实现过程进行重新编写, 返回值和形参都不能改变。即外壳不变，核心重写！)<br>java的重载(在一个类里面，方法名字相同，而参数不同。返回类型可以相同也可以不同。)<br>当使用多态方式调用方法时，首先检查父类中是否有该方法，如果没有，则编译错误；如果有，再去调用子类的同名方法。</p>
+<p>抽象类除了不能实例化对象之外，类的其它功能依然存在，成员变量、成员方法和构造方法的访问方式和普通类一样。<br>一个类只能继承一个抽象类，而一个类却可以实现多个接口。<br>abstract用来定义抽象类和抽象方法<br><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/106.png" alt="Java中访问修饰符作用范围"></p>
+<p>接口（英文：Interface），在JAVA编程语言中是一个抽象类型，是抽象方法的集合，接口通常以interface来声明。一个类通过继承接口的方式，从而来继承接口的抽象方法，接口并不是类。<br>一个实现接口的类，必须实现接口内所描述的所有方法，否则就必须声明为抽象类。    </p>
 
       
 
@@ -443,11 +454,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color3">go</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">go</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -479,11 +490,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">promise</a>
+                <a href="javascript:void(0)" class="js-tag color2">RESTful API</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">RESTful API</a>
+                <a href="javascript:void(0)" class="js-tag color3">promise</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -499,11 +510,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bgp</a>
+                <a href="javascript:void(0)" class="js-tag color5">curl</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">curl</a>
+                <a href="javascript:void(0)" class="js-tag color4">bgp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -511,11 +522,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">go语言</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color5">go语言</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -523,7 +534,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mongodb</a>
+                <a href="javascript:void(0)" class="js-tag color4">p2p</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -531,7 +542,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">p2p</a>
+                <a href="javascript:void(0)" class="js-tag color3">mongodb</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -539,11 +550,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">以太坊</a>
+                <a href="javascript:void(0)" class="js-tag color4">交易所</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">交易所</a>
+                <a href="javascript:void(0)" class="js-tag color4">以太坊</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -555,15 +566,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">证券交易所</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">即时通信协议</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -580,6 +587,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">科学上网</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">证券交易所</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -603,11 +614,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">计算机组成原理</a>
+                <a href="javascript:void(0)" class="js-tag color5">闪电网络</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">闪电网络</a>
+                <a href="javascript:void(0)" class="js-tag color3">计算机组成原理</a>
               </li>
              
               <li class="article-tag-list-item">

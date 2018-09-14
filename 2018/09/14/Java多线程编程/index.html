@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="www.jinjiaKarl.com">
-  <title>Archives | 陌离</title>
+  <title>Java多线程编程 | 陌离</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是我的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="陌离">
-<meta property="og:url" content="www.jinjiaKarl.com/archives/index.html">
+  <meta name="description" content="Java中线程的创建有两种方式： 1．  通过继承Thread类，重写Thread的run()方法，将线程运行的逻辑放在其中 2．  通过实现Runnable接口，实例化Thread类(其实准确来讲，应该有三种，还有一种是实现Callable接口，并与Future、线程池结合使用)">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java多线程编程">
+<meta property="og:url" content="www.jinjiaKarl.com/2018/09/14/Java多线程编程/index.html">
 <meta property="og:site_name" content="陌离">
-<meta property="og:description" content="这是我的博客">
+<meta property="og:description" content="Java中线程的创建有两种方式： 1．  通过继承Thread类，重写Thread的run()方法，将线程运行的逻辑放在其中 2．  通过实现Runnable接口，实例化Thread类(其实准确来讲，应该有三种，还有一种是实现Callable接口，并与Future、线程池结合使用)">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-14T15:00:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="陌离">
-<meta name="twitter:description" content="这是我的博客">
+<meta name="twitter:title" content="Java多线程编程">
+<meta name="twitter:description" content="Java中线程的创建有两种方式： 1．  通过继承Thread类，重写Thread的run()方法，将线程运行的逻辑放在其中 2．  通过实现Runnable接口，实例化Thread类(其实准确来讲，应该有三种，还有一种是实现Callable接口，并与Future、线程池结合使用)">
   
     <link rel="alternative" href="/atom.xml" title="陌离" type="application/atom+xml">
   
@@ -153,36 +155,85 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Java多线程编程" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/14/Java多线程编程/" class="archive-article-date">
-  	<time datetime="2018-09-14T14:33:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-14</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/14/Java多线程编程/">Java多线程编程</a>
+    <h1 class="article-title" itemprop="name">
+      Java多线程编程
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/09/14/Java多线程编程/" class="archive-article-date">
+  	<time datetime="2018-09-14T14:33:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-14</time>
+</a>
+        
+      </header>
+
+
+
+    <span class="archive-article-date">
+      阅读量 <span id="busuanzi_value_page_pv"></span>
+    </span>
+
+
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Java中线程的创建有两种方式：</p>
+<p>1．  通过继承Thread类，重写Thread的run()方法，将线程运行的逻辑放在其中</p>
+<p>2．  通过实现Runnable接口，实例化Thread类(其实准确来讲，应该有三种，还有一种是实现Callable接口，并与Future、线程池结合使用)</p>
+<a id="more"></a>
+<p>  在实际应用中，我们经常用到多线程，如车站的售票系统，车站的各个售票口相当于各个线程。当我们做这个系统的时候可能会想到两种方式来实现，继承Thread类或实现Runnable接口，现在看一下这两种方式实现的两种结果。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"> package com.threadtest;</span><br><span class="line">class MyThread extends Thread&#123;</span><br><span class="line">    </span><br><span class="line">    private int ticket = 10;</span><br><span class="line">    private String name;</span><br><span class="line">    public MyThread(String name)&#123;</span><br><span class="line">        this.name =name;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void run()&#123;</span><br><span class="line">        for(int i =0;i&lt;500;i++)&#123;</span><br><span class="line">            if(this.ticket&gt;0)&#123;</span><br><span class="line">                System.out.println(this.name+&quot;卖票----&gt;&quot;+(this.ticket--));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class ThreadDemo &#123;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        MyThread mt1= new MyThread(&quot;一号窗口&quot;);</span><br><span class="line">        MyThread mt2= new MyThread(&quot;二号窗口&quot;);</span><br><span class="line">        MyThread mt3= new MyThread(&quot;三号窗口&quot;);</span><br><span class="line">        mt1.start();</span><br><span class="line">        mt2.start();</span><br><span class="line">        mt3.start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">运行结果如下：</span><br><span class="line">一号窗口卖票----&gt;10</span><br><span class="line">一号窗口卖票----&gt;9</span><br><span class="line">二号窗口卖票----&gt;10</span><br><span class="line">一号窗口卖票----&gt;8</span><br><span class="line">一号窗口卖票----&gt;7</span><br><span class="line">一号窗口卖票----&gt;6</span><br><span class="line">三号窗口卖票----&gt;10</span><br><span class="line">一号窗口卖票----&gt;5</span><br><span class="line">一号窗口卖票----&gt;4</span><br><span class="line">一号窗口卖票----&gt;3</span><br><span class="line">一号窗口卖票----&gt;2</span><br><span class="line">一号窗口卖票----&gt;1</span><br><span class="line">二号窗口卖票----&gt;9</span><br><span class="line">二号窗口卖票----&gt;8</span><br><span class="line">三号窗口卖票----&gt;9</span><br><span class="line">三号窗口卖票----&gt;8</span><br><span class="line">三号窗口卖票----&gt;7</span><br><span class="line">三号窗口卖票----&gt;6</span><br><span class="line">三号窗口卖票----&gt;5</span><br><span class="line">三号窗口卖票----&gt;4</span><br><span class="line">三号窗口卖票----&gt;3</span><br><span class="line">三号窗口卖票----&gt;2</span><br><span class="line">三号窗口卖票----&gt;1</span><br><span class="line">二号窗口卖票----&gt;7</span><br><span class="line">二号窗口卖票----&gt;6</span><br><span class="line">二号窗口卖票----&gt;5</span><br><span class="line">二号窗口卖票----&gt;4</span><br><span class="line">二号窗口卖票----&gt;3</span><br><span class="line">二号窗口卖票----&gt;2</span><br><span class="line">二号窗口卖票----&gt;1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">通过实现Runnable接口的代码如下：</span><br><span class="line"></span><br><span class="line">package com.threadtest;</span><br><span class="line">class MyThread1 implements Runnable&#123;</span><br><span class="line">    private int ticket =10;</span><br><span class="line">    private String name;</span><br><span class="line">    public void run()&#123;</span><br><span class="line">        for(int i =0;i&lt;500;i++)&#123;</span><br><span class="line">            if(this.ticket&gt;0)&#123;</span><br><span class="line">                System.out.println(Thread.currentThread().getName()+&quot;卖票----&gt;&quot;+(this.ticket--));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class RunnableDemo &#123;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        // TODO Auto-generated method stub</span><br><span class="line">        //设计三个线程</span><br><span class="line">         MyThread1 mt = new MyThread1();</span><br><span class="line">         Thread t1 = new Thread(mt,&quot;一号窗口&quot;);</span><br><span class="line">         Thread t2 = new Thread(mt,&quot;二号窗口&quot;);</span><br><span class="line">         Thread t3 = new Thread(mt,&quot;三号窗口&quot;);</span><br><span class="line">//         MyThread1 mt2 = new MyThread1();</span><br><span class="line">//         MyThread1 mt3 = new MyThread1();</span><br><span class="line">         t1.start();</span><br><span class="line">         t2.start();</span><br><span class="line">         t3.start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">运行结果如下：</span><br><span class="line"></span><br><span class="line">一号窗口卖票----&gt;10</span><br><span class="line">三号窗口卖票----&gt;9</span><br><span class="line">三号窗口卖票----&gt;7</span><br><span class="line">三号窗口卖票----&gt;5</span><br><span class="line">三号窗口卖票----&gt;4</span><br><span class="line">三号窗口卖票----&gt;3</span><br><span class="line">三号窗口卖票----&gt;2</span><br><span class="line">三号窗口卖票----&gt;1</span><br><span class="line">一号窗口卖票----&gt;8</span><br><span class="line">二号窗口卖票----&gt;6</span><br></pre></td></tr></table></figure>
+<p>为什么会出现这种结果呐。我们不妨做个比喻，其实刚的程序，</p>
+<p>继承Thread类的，我们相当于拿出三件事即三个卖票10张的任务分别分给三个窗口，他们各做各的事各卖各的票各完成各的任务，因为MyThread继承Thread类，所以在new MyThread的时候在创建三个对象的同时创建了三个线程；</p>
+<p>实现Runnable的， 相当于是拿出一个卖票10张得任务给三个人去共同完成，new MyThread相当于创建一个任务，然后实例化三个Thread，创建三个线程即安排三个窗口去执行。</p>
+<p>在我们刚接触的时候可能会迷糊继承Thread类和实现Runnable接口实现多线程，其实在接触后我们会发现这完全是两个不同的实现多线程，一个是多个线程分别完成自己的任务，一个是多个线程共同完成一个任务。</p>
+<p><a href="https://www.cnblogs.com/yjd_hycf_space/p/7526608.html" target="_blank" rel="noopener">Java多线程学习</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/wechat.jpeg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -194,175 +245,80 @@
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/14/HTTP请求报文和HTTP响应报文/" class="archive-article-date">
-  	<time datetime="2018-09-14T04:24:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-14</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/09/14/HTTP请求报文和HTTP响应报文/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">HTTP请求报文和HTTP响应报文</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/14/HTTP请求报文和HTTP响应报文/">HTTP请求报文和HTTP响应报文</a>
-    </h1>
+        
+        
+    </div>
+</aside>
+
+
+
+
+ 
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTgyNy8xMjM2Mw==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">http</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/09/golang中读写文件的几种方式/" class="archive-article-date">
-  	<time datetime="2018-09-09T10:55:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-09</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/09/golang中读写文件的几种方式/">golang中读写文件的几种方式</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">go</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/08/即时通信协议/" class="archive-article-date">
-  	<time datetime="2018-09-08T08:18:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/08/即时通信协议/">即时通信协议</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">即时通信协议</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/08/p2p网络结构/" class="archive-article-date">
-  	<time datetime="2018-09-08T08:18:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/08/p2p网络结构/">p2p网络结构</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">p2p</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/17/">17</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
-  
+
 
 
           </div>
@@ -392,8 +348,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

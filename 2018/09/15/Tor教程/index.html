@@ -6,22 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="www.jinjiaKarl.com">
-  <title>科学上网的一些基础知识 | 陌离</title>
+  <title>Tor教程 | 陌离</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="shadowsocks实现原理概述： ss要求本机运行local.py，海外服务器运行server.py。local.py默认监听localhost的1080端口，该端口代理浏览器的请求。browser要访问google时，会和localhost:1080进行一次基于sock5协议的通信，如上图的红色虚线框，sock5协议可以去了解下，维基百科有不错的介绍。">
+  <meta name="description" content="浅谈VPN和SS/SSR的区别Tor洋葱头Tor+meek插件">
 <meta name="keywords" content="科学上网">
 <meta property="og:type" content="article">
-<meta property="og:title" content="科学上网的一些基础知识">
-<meta property="og:url" content="www.jinjiaKarl.com/2018/09/15/科学上网的一些基础知识/index.html">
+<meta property="og:title" content="Tor教程">
+<meta property="og:url" content="www.jinjiaKarl.com/2018/09/15/Tor教程/index.html">
 <meta property="og:site_name" content="陌离">
-<meta property="og:description" content="shadowsocks实现原理概述： ss要求本机运行local.py，海外服务器运行server.py。local.py默认监听localhost的1080端口，该端口代理浏览器的请求。browser要访问google时，会和localhost:1080进行一次基于sock5协议的通信，如上图的红色虚线框，sock5协议可以去了解下，维基百科有不错的介绍。">
+<meta property="og:description" content="浅谈VPN和SS/SSR的区别Tor洋葱头Tor+meek插件">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/107.jpg">
-<meta property="og:updated_time" content="2018-09-15T13:26:39.000Z">
+<meta property="og:updated_time" content="2018-09-16T03:21:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="科学上网的一些基础知识">
-<meta name="twitter:description" content="shadowsocks实现原理概述： ss要求本机运行local.py，海外服务器运行server.py。local.py默认监听localhost的1080端口，该端口代理浏览器的请求。browser要访问google时，会和localhost:1080进行一次基于sock5协议的通信，如上图的红色虚线框，sock5协议可以去了解下，维基百科有不错的介绍。">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/107.jpg">
+<meta name="twitter:title" content="Tor教程">
+<meta name="twitter:description" content="浅谈VPN和SS/SSR的区别Tor洋葱头Tor+meek插件">
   
     <link rel="alternative" href="/atom.xml" title="陌离" type="application/atom+xml">
   
@@ -157,20 +155,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-科学上网的一些基础知识" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Tor教程" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      科学上网的一些基础知识
+      Tor教程
     </h1>
   
 
         
-        <a href="/2018/09/15/科学上网的一些基础知识/" class="archive-article-date">
-  	<time datetime="2018-09-15T10:19:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-15</time>
+        <a href="/2018/09/15/Tor教程/" class="archive-article-date">
+  	<time datetime="2018-09-15T13:36:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-15</time>
 </a>
         
       </header>
@@ -186,17 +184,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>shadowsocks实现原理概述：</p>
-<p><img src="https://raw.githubusercontent.com/jinjiaKarl/MarkdownPhotos/master/photos/107.jpg" alt=""><br>ss要求本机运行local.py，海外服务器运行server.py。local.py默认监听localhost的1080端口，该端口代理浏览器的请求。browser要访问google时，会和localhost:1080进行一次基于sock5协议的通信，如上图的红色虚线框，sock5协议可以去了解下，维基百科有不错的介绍。<br><a id="more"></a><br>代理的流程如下：</p>
-<p>localhost:1080经过sock5协议后，就知道要访问google了</p>
-<p>local程序会把流量加密，然后把普通的TCP流量发往海外服务器；</p>
-<p>海外服务器收到请求后，解密得到要访问google</p>
-<p>海外服务器请求google后把得到的数据加密返回给local</p>
-<p>local解密返回给browser。</p>
-<p>ss的解密和加密基于用户设置的密码，所以local和server之间可以做到加密和解密的一致。</p>
-<p><a href="https://bingtaoli.github.io/2016/11/23/shadowsocks%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/" target="_blank" rel="noopener">shadowsocks实现原理</a></p>
-<p>需要了解http中各个字段的含义，可以参看<a href="https://www.cnblogs.com/startmyways/p/https.html" target="_blank" rel="noopener">HTTP协议解析</a><br><a href="https://imququ.com/post/web-proxy.html" target="_blank" rel="noopener">HTTP代理原理及实现</a></p>
-<p><a href="http://hengyunabc.github.io/something-about-science-surf-the-internet/" target="_blank" rel="noopener">科学上网基本原理</a></p>
+        <p><a href="http://www.5xiaobo.com/?id=650" target="_blank" rel="noopener">浅谈VPN和SS/SSR的区别</a><br><a href="http://www.5xiaobo.com/?id=308" target="_blank" rel="noopener">Tor洋葱头</a><br><a href="https://program-think.blogspot.com/2018/04/gfw-tor-browser-7.5-meek.html" target="_blank" rel="noopener">Tor+meek插件</a></p>
 
       
 
@@ -260,18 +248,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/09/15/Tor教程/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Tor教程
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/09/14/Java多线程编程/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java多线程编程</div>
+    <a href="/2018/09/15/科学上网的一些基础知识/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">科学上网的一些基础知识</div>
       <i class="icon-circle-right"></i>
     </a>
   
